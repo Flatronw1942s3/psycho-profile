@@ -1,0 +1,1134 @@
+{
+  "schema_version": "1.1.0",
+  "project_code": "PSYCHO-PROFILE // ANALYZER",
+  "supported_locales": ["ru", "en", "zh", "de", "ja"],
+  "menu_background": "assets/media/backgrounds/case_00.png",
+  "difficulty_modes": {
+    "scout": {
+      "id": "scout",
+      "timer_multiplier": 2.0,
+      "override_time_limit_sec": 30,
+      "show_axes_on_options": true,
+      "allow_evidence_hint": true,
+      "score_multiplier": 1.0
+    },
+    "mindhunter": {
+      "id": "mindhunter",
+      "timer_multiplier": 1.0,
+      "override_time_limit_sec": null,
+      "show_axes_on_options": false,
+      "allow_evidence_hint": false,
+      "score_multiplier": 1.5
+    }
+  },
+  "scenarios": [
+    {
+      "id": "case_01_kaiji",
+      "case_number": "CASE #01",
+      "phase_code": "PHASE I // STEEL BEAM ABYSS",
+      "time_limit_sec": 15,
+      "sprite": "assets/media/sprites/kaiji.png",
+      "background": "assets/media/backgrounds/case_01.png",
+      "case_title": {
+        "ru": "ДЕЛО #01 // КАЙДЗИ ИТО: СТАЛЬНАЯ БЕЗДНА",
+        "en": "CASE #01 // KAIJI ITO: STEEL ABYSS",
+        "zh": "案件 #01 // 伊藤开司：钢铁深渊",
+        "de": "FALL #01 // KAIJI ITO: STAHLABGRUND",
+        "ja": "CASE #01 // 伊藤開司：鉄骨の深淵"
+      },
+      "character_name": {
+        "ru": "КАЙДЗИ ИТО [№218]",
+        "en": "KAIJI ITO [NO.218]",
+        "zh": "伊藤开司 [218号]",
+        "de": "KAIJI ITO [NR.218]",
+        "ja": "伊藤開司 [218番]"
+      },
+      "evidence_summary": {
+        "ru": "ДОСЬЕ УЛИК: Пульс 174 уд/мин. Испытуемый парализован не столько высотой, сколько унизительным смехом VIP-зрителей за стеклом. Наблюдаются резкие качели между самоуничижением («я мусор») и яростной потребностью доказать свою субъектность.",
+        "en": "EVIDENCE DOSSIER: Pulse 174 BPM. Subject is paralyzed less by altitude than by the humiliating laughter of VIP spectators behind armored glass. Severe oscillation between self-abasement ('I am trash') and a fierce drive to reclaim personal agency.",
+        "zh": "证据档案：脉搏 174 次/分。受试者并非单纯因高空僵住，更因玻璃后VIP看客的羞辱嘲笑而濒临崩溃，在自我贬低与拼死捍卫尊严之间剧烈摇摆。",
+        "de": "BEWEISAKTE: Puls 174 BPM. Gelähmt durch das demütigende Gelächter der VIP-Zuschauer. Starkes Schwanken zwischen Selbsterniedrigung und dem verzweifelten Drang nach Selbstbestimmung.",
+        "ja": "証拠ファイル：心拍数174bpm。高度よりもVIP観客の嘲笑に縛られ、自己卑下と尊厳奪還の渇望の間で激しく揺れ動いている。"
+      },
+      "sprites": {
+        "panic": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='kSilP' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#152642'/><stop offset='100%' stop-color='#070d19'/></linearGradient><filter id='kGlowP'><feDropShadow dx='0' dy='0' stdDeviation='12' flood-color='#ff1744' flood-opacity='0.65'/></filter></defs><g filter='url(#kGlowP)'><path d='M135 900 L185 555 L275 495 L360 530 L445 495 L535 555 L585 900 Z' fill='url(#kSilP)' stroke='#ff1744' stroke-width='3.5'/><path d='M275 495 L360 645 L445 495 L410 455 L360 500 L310 455 Z' fill='#0c1526' stroke='#00e5ff' stroke-width='2.5'/><rect x='425' y='615' width='88' height='40' transform='skewX(-12)' fill='#090f1d' stroke='#ff1744' stroke-width='2.5'/><text x='436' y='643' fill='#ff5252' font-family='Consolas, monospace' font-weight='bold' font-size='23' transform='skewX(-12)'>#218</text><path d='M322 405 L398 405 L408 505 L360 532 L312 505 Z' fill='#101d33' stroke='#4fc3f7' stroke-width='2.5'/><path d='M248 205 L472 205 L456 362 L360 452 L264 362 Z' fill='#13233d' stroke='#ff1744' stroke-width='3.5'/><path d='M220 242 L202 145 L264 162 L294 88 L345 132 L396 76 L432 138 L498 112 L486 202 L522 256 L470 248 L455 188 L395 208 L355 172 L305 212 L255 188 Z' fill='#09111f' stroke='#00e5ff' stroke-width='2.5'/><ellipse cx='310' cy='282' rx='28' ry='16' fill='none' stroke='#ff5252' stroke-width='3'/><ellipse cx='410' cy='282' rx='28' ry='16' fill='none' stroke='#ff5252' stroke-width='3'/><circle cx='312' cy='282' r='5' fill='#00e5ff'/><circle cx='408' cy='282' r='5' fill='#00e5ff'/><path d='M324 388 L340 376 L356 389 L372 376 L388 389 L402 379' fill='none' stroke='#ff5252' stroke-width='3.5'/><g stroke='#ff1744' stroke-width='2.5' opacity='0.75' fill='none'><polyline points='130,270 105,225 142,210 118,162'/><polyline points='590,270 615,225 578,210 602,162'/></g></g></svg>",
+        "resolve": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='kSilR' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#19375f'/><stop offset='100%' stop-color='#07101f'/></linearGradient><filter id='kGlowR'><feDropShadow dx='0' dy='0' stdDeviation='14' flood-color='#00e5ff' flood-opacity='0.75'/></filter></defs><g filter='url(#kGlowR)'><path d='M125 900 L178 545 L275 485 L360 525 L445 485 L542 545 L595 900 Z' fill='url(#kSilR)' stroke='#00e5ff' stroke-width='4'/><path d='M275 485 L360 638 L445 485 L412 448 L360 495 L308 448 Z' fill='#0d1b30' stroke='#ffab00' stroke-width='2.5'/><rect x='430' y='608' width='88' height='40' transform='skewX(-12)' fill='#061220' stroke='#00e5ff' stroke-width='2.5'/><text x='441' y='636' fill='#00e5ff' font-family='Consolas, monospace' font-weight='bold' font-size='23' transform='skewX(-12)'>#218</text><path d='M248 198 L472 198 L456 356 L360 446 L264 356 Z' fill='#152b4a' stroke='#00e5ff' stroke-width='3.5'/><path d='M215 234 L195 135 L262 156 L292 78 L345 125 L398 68 L435 130 L505 102 L490 196 L528 246 L472 238 L455 182 L395 202 L355 166 L305 206 L255 182 Z' fill='#08111e' stroke='#00e5ff' stroke-width='3'/><polygon points='274,270 344,280 338,298 280,294' fill='#00e5ff'/><polygon points='446,270 376,280 382,298 440,294' fill='#00e5ff'/><path d='M296 298 Q293 336 303 365' fill='none' stroke='#80deea' stroke-width='3.5'/><path d='M424 298 Q427 336 417 365' fill='none' stroke='#80deea' stroke-width='3.5'/><polygon points='316,374 404,374 398,396 322,396' fill='none' stroke='#ffffff' stroke-width='3'/><g stroke='#00e5ff' stroke-width='3.5' opacity='0.85'><line x1='95' y1='450' x2='185' y2='405'/><line x1='625' y1='450' x2='535' y2='405'/></g></g></svg>"
+      },
+      "dialogue": [
+        {
+          "id": "k1",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ТЕРМИНАЛ НАБЛЮДЕНИЯ",
+            "en": "SURVEILLANCE TERMINAL",
+            "zh": "监控终端",
+            "de": "ÜBERWACHUNGSTERMINAL",
+            "ja": "監視ターミナル"
+          },
+          "text": {
+            "ru": "Высота — 74 метра над ночным кварталом. По бокам стальной балки гудят электроразрядники. За бронированным стеклом VIP-ложи миллионеры поднимают бокалы и ставят деньги на то, через сколько секунд №218 сорвется вниз.",
+            "en": "Altitude: 74 meters above the night district. High-voltage rails hum along the steel beam. Behind the armored glass of the VIP lounge, millionaires raise their glasses and bet on how many seconds No. 218 lasts before falling.",
+            "zh": "距地面高度74米。高压电极在钢梁两侧嗡鸣。VIP包厢防弹玻璃后，富豪们举杯下注赌218号几秒后坠落。",
+            "de": "Höhe: 74 Meter. Hochspannungsschienen summen am Stahlträger, während VIPs hinter Panzerglas auf den Absturz von Nr. 218 wetten.",
+            "ja": "高度74メートル。高圧電流が唸る鉄骨の向こうで、VIP観客がグラスを掲げて218番の落下に賭けている。"
+          }
+        },
+        {
+          "id": "k2",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "КАЙДЗИ ИТО [№218]",
+            "en": "KAIJI ITO [NO.218]",
+            "zh": "伊藤开司 [218号]",
+            "de": "KAIJI ITO [NR.218]",
+            "ja": "伊藤開司 [218番]"
+          },
+          "text": {
+            "ru": "Ноги... не двигаются! Но хуже бездны внизу — их взгляды за стеклом! Они смотрят на меня как на насекомое... Потому что я и правда всю жизнь был мусором и неудачником! Если я сейчас поползу назад на коленях — я сам признаю, что у меня нет своей судьбы!",
+            "en": "My legs... won't move! Yet worse than the abyss below are their eyes behind that glass! Watching me like an insect... Because I really have been worthless trash my whole life! Still—if I crawl back on my knees now, I admit forever that I don't own my fate!",
+            "zh": "双腿根本动不了！但比深渊更窒息的是玻璃后的眼神！如果我现在跪着爬回去，就等于亲口承认我不配拥有自己的命运！",
+            "de": "Meine Beine gehorchen nicht! Schlimmer als der Abgrund sind ihre Blicke! Wenn ich jetzt auf Knien zurückkrieche, gebe ich zu, dass ich kein eigenes Schicksal besitze!",
+            "ja": "足が動かねえ！だが深淵より耐えられねえのは連中の目だ！ここで膝をついて這い戻れば、自分の人生を決める資格もないクズだと認めることになる！"
+          }
+        },
+        {
+          "id": "k3",
+          "emotion": "resolve",
+          "climax": true,
+          "speaker": {
+            "ru": "КАЙДЗИ ИТО [№218]",
+            "en": "KAIJI ITO [NO.218]",
+            "zh": "伊藤开司 [218号]",
+            "de": "KAIJI ITO [NR.218]",
+            "ja": "伊藤開司 [218番]"
+          },
+          "text": {
+            "ru": "Чёрта с два!! Пусть меня трясёт, пусть слёзы режут глаза — плевать! Я сам решу, жить мне или умереть на этой балке! Смотрите же, ублюдки: Я ИДУ ВПЕРЁД! Будущее принадлежит тем, кто выгрызает его своими руками!!",
+            "en": "Like hell I will!! Let my knees shake, let tears burn my eyes—I don't care! I alone decide whether I live or die on this beam! Watch closely, bastards: I'M MOVING FORWARD! The future belongs in our own hands!!",
+            "zh": "去他妈的！！就算全身发抖、泪水模糊视线又怎样！在这根铁梁上是死是活由我自己决定！看清楚了，我要往前走了！！",
+            "de": "Zur Hölle damit!! Sollen meine Knie zittern — ich allein entscheide, ob ich auf diesem Träger lebe oder sterbe! ICH GEHE VORWÄRTS!!",
+            "ja": "ふざけるなっ！！震えても涙が滲んでも構わねえ！この鉄骨の上で生きるか死ぬかは俺が決める！俺は前に進むっ！！"
+          }
+        }
+      ],
+      "timeout_verdict": {
+        "title": {
+          "ru": "СТУПОР ВОЛИ // КРИТИЧЕСКАЯ НЕРЕШИТЕЛЬНОСТЬ",
+          "en": "WILL STUPOR // CRITICAL INDECISION",
+          "zh": "意志僵直 // 致命犹豫",
+          "de": "WILLENSSTARRE // KRITISCHE UNENTSCHLOSSENHEIT",
+          "ja": "意志硬直 // 致命的な逡巡"
+        },
+        "axes": {
+          "ru": "Слабая / Процессионная / Доминантная",
+          "en": "Weak / Processional / Dominant",
+          "zh": "弱势 / 过程型 / 主导型",
+          "de": "Schwach / Prozesshaft / Dominant",
+          "ja": "弱 / プロセス / ドミナント"
+        },
+        "breakdown": {
+          "ru": "ОШИБКА ПРОФАЙЛЕРА («СТУПОР ВОЛИ»): Окно принятия решения упущено! Вы застряли в бесконечном взвешивании рисков вместо фиксации вердикта. Истинный радикал Кайдзи — [3В] (Слабая / Процессионная / Доминантная Воля).",
+          "en": "PROFILER FAILURE ('WILL STUPOR'): Decision window lost! You froze in endless risk-weighing instead of locking the verdict. Kaiji's true radical is [3В] (Weak / Processional / Dominant Will).",
+          "zh": "侧写失误（“意志僵直”）：错过决断窗口！开司的真实核心为 [3В]（弱势 / 过程型 / 主导型意志）。",
+          "de": "PROFILER-FEHLER („WILLENSSTARRE“): Zeit abgelaufen! Kaijis wahres Profil ist [3В] (Schwach / Prozesshaft / Dominant).",
+          "ja": "プロファイラー失策（『意志硬直』）：時間切れです。開司の真のプロファイルは [3В]（弱 / プロセス / ドミナント）でした。"
+        }
+      },
+      "options": [
+        {
+          "id": "k_opt_1v",
+          "function_code": "1В",
+          "is_correct": false,
+          "text": {
+            "ru": "1-я Воля // Монолит («Царь»)",
+            "en": "1st Will // Sovereign Monolith ('Tsar')",
+            "zh": "第一意志 // 绝对君王",
+            "de": "1. Wille // Monolith („Zar“)",
+            "ja": "第1意志 // 絶対君主"
+          },
+          "axes": {
+            "ru": "Сильная / Результативная / Доминантная",
+            "en": "Strong / Resultative / Dominant",
+            "zh": "强势 / 结果型 / 主导型",
+            "de": "Stark / Resultativ / Dominant",
+            "ja": "強 / リザルト / ドミナント"
+          },
+          "hint": {
+            "ru": "Шагает ли он со спокойной хозяйской уверенностью, или прорывается сквозь мучительный стыд и сомнения?",
+            "en": "Does he step forward with calm sovereign certainty, or tear through agonizing shame and self-doubt?",
+            "zh": "他是沉着笃定地迈步，还是撕裂羞耻与自我怀疑突围？",
+            "de": "Geht er ruhig voran oder kämpft er sich durch Scham und Selbstzweifel?",
+            "ja": "揺るぎない確信で進んだのか、恥辱と自己否定を食い破って進んだのか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 1-я Воля («Царь») результативна и избыточна: она изначально не сомневается в своем праве решать и равнодушна к насмешкам зрителей за стеклом. Кайдзи же проходит через острейшее самоуничижение («я мусор») и болезненную зависимость от чужого взгляда — его рывок рожден из раны 3-й Воли.",
+            "en": "FALSE LEAD. 1st Will ('Tsar') is resultative and abundant: it never doubts its sovereignty and ignores jeering spectators. Kaiji spirals through acute self-loathing ('I am trash') and hypersensitivity to contempt—his surge erupts from wounded 3rd Will.",
+            "zh": "判断错误。第一意志天然笃定，不受旁人嘲弄影响；开司经历了剧烈的自我贬低，属于受创的3В。",
+            "de": "FALSCH. Der 1. Wille ist immun gegen Spott; Kaijis Durchbruch entspringt dem verwundeten 3. Willen.",
+            "ja": "不正解。第1意志は嘲笑に揺らがない。開司の突破は傷ついた第3意志（3В）によるものだ。"
+          },
+          "explanation": {
+            "ru": "Вместо спокойного монолита 1В зафиксирована сверхкомпенсация уязвленной 3В.",
+            "en": "Instead of calm 1W certainty, telemetry confirms hyper-compensation of wounded 3W.",
+            "zh": "现场并非1В的从容，而是受创3В的超量补偿。",
+            "de": "Statt ruhiger 1W-Sicherheit liegt eine Überkompensation des 3. Willens vor.",
+            "ja": "1Вの余裕ではなく、傷ついた3Вの過剰補償である。"
+          }
+        },
+        {
+          "id": "k_opt_3v",
+          "function_code": "3В",
+          "is_correct": true,
+          "text": {
+            "ru": "3-я Воля // Бунт против унижения («Язва»)",
+            "en": "3rd Will // Revolt Against Humiliation ('Ulcer')",
+            "zh": "第三意志 // 反抗羞辱的突围",
+            "de": "3. Wille // Rebellion gegen Erniedrigung",
+            "ja": "第3意志 // 屈辱への反逆（傷口）"
+          },
+          "axes": {
+            "ru": "Слабая / Процессионная / Доминантная",
+            "en": "Weak / Processional / Dominant",
+            "zh": "弱势 / 过程型 / 主导型",
+            "de": "Schwach / Prozesshaft / Dominant",
+            "ja": "弱 / プロセス / ドミナント"
+          },
+          "hint": {
+            "ru": "Сочетание трех улик: боль уязвленной самооценки, непрерывная рефлексия под взглядом толпы и яростный отказ сдаться.",
+            "en": "Triad of clues: wounded self-worth, continuous inner struggle under observers' eyes, and fierce refusal to submit.",
+            "zh": "三重线索：受创的自尊、众目睽睽下的内心拉锯、绝不屈服的反抗。",
+            "de": "Dreiklang: verletzter Selbstwert, inneres Ringen unter Blicken und unbeugsamer Trotz.",
+            "ja": "傷ついた自尊心、視線への過敏な葛藤、屈服を拒む意地の結合に注目せよ。"
+          },
+          "breakdown": {
+            "ru": "ТОЧНОЕ ПОПАДАНИЕ (BREAKTHROUGH)! Эталонная 3-я Воля: парализующий страх оказаться «пустым местом» [СЛАБАЯ], мучительный внутренний торг и гиперчувствительность к взглядам богачей за витриной [ПРОЦЕССИОННАЯ], и отчаянная, непримиримая борьба за право самому распоряжаться своей судьбой [ДОМИНАНТНАЯ]. На пределе давления именно 3В совершает невозможный прорыв вопреки ужасу.",
+            "en": "EXACT MATCH (BREAKTHROUGH)! Textbook 3rd Will: paralyzing terror of being 'worthless trash' [WEAK], agonizing inner oscillation and hypersensitivity to the VIP crowd's humiliating gaze [PROCESSIONAL], and a fierce, uncompromising fight to own his fate [DOMINANT]. Pushed to the brink, 3W achieves extraordinary breakthroughs out of existential defiance.",
+            "zh": "精准击破（BREAKTHROUGH）！典型的第三意志：害怕沦为废物的窒息感【弱势】、对富豪嘲弄目光的持续拉锯【过程型】、誓死夺回命运主导权的执念【主导型】。",
+            "de": "VOLLTREFFER (BREAKTHROUGH)! Paradebeispiel für den 3. Willen: quälende Selbstzweifel [SCHWACH], innerer Kampf unter fremden Blicken [PROZESSHAFT] und unbeugsamer Drang nach Selbstbestimmung [DOMINANT].",
+            "ja": "完全一致（BREAKTHROUGH）！典型的な第3意志：自己否定の苦しみ【弱】、視線への過敏な葛藤【プロセス】、運命の決定権を渡さない意地【ドミナント】が一致している。"
+          },
+          "explanation": {
+            "ru": "Вердикт подтвержден: бунт против унижения на балке однозначно идентифицирует 3-ю Волю.",
+            "en": "Verdict confirmed: revolt against humiliation on the steel beam unmistakably identifies 3rd Will.",
+            "zh": "裁决确认：钢梁上反抗羞辱的爆发锁定第三意志。",
+            "de": "Urteil bestätigt: Die Rebellion gegen Demütigung identifiziert eindeutig den 3. Willen.",
+            "ja": "判定確定：鉄骨上での屈辱への反逆は第3意志を特定する。"
+          }
+        },
+        {
+          "id": "k_opt_2f",
+          "function_code": "2Ф",
+          "is_correct": false,
+          "text": {
+            "ru": "2-я Физика // Моторный баланс («Мастер»)",
+            "en": "2nd Physics // Kinesthetic Balance ('Master')",
+            "zh": "第二物理 // 躯体掌控",
+            "de": "2. Physik // Körperbalance",
+            "ja": "第2物理 // 身体調和"
+          },
+          "axes": {
+            "ru": "Сильная / Процессионная / Подстраивающаяся",
+            "en": "Strong / Processional / Adapting",
+            "zh": "强势 / 过程型 / 适应型",
+            "de": "Stark / Prozesshaft / Anpassend",
+            "ja": "強 / プロセス / アジャスト"
+          },
+          "hint": {
+            "ru": "Несет ли его вперед пластичная ловкость тела, или он тащит скованные ужасом ноги силой уязвленного духа?",
+            "en": "Is supple bodily dexterity carrying him across, or is wounded pride dragging terrified legs forward?",
+            "zh": "支撑他的是灵活的身体协调，还是强行驱使僵硬双腿的自尊执念？",
+            "de": "Trägt ihn körperliche Gewandtheit oder zwingt verletzter Stolz seine Beine voran?",
+            "ja": "彼を支えているのは身体の熟練か、恐怖で凍った足を動かす誇りの執念か？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 2-я Физика владеет телом свободно и бесстрашно. У Кайдзи же ноги каменеют от паники, а точка перелома лежит не в телесной ловкости, а в протесте против унижения — в аспекте Воли (3В).",
+            "en": "FALSE LEAD. 2nd Physics commands the body fluidly and without fear. Kaiji's legs are petrified, and his turning point lies in revolt against humiliation—the domain of Will (3W), not Physics.",
+            "zh": "判断错误。2Ф躯体游刃有余；开司双腿僵硬，突破点在于反抗羞辱的意志（3В）。",
+            "de": "FALSCH. 2P agiert körperlich souverän; Kaijis Konflikt liegt im verwundeten Willen (3W).",
+            "ja": "不正解。2Фは身体を自在に操るが、開司の転換点は屈辱に抗う意志（3В）にある。"
+          },
+          "explanation": {
+            "ru": "Импульс прорыва имеет волевую, а не моторно-физическую природу.",
+            "en": "The breakthrough impulse stems from wounded agency, not physical mastery.",
+            "zh": "突破动力源于受创意志而非躯体机能。",
+            "de": "Der Impuls ist willensbasiert, nicht physisch-motorisch.",
+            "ja": "突破の原動力は身体能力ではなく意志にある。"
+          }
+        },
+        {
+          "id": "k_opt_4e",
+          "function_code": "4Э",
+          "is_correct": false,
+          "text": {
+            "ru": "4-я Эмоция // Холодный штиль («Пустячок»)",
+            "en": "4th Emotion // Affective Stillness",
+            "zh": "第四情感 // 情绪静默",
+            "de": "4. Emotion // Kalte Stille",
+            "ja": "第4感情 // 感情の凪"
+          },
+          "axes": {
+            "ru": "Слабая / Результативная / Подстраивающаяся",
+            "en": "Weak / Resultative / Adapting",
+            "zh": "弱势 / 结果型 / 适应型",
+            "de": "Schwach / Resultativ / Anpassend",
+            "ja": "弱 / リザルト / アジャスト"
+          },
+          "hint": {
+            "ru": "Отключаются ли у него чувства в опасности, или слезы ярости режут глаза?",
+            "en": "Do his emotions shut down in danger, or are tears of fury burning his eyes?",
+            "zh": "他在危机中是情绪冷寂，还是泪水与狂怒决堤？",
+            "de": "Schalten sich seine Gefühle ab oder brennen Tränen der Wut in seinen Augen?",
+            "ja": "危機で感情が消えているか、それとも怒りの涙が溢れているか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 4-я Эмоция гасит аффект в кризисе до полного штиля. Кайдзи же захлебывается слезами и криком вокруг ядра раненого достоинства (3В).",
+            "en": "FALSE LEAD. 4th Emotion mutes affect into calm stillness under stress. Kaiji roars through burning tears around a core of wounded dignity (3W).",
+            "zh": "判断错误。4Э在危机中切断情绪；开司泪水决堤、嘶吼抗争，核心为3В。",
+            "de": "FALSCH. 4E schaltet Emotionen im Stress ab; Kaiji kämpft unter Tränen um seine Würde (3W).",
+            "ja": "不正解。4Эは危機で感情を遮断するが、開司は涙と絶叫の中で尊厳（3В）を懸けて戦っている。"
+          },
+          "explanation": {
+            "ru": "Наблюдается аффективный взрыв вокруг ядра 3В, а не эмоциональный штиль 4Э.",
+            "en": "Affective eruption around 3W ego-wound rules out 4E stillness.",
+            "zh": "围绕3В的情绪爆发排除了4Э。",
+            "de": "Affektausbruch um den 3W-Kern schließt 4E aus.",
+            "ja": "3Вを核とする情動爆発であり、4Эの凪ではない。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_02_tokuchi",
+      "case_number": "CASE #02",
+      "phase_code": "PHASE II // ONE OUTS CONTRACT",
+      "time_limit_sec": 15,
+      "sprite": "assets/media/sprites/tokuchi.png",
+      "background": "assets/media/backgrounds/case_02.png",
+      "case_title": {
+        "ru": "ДЕЛО #02 // ТОКУЧИ ТОА: КОНТРАКТ ONE OUTS",
+        "en": "CASE #02 // TOKUCHI TOUA: ONE OUTS PACT",
+        "zh": "案件 #02 // 渡久地东亚：ONE OUTS 契约",
+        "de": "FALL #02 // TOKUCHI TOUA: ONE-OUTS-VERTRAG",
+        "ja": "CASE #02 // 渡久地東亜：ワンナウツ契約"
+      },
+      "character_name": {
+        "ru": "ТОКУЧИ ТОА [ПИТЧЕР-СТРАТЕГ]",
+        "en": "TOKUCHI TOUA [GAMBLER PITCHER]",
+        "zh": "渡久地东亚 [赌徒投手]",
+        "de": "TOKUCHI TOUA [STRATEGE]",
+        "ja": "渡久地東亜 [勝負師ピッチャー]"
+      },
+      "evidence_summary": {
+        "ru": "ДОСЬЕ УЛИК: Пульс 58 уд/мин. Испытуемый отвергает традиционный оклад и диктует владельцу клуба математическую формулу с нулевой суммой. Полное отсутствие сомнений, отказ от дискуссий и мгновенная выдача готовой аксиомы.",
+        "en": "EVIDENCE DOSSIER: Pulse 58 BPM. Subject rejects a standard salary and dictates a zero-sum mathematical contract to the team owner. Zero self-doubt, refusal to debate, and instant delivery of a finished axiom.",
+        "zh": "证据档案：脉搏 58 次/分。受试者拒绝常规薪资，向球队老板直接下达零和博弈数学契约。毫无怀疑，拒绝争辩，直接给出终极公理。",
+        "de": "BEWEISAKTE: Puls 58 BPM. Das Subjekt diktiert dem Clubbesitzer eine mathematische Nullsummen-Formel ohne jede Diskussion oder Selbstzweifel.",
+        "ja": "証拠ファイル：心拍数58bpm。通常の年俸を拒絶し、球団オーナーにゼロサムの数理契約を突きつけた。迷いも議論も一切なく、完成された公理のみを提示している。"
+      },
+      "sprites": {
+        "panic": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='tSil1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1d283a'/><stop offset='100%' stop-color='#080c14'/></linearGradient><filter id='tGlow1'><feDropShadow dx='0' dy='0' stdDeviation='12' flood-color='#ffab00' flood-opacity='0.55'/></filter></defs><g filter='url(#tGlow1)'><path d='M155 900 L205 530 L300 475 L360 515 L420 475 L515 530 L565 900 Z' fill='url(#tSil1)' stroke='#ffab00' stroke-width='3'/><line x1='260' y1='505' x2='240' y2='900' stroke='#ffab00' stroke-width='1.5' opacity='0.45'/><line x1='460' y1='505' x2='480' y2='900' stroke='#ffab00' stroke-width='1.5' opacity='0.45'/><path d='M262 215 L458 215 L442 368 L360 448 L278 368 Z' fill='#111b2b' stroke='#ffab00' stroke-width='3'/><path d='M255 225 L275 110 L315 155 L345 55 L378 145 L412 65 L438 158 L468 118 L465 225 Z' fill='#0d1522' stroke='#ffd54f' stroke-width='3'/><line x1='282' y1='276' x2='342' y2='282' stroke='#ffd54f' stroke-width='3.5'/><line x1='438' y1='276' x2='378' y2='282' stroke='#ffd54f' stroke-width='3.5'/><circle cx='316' cy='285' r='4' fill='#00e5ff'/><circle cx='404' cy='285' r='4' fill='#00e5ff'/><path d='M332 382 L392 376' stroke='#ffd54f' stroke-width='3'/><line x1='388' y1='377' x2='448' y2='369' stroke='#eceff1' stroke-width='3.5'/><circle cx='450' cy='368' r='3' fill='#ff5252'/><path d='M454 358 Q472 325 456 292 Q442 260 468 228' fill='none' stroke='#90caf9' stroke-width='2' opacity='0.55'/></g></svg>",
+        "resolve": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='tSil2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#233248'/><stop offset='100%' stop-color='#070c16'/></linearGradient><filter id='tGlow2'><feDropShadow dx='0' dy='0' stdDeviation='15' flood-color='#00e5ff' flood-opacity='0.75'/></filter></defs><g filter='url(#tGlow2)'><path d='M148 900 L200 520 L300 468 L360 508 L420 468 L520 520 L572 900 Z' fill='url(#tSil2)' stroke='#00e5ff' stroke-width='4'/><path d='M262 208 L458 208 L442 362 L360 442 L278 362 Z' fill='#14243a' stroke='#00e5ff' stroke-width='3.5'/><path d='M252 218 L272 98 L314 148 L346 42 L378 138 L414 52 L440 150 L472 108 L468 218 Z' fill='#0a1220' stroke='#ffab00' stroke-width='3.5'/><polygon points='280,270 344,279 338,292 284,286' fill='#00e5ff'/><polygon points='440,270 376,279 382,292 436,286' fill='#00e5ff'/><path d='M328 378 Q364 388 398 370' fill='none' stroke='#ffffff' stroke-width='3.5'/><circle cx='535' cy='615' r='44' fill='#0b1526' stroke='#ffab00' stroke-width='3.5'/><path d='M506 592 Q535 615 506 638 M564 592 Q535 615 564 638' fill='none' stroke='#ff1744' stroke-width='2.5'/></g></svg>"
+      },
+      "dialogue": [
+        {
+          "id": "t1",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ТЕРМИНАЛ ДОПРОСА",
+            "en": "INTERROGATION TERMINAL",
+            "zh": "审讯终端",
+            "de": "VERHÖRTERMINAL",
+            "ja": "尋問ターミナル"
+          },
+          "text": {
+            "ru": "Закрытая ложа стадиона. Владелец клуба «Ликаонз» Цунэо Сайкава швыряет на стол типовой контракт новичка и требует объяснить, как питчер со скоростью броска 134 км/ч собирается выживать в высшей лиге.",
+            "en": "Private stadium suite. Lycaons owner Tsuneo Saikawa tosses a rookie contract onto the desk, demanding to know how a pitcher throwing a mere 134 km/h expects to survive in the pro league.",
+            "zh": "球场贵宾室。球队老板彩川扔出新秀合同，质问球速仅有134公里的投手凭什么在职业联赛立足。",
+            "de": "Stadion-Loge. Clubbesitzer Saikawa wirft einen Standardvertrag auf den Tisch und verlangt Antworten von einem Werfer mit nur 134 km/h.",
+            "ja": "スタジアム特別室。彩川オーナーは最低年俸の契約書を投げ出し、球速134キロの投手がどうやってプロで通用するのか説明を求めた。"
+          }
+        },
+        {
+          "id": "t2",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ТОКУЧИ ТОА [ПИТЧЕР-СТРАТЕГ]",
+            "en": "TOKUCHI TOUA [GAMBLER PITCHER]",
+            "zh": "渡久地东亚 [赌徒投手]",
+            "de": "TOKUCHI TOUA [STRATEGE]",
+            "ja": "渡久地東亜 [勝負師ピッチャー]"
+          },
+          "text": {
+            "ru": "Объяснять вам теорию бейсбола бессмысленно — дискуссии нужны тем, кто сам не уверен в ответе. Моя формула уже посчитана до последнего иена. Выкиньте ваш бланк.",
+            "en": "Debating baseball theory with you is pointless—discussions are for people who aren't certain of the answer yet. My equation is already solved down to the last yen. Tear up that form.",
+            "zh": "向你解释棒球理论毫无意义——只有不确定答案的人才需要讨论。我的公式早已精确到每一日元。把你那张废纸撕了吧。",
+            "de": "Diskussionen sind für Leute, die ihre Antwort noch suchen. Meine Gleichung steht bis auf den letzten Yen fest. Zerreißen Sie das Formular.",
+            "ja": "あんたと野球理論を議論する気はない。議論が必要なのは答えに確信がない奴だけだ。俺の数式は最後の一円まで既に解けている。"
+          }
+        },
+        {
+          "id": "t3",
+          "emotion": "resolve",
+          "climax": true,
+          "speaker": {
+            "ru": "ТОКУЧИ ТОА [ПИТЧЕР-СТРАТЕГ]",
+            "en": "TOKUCHI TOUA [GAMBLER PITCHER]",
+            "zh": "渡久地东亚 [赌徒投手]",
+            "de": "TOKUCHI TOUA [STRATEGE]",
+            "ja": "渡久地東亜 [勝負師ピッチャー]"
+          },
+          "text": {
+            "ru": "Условие одно — контракт One Outs. За каждый взятый мной аут вы платите мне 5 миллионов иен. За каждое пропущенное мной очко я плачу вам 50 миллионов из своего кармана. Никаких оговорок, никаких прений. Закон вероятности и человеческой жадности абсолютен — ставьте печать.",
+            "en": "One rule—the One Outs contract. Every out I record, you pay me 5 million yen. Every run I surrender, I pay you 50 million out of pocket. No clauses, no debates. The law of probability and human greed is absolute—stamp the paper.",
+            "zh": "规则只有一条——One Outs契约。我每拿下一个出局数，你付我五百万；我每丢一分，我赔你五千万。无需讨价还价，概率与贪婪的法则绝对成立——盖章吧。",
+            "de": "Eine einzige Regel — der One-Outs-Vertrag: 5 Millionen Yen Gewinn pro Out, 50 Millionen Strafe pro Run. Keine Debatten. Das Gesetz der Wahrscheinlichkeit ist absolut — unterschreiben Sie.",
+            "ja": "条件は一つ、ワンナウツ契約だ。1アウトごとにあんたが500万払い、1失点ごとに俺が5000万払う。議論も妥協も要らない。確率と人間の欲望の法則は絶対だ――判を押せ。"
+          }
+        }
+      ],
+      "timeout_verdict": {
+        "title": {
+          "ru": "СТУПОР ВОЛИ // КРИТИЧЕСКАЯ НЕРЕШИТЕЛЬНОСТЬ",
+          "en": "WILL STUPOR // CRITICAL INDECISION",
+          "zh": "意志僵直 // 致命犹豫",
+          "de": "WILLENSSTARRE // KRITISCHE UNENTSCHLOSSENHEIT",
+          "ja": "意志硬直 // 致命的な逡巡"
+        },
+        "axes": {
+          "ru": "Сильная / Результативная / Доминантная",
+          "en": "Strong / Resultative / Dominant",
+          "zh": "强势 / 结果型 / 主导型",
+          "de": "Stark / Resultativ / Dominant",
+          "ja": "強 / リザルト / ドミナント"
+        },
+        "breakdown": {
+          "ru": "ОШИБКА ПРОФАЙЛЕРА («СТУПОР ВОЛИ»): Время вышло! Пока вы колебались, Токучи уже просчитал стол на три хода вперед. Его истинный радикал — [1Л] (Сильная / Результативная / Доминантная Логика).",
+          "en": "PROFILER FAILURE ('WILL STUPOR'): Time expired! While you hesitated, Tokuchi already solved the table three moves ahead. His true radical is [1Л] (Strong / Resultative / Dominant Logic).",
+          "zh": "侧写失误：超时！渡久地东亚的真实核心为 [1Л]（强势 / 结果型 / 主导型逻辑）。",
+          "de": "PROFILER-FEHLER: Zeit abgelaufen! Tokuchis wahres Profil ist [1Л] (Stark / Resultativ / Dominant).",
+          "ja": "プロファイラー失策：時間切れです。渡久地の真のプロファイルは [1Л]（強 / リザルト / ドミナント）でした。"
+        }
+      },
+      "options": [
+        {
+          "id": "t_opt_1l",
+          "function_code": "1Л",
+          "is_correct": true,
+          "text": {
+            "ru": "1-я Логика // Диктат аксиомы («Догматик»)",
+            "en": "1st Logic // Axiom Dictate ('Dogmatist')",
+            "zh": "第一逻辑 // 公理独裁",
+            "de": "1. Logik // Axiom-Diktat",
+            "ja": "第1論理 // 公理の独断"
+          },
+          "axes": {
+            "ru": "Сильная / Результативная / Доминантная",
+            "en": "Strong / Resultative / Dominant",
+            "zh": "强势 / 结果型 / 主导型",
+            "de": "Stark / Resultativ / Dominant",
+            "ja": "強 / リザルト / ドミナント"
+          },
+          "hint": {
+            "ru": "Готовая монолитная формула без тени сомнений и полный отказ от обсуждения деталей с собеседником.",
+            "en": "A finished monolithic formula delivered with zero doubt and complete refusal to debate details.",
+            "zh": "毫无怀疑地直接抛出终极公式，且完全拒绝与对方讨论细节。",
+            "de": "Eine fertige, unumstößliche Formel ohne Zweifel und ohne Diskussionsbereitschaft.",
+            "ja": "一点の迷いもない完成された数式を突きつけ、議論そのものを不要として切り捨てている。"
+          },
+          "breakdown": {
+            "ru": "ТОЧНОЕ ПОПАДАНИЕ (BREAKTHROUGH)! Токучи Тоа демонстрирует кристальную 1-ю Логику: сокрушительная мощь холодного расчета и понимания закономерностей [СИЛЬНАЯ], выдача уже готового финального вердикта-формулы без малейшего интереса к спорам и совместным рассуждениям [РЕЗУЛЬТАТИВНАЯ], и бескомпромиссное навязывание собственной интеллектуальной системы координат оппоненту [ДОМИНАНТНАЯ].",
+            "en": "EXACT MATCH (BREAKTHROUGH)! Tokuchi Toua embodies crystalline 1st Logic: overwhelming analytical power over probability and psychology [STRONG], delivery of a finished, self-contained equation with zero interest in back-and-forth debate [RESULTATIVE], and uncompromising imposition of his own conceptual framework onto his opponent [DOMINANT].",
+            "zh": "精准击破（BREAKTHROUGH）！渡久地东亚展现了纯粹的第一逻辑：洞察概率与人性的强大算力【强势】、直接给出终极契约结论而无需辩论过程【结果型】、单方面确立规则体系【主导型】。",
+            "de": "VOLLTREFFER (BREAKTHROUGH)! Reine 1. Logik: überlegene analytische Schärfe [STARK], fertiges Endergebnis ohne Diskussionsbedarf [RESULTATIV] und kompromisslose Vorgabe des eigenen Systems [DOMINANT].",
+            "ja": "完全一致（BREAKTHROUGH）！渡久地東亜は純粋な第1論理を体現している。圧倒的な計算力【強】、議論を省いて完成された結論だけを提示する独白性【リザルト】、そして自らの論理体系を相手に有無を言わせず適用する姿勢【ドミナント】だ。"
+          },
+          "explanation": {
+            "ru": "Контракт One Outs — эталонный монолог сильной результативной 1-й Логики.",
+            "en": "The One Outs contract is a textbook monologue of strong, resultative 1st Logic.",
+            "zh": "One Outs 契约是强势结果型第一逻辑的教科书式独白。",
+            "de": "Der One-Outs-Vertrag ist ein Paradebeispiel der 1. Logik.",
+            "ja": "ワンナウツ契約は強・リザルトな第1論理の典型的な独白である。"
+          }
+        },
+        {
+          "id": "t_opt_2l",
+          "function_code": "2Л",
+          "is_correct": false,
+          "text": {
+            "ru": "2-я Логика // Искусство дискуссии («Ритор»)",
+            "en": "2nd Logic // Dialectical Play ('Rhetor')",
+            "zh": "第二逻辑 // 辩证对话",
+            "de": "2. Logik // Rhetorischer Dialog",
+            "ja": "第2論理 // 弁証的対話"
+          },
+          "axes": {
+            "ru": "Сильная / Процессионная / Подстраивающаяся",
+            "en": "Strong / Processional / Adapting",
+            "zh": "强势 / 过程型 / 适应型",
+            "de": "Stark / Prozesshaft / Anpassend",
+            "ja": "強 / プロセス / アジャスト"
+          },
+          "hint": {
+            "ru": "Приглашает ли Токучи владельца клуба к гибкому обмену аргументами, или обрубает прения на корню?",
+            "en": "Does Tokuchi invite the owner into a flexible exchange of arguments, or cut off debate instantly?",
+            "zh": "他是邀请老板共同推敲论点，还是直接切断一切讨论？",
+            "de": "Lädt er zum flexiblen Gedankenaustausch ein oder kappt er jede Debatte sofort?",
+            "ja": "彼は相手と柔軟に議論を交わしているか、それとも議論自体を即座に切り捨てているか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 2-я Логика процессионна и подстраивающася: она получает удовольствие от развертывания цепочки доказательств в диалоге с собеседником. Токучи же прямо отрезает: «дискуссии нужны неуверенным» — и кладет на стол закрытую аксиому (1Л).",
+            "en": "FALSE LEAD. 2nd Logic is processional and adapting: it enjoys unpacking reasoning collaboratively in dialogue. Tokuchi explicitly cuts debate dead and drops a closed axiom on the table (1L).",
+            "zh": "判断错误。2Л享受对话推演过程，而渡久地直接切断讨论、下达封闭公理，属于1Л。",
+            "de": "FALSCH. 2L liebt den offenen Diskurs; Tokuchi diktiert ein geschlossenes Axiom (1L).",
+            "ja": "不正解。2Лは対話プロセスを楽しむが、渡久地は議論を切り捨てて完成された公理（1Л）を突きつけている。"
+          },
+          "explanation": {
+            "ru": "Отказ от диалога и выдача готовой формулы исключают процессионную 2Л.",
+            "en": "Refusal of dialogue and closed-form output rule out processional 2L.",
+            "zh": "拒绝讨论与封闭结论排除了过程型的2Л。",
+            "de": "Ablehnung des Dialogs schließt 2L aus.",
+            "ja": "対話の拒絶と結論のみの提示は2Лを否定する。"
+          }
+        },
+        {
+          "id": "t_opt_3l",
+          "function_code": "3Л",
+          "is_correct": false,
+          "text": {
+            "ru": "3-я Логика // Тревожный скепсис («Скептик»)",
+            "en": "3rd Logic // Defensive Skepticism ('Skeptic')",
+            "zh": "第三逻辑 // 怀疑主义防御",
+            "de": "3. Logik // Defensiver Skeptizismus",
+            "ja": "第3論理 // 防衛的懐疑"
+          },
+          "axes": {
+            "ru": "Слабая / Процессионная / Доминантная",
+            "en": "Weak / Processional / Dominant",
+            "zh": "弱势 / 过程型 / 主导型",
+            "de": "Schwach / Prozesshaft / Dominant",
+            "ja": "弱 / プロセス / ドミナント"
+          },
+          "hint": {
+            "ru": "Есть ли в его речи хоть малейший страх оказаться неправым или потребность перепроверить расчет?",
+            "en": "Is there even a trace of fear of being wrong or need to double-check his math?",
+            "zh": "他的语气里有任何害怕算错或反复验算的不安吗？",
+            "de": "Gibt es irgendeine Spur von Selbstzweifel oder Prüfzwang in seiner Berechnung?",
+            "ja": "計算ミスを恐れる不安や、再検証への執着が少しでも見られるか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 3-я Логика болезненно ищет изъяны в доказательствах и остро реагирует на обвинения в некомпетентности. Токучи абсолютно неуязвим к насмешкам Сайкавы над скоростью его подачи — его уверенность в своем расчете монолитна (1Л).",
+            "en": "FALSE LEAD. 3rd Logic anxiously hunts for flaws and bristles at intellectual mockery. Tokuchi is completely impervious to Saikawa's ridicule—his certainty in his equation is absolute (1L).",
+            "zh": "判断错误。3Л对质疑高度敏感且不断自我验算；渡久地对嘲笑完全免疫，算力自信如磐石（1Л）。",
+            "de": "FALSCH. 3L reagiert empfindlich auf Zweifel; Tokuchis analytische Gewissheit ist unerschütterlich (1L).",
+            "ja": "不正解。3Лは知的な嘲笑に過敏に反応するが、渡久地の確信は微塵も揺るがない（1Л）。"
+          },
+          "explanation": {
+            "ru": "Абсолютный иммунитет к скепсису оппонента подтверждает 1Л вместо 3Л.",
+            "en": "Complete immunity to skepticism confirms strong 1L over vulnerable 3L.",
+            "zh": "对质疑的绝对免疫确认了1Л而非3Л。",
+            "de": "Immunität gegen Skepsis bestätigt 1L statt 3L.",
+            "ja": "懐疑への完全な耐性は3Лではなく1Лを裏付ける。"
+          }
+        },
+        {
+          "id": "t_opt_1e",
+          "function_code": "1Э",
+          "is_correct": false,
+          "text": {
+            "ru": "1-я Эмоция // Буря страстей («Романтик»)",
+            "en": "1st Emotion // Tempest of Passion ('Romantic')",
+            "zh": "第一情感 // 激情风暴",
+            "de": "1. Emotion // Gefühlssturm",
+            "ja": "第1感情 // 激情の奔流"
+          },
+          "axes": {
+            "ru": "Сильная / Результативная / Доминантная",
+            "en": "Strong / Resultative / Dominant",
+            "zh": "强势 / 结果型 / 主导型",
+            "de": "Stark / Resultativ / Dominant",
+            "ja": "強 / リザルト / ドミナント"
+          },
+          "hint": {
+            "ru": "Давит ли он на собеседника эмоциональным криком и пафосом, или ледяной математикой условий?",
+            "en": "Does he overwhelm the owner with emotional theatrics, or with icy mathematical terms?",
+            "zh": "他是靠戏剧化的情绪宣泄施压，还是靠冰冷的数学条款？",
+            "de": "Dominiert er durch emotionales Pathos oder durch eiskalte Mathematik?",
+            "ja": "相手を圧倒しているのは感情的な熱弁か、それとも冷徹な数理条件か？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 1-я Эмоция выплескивает яркий аффективный напор. Пульс Токучи — 58 ударов в минуту, тон ровный и сухой; вся сокрушительная мощь его ультиматума сосредоточена в конструкции правил и вероятностей (1Л).",
+            "en": "FALSE LEAD. 1st Emotion floods the room with dramatic affect. Tokuchi's pulse sits at 58 BPM with dry, level delivery; his dominance operates purely through rule architecture and probability (1L).",
+            "zh": "判断错误。1Э伴随强烈情绪宣泄；渡久地心率仅58且语调平淡，其压迫感完全来自规则与概率结构（1Л）。",
+            "de": "FALSCH. 1E flutet den Raum mit Affekt; Tokuchis Dominanz beruht rein auf mathematischer Logik (1L).",
+            "ja": "不正解。1Эは激しい感情表現を伴うが、渡久地は心拍58の冷静さでルール構造（1Л）のみによって支配している。"
+          },
+          "explanation": {
+            "ru": "Инструмент доминирования — чистая структура правил (Логика), а не аффект (Эмоция).",
+            "en": "Dominance is exercised via rule structure (Logic), not emotional surge (Emotion).",
+            "zh": "主导手段是纯粹的规则逻辑而非情绪风暴。",
+            "de": "Das Dominanzmittel ist reine Regelstruktur (Logik), nicht Affekt.",
+            "ja": "支配の手段は感情ではなく純粋なルール構造（論理）にある。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_03_ayanokoji",
+      "case_number": "CASE #03",
+      "phase_code": "PHASE III // RAIN STILLNESS",
+      "time_limit_sec": 15,
+      "sprite": "assets/media/sprites/ayanokoji.png",
+      "background": "assets/media/backgrounds/case_03.png",
+      "case_title": {
+        "ru": "ДЕЛО #03 // КИЁТАКА АЯНОКОДЖИ: ЛЕДЯНОЙ ШТИЛЬ",
+        "en": "CASE #03 // KIYOTAKA AYANOKOJI: ICY STILLNESS",
+        "zh": "案件 #03 // 绫小路清隆：雨中静默",
+        "de": "FALL #03 // KIYOTAKA AYANOKOJI: EISIGE STILLE",
+        "ja": "CASE #03 // 綾小路清隆：雨中の氷凪"
+      },
+      "character_name": {
+        "ru": "КИЁТАКА АЯНОКОДЖИ [КЛАСС D]",
+        "en": "KIYOTAKA AYANOKOJI [CLASS D]",
+        "zh": "绫小路清隆 [D班]",
+        "de": "KIYOTAKA AYANOKOJI [KLASSE D]",
+        "ja": "綾小路清隆 [Dクラス]"
+      },
+      "evidence_summary": {
+        "ru": "ДОСЬЕ УЛИК: Проливной дождь на крыше. Оппонент в ярости пытается спровоцировать испытуемого на гнев, страх или злорадство, но мимика и голос остаются абсолютно ровными. Нет ни скрытой истерики, ни внутренней обиды — полное энергосбережение чувств.",
+        "en": "EVIDENCE DOSSIER: Downpour on the rooftop. An enraged rival tries to provoke anger, fear, or gloating, yet facial micro-expressions and vocal pitch remain completely flat. Neither suppressed hysteria nor wounded pride—pure affective energy conservation.",
+        "zh": "证据档案：暴雨天台。面对对手愤怒的挑衅，受试者面部微表情与声调完全平直。既无压抑的歇斯底里，也无暗自记恨，呈现彻底的情绪节能静默。",
+        "de": "BEWEISAKTE: Wolkenbruch auf dem Dach. Trotz wütender Provokation bleiben Mimik und Stimme völlig flach — keine unterdrückte Hysterie, sondern reine emotionale Stille.",
+        "ja": "証拠ファイル：豪雨の屋上。激昂する相手の挑発に対し、表情筋も声のトーンも完全に平坦。抑圧された葛藤すらなく、感情エネルギーが最初から遮断されている。"
+      },
+      "sprites": {
+        "panic": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='aSil1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#2a1529'/><stop offset='100%' stop-color='#090d18'/></linearGradient><filter id='aGlow1'><feDropShadow dx='0' dy='0' stdDeviation='12' flood-color='#4fc3f7' flood-opacity='0.48'/></filter></defs><g filter='url(#aGlow1)'><path d='M165 900 L212 535 L302 482 L360 520 L418 482 L508 535 L555 900 Z' fill='url(#aSil1)' stroke='#4fc3f7' stroke-width='3'/><polygon points='346,520 374,520 368,690 352,690' fill='#00bfa5' opacity='0.75'/><path d='M266 218 L454 218 L438 368 L360 442 L282 368 Z' fill='#111a2b' stroke='#4fc3f7' stroke-width='3'/><path d='M248 258 L252 152 L315 112 L365 106 L425 118 L468 158 L472 258 L442 208 L398 242 L360 198 L322 246 L278 208 Z' fill='#0c1322' stroke='#80deea' stroke-width='2.5'/><rect x='286' y='282' width='56' height='16' rx='2' fill='none' stroke='#ffab00' stroke-width='2.5'/><rect x='378' y='282' width='56' height='16' rx='2' fill='none' stroke='#ffab00' stroke-width='2.5'/><circle cx='314' cy='290' r='4.5' fill='#ffab00'/><circle cx='406' cy='290' r='4.5' fill='#ffab00'/><line x1='336' y1='382' x2='384' y2='382' stroke='#80deea' stroke-width='3'/><g stroke='#80deea' stroke-width='1.5' opacity='0.45'><line x1='180' y1='90' x2='150' y2='260'/><line x1='560' y1='110' x2='530' y2='280'/><line x1='240' y1='340' x2='215' y2='470'/><line x1='505' y1='330' x2='480' y2='460'/></g></g></svg>",
+        "resolve": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='aSil2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#331830'/><stop offset='100%' stop-color='#070c17'/></linearGradient><filter id='aGlow2'><feDropShadow dx='0' dy='0' stdDeviation='15' flood-color='#00e5ff' flood-opacity='0.72'/></filter></defs><g filter='url(#aGlow2)'><path d='M160 900 L208 530 L302 478 L360 516 L418 478 L512 530 L560 900 Z' fill='url(#aSil2)' stroke='#00e5ff' stroke-width='3.8'/><polygon points='346,516 374,516 368,690 352,690' fill='#00e5ff' opacity='0.85'/><path d='M266 214 L454 214 L438 364 L360 438 L282 364 Z' fill='#101c30' stroke='#00e5ff' stroke-width='3.5'/><path d='M248 254 L252 148 L315 108 L365 102 L425 114 L468 154 L472 254 L442 204 L398 238 L360 194 L322 242 L278 204 Z' fill='#09101d' stroke='#00e5ff' stroke-width='3'/><rect x='286' y='278' width='56' height='15' rx='2' fill='#ffab00' fill-opacity='0.25' stroke='#ffab00' stroke-width='2.8'/><rect x='378' y='278' width='56' height='15' rx='2' fill='#ffab00' fill-opacity='0.25' stroke='#ffab00' stroke-width='2.8'/><circle cx='314' cy='285' r='5' fill='#ffab00'/><circle cx='406' cy='285' r='5' fill='#ffab00'/><line x1='336' y1='378' x2='384' y2='378' stroke='#ffffff' stroke-width='3'/><g stroke='#00e5ff' stroke-width='1.8' opacity='0.6'><line x1='165' y1='80' x2='130' y2='290'/><line x1='575' y1='95' x2='540' y2='305'/><line x1='360' y1='40' x2='335' y2='185'/></g></g></svg>"
+      },
+      "dialogue": [
+        {
+          "id": "a1",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ТЕРМИНАЛ БИОМЕТРИИ",
+            "en": "BIOMETRIC TERMINAL",
+            "zh": "生物监测终端",
+            "de": "BIOMETRIE-TERMINAL",
+            "ja": "生体監視ターミナル"
+          },
+          "text": {
+            "ru": "Крыша учебного корпуса под ледяным ливнем. Поверженный лидер параллельного класса кричит и хватает Аянокоджи за воротник, требуя хоть какой-то человеческой реакции — злости, страха или торжествующей усмешки.",
+            "en": "School rooftop under freezing rain. A defeated rival class leader grabs Ayanokoji by the collar, shouting and demanding any human reaction—anger, fear, or even a triumphant smirk.",
+            "zh": "冰冷暴雨中的校舍天台。败北的邻班领袖揪住绫小路的衣领怒吼，试图逼出哪怕一丝愤怒、恐惧或得意的笑。",
+            "de": "Schuldach im eisigen Regen. Ein besiegter Rivale packt Ayanokoji am Kragen und schreit nach irgendeiner menschlichen Regung — Wut, Angst oder Triumph.",
+            "ja": "凍てつく豪雨の屋上。敗北した他クラスのリーダーが綾小路の襟首を掴んで怒鳴りつけ、怒りでも恐怖でも勝ち誇った笑みでもいいから見せろと迫る。"
+          }
+        },
+        {
+          "id": "a2",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "КИЁТАКА АЯНОКОДЖИ [КЛАСС D]",
+            "en": "KIYOTAKA AYANOKOJI [CLASS D]",
+            "zh": "绫小路清隆 [D班]",
+            "de": "KIYOTAKA AYANOKOJI [KLASSE D]",
+            "ja": "綾小路清隆 [Dクラス]"
+          },
+          "text": {
+            "ru": "Вода просто стекает по лицу, но пульс даже не ускоряется. В обычной компании я могу кивнуть или поддержать чужой разговор ради приличия... но когда начинается буря, внутри ничего не включается.",
+            "en": "Rain streams down my face, yet my pulse doesn't shift. In everyday company I can nod along or mirror the room's mood out of convenience... yet when a storm breaks out, nothing switches on inside.",
+            "zh": "雨水顺着脸颊流下，心率却没有丝毫波动。平时为了合群我可以随声附和别人的气氛……但当风暴降临时，内心深处什么都不会启动。",
+            "de": "Der Regen rinnt herab, doch mein Puls ändert sich nicht. Im Alltag passe ich mich dem Tonfall anderer bequem an — aber im Sturm regt sich innen nichts.",
+            "ja": "雨粒が顔を伝うが、脈拍ひとつ変わらない。普段の教室なら周囲の空気に合わせて相槌を打つこともできる……だが嵐の中では、内側のスイッチは何も動かない。"
+          }
+        },
+        {
+          "id": "a3",
+          "emotion": "resolve",
+          "climax": true,
+          "speaker": {
+            "ru": "КИЁТАКА АЯНОКОДЖИ [КЛАСС D]",
+            "en": "KIYOTAKA AYANOKOJI [CLASS D]",
+            "zh": "绫小路清隆 [D班]",
+            "de": "KIYOTAKA AYANOKOJI [KLASSE D]",
+            "ja": "綾小路清隆 [Dクラス]"
+          },
+          "text": {
+            "ru": "Ты ждешь, что я разозлюсь или стану упиваться победой? Напрасная трата сил. Я не подавляю чувства и не прячу боль за маской — их здесь просто нет. Исход уже решен, а эмоции к результату ничего не добавляют.",
+            "en": "You expect me to get angry or revel in victory? That would be wasted energy. I'm not suppressing feelings or hiding pain behind a mask—there simply isn't anything there. The outcome is decided; emotion adds nothing to the result.",
+            "zh": "你在等我发怒，或者陶醉于胜利吗？那只是白费力气。我既没有压抑感情，也没有用面具掩饰伤痛——那里本来就一片空白。结果已定，情绪毫无附加价值。",
+            "de": "Du erwartest Wut oder Triumph? Reine Energieverschwendung. Ich unterdrücke keine Gefühle hinter einer Maske — da ist schlicht nichts. Das Ergebnis steht fest.",
+            "ja": "俺が怒るか、勝利に酔いしれるのを待っているのか？無駄なエネルギーだ。感情を押し殺しているわけでも、仮面で痛みを隠しているわけでもない――最初からそこには何もない。結果が出た以上、感情は何も足さない。"
+          }
+        }
+      ],
+      "timeout_verdict": {
+        "title": {
+          "ru": "СТУПОР ВОЛИ // КРИТИЧЕСКАЯ НЕРЕШИТЕЛЬНОСТЬ",
+          "en": "WILL STUPOR // CRITICAL INDECISION",
+          "zh": "意志僵直 // 致命犹豫",
+          "de": "WILLENSSTARRE // KRITISCHE UNENTSCHLOSSENHEIT",
+          "ja": "意志硬直 // 致命的な逡巡"
+        },
+        "axes": {
+          "ru": "Слабая / Результативная / Подстраивающаяся",
+          "en": "Weak / Resultative / Adapting",
+          "zh": "弱势 / 结果型 / 适应型",
+          "de": "Schwach / Resultativ / Anpassend",
+          "ja": "弱 / リザルト / アジャスト"
+        },
+        "breakdown": {
+          "ru": "ОШИБКА ПРОФАЙЛЕРА («СТУПОР ВОЛИ»): Окно закрыто! Вы не успели зафиксировать вердикт. Истинный радикал Аянокоджи — [4Э] (Слабая / Результативная / Подстраивающаяся Эмоция).",
+          "en": "PROFILER FAILURE ('WILL STUPOR'): Window closed! You failed to lock your verdict in time. Ayanokoji's true radical is [4Э] (Weak / Resultative / Adapting Emotion).",
+          "zh": "侧写失误：超时！绫小路清隆的真实核心为 [4Э]（弱势 / 结果型 / 适应型情感）。",
+          "de": "PROFILER-FEHLER: Zeit abgelaufen! Ayanokojis wahres Profil ist [4Э] (Schwach / Resultativ / Anpassend).",
+          "ja": "プロファイラー失策：時間切れです。綾小路の真のプロファイルは [4Э]（弱 / リザルト / アジャスト）でした。"
+        }
+      },
+      "options": [
+        {
+          "id": "a_opt_3e",
+          "function_code": "3Э",
+          "is_correct": false,
+          "text": {
+            "ru": "3-я Эмоция // Зажатая драма («Сухарь»)",
+            "en": "3rd Emotion // Suppressed Vulnerability ('Stoic Mask')",
+            "zh": "第三情感 // 压抑的敏感面具",
+            "de": "3. Emotion // Gehemmte Verletzlichkeit",
+            "ja": "第3感情 // 抑圧された過敏さ"
+          },
+          "axes": {
+            "ru": "Слабая / Процессионная / Доминантная",
+            "en": "Weak / Processional / Dominant",
+            "zh": "弱势 / 过程型 / 主导型",
+            "de": "Schwach / Prozesshaft / Dominant",
+            "ja": "弱 / プロセス / ドミナント"
+          },
+          "hint": {
+            "ru": "Прячет ли он за холодной маской ранимость и стыд за свои чувства, или внутри действительно полный штиль?",
+            "en": "Is he hiding fragile emotional tension behind a rigid mask, or is the interior genuinely still?",
+            "zh": "他是在面具下压抑着敏感易碎的情绪拉锯，还是内心真的彻底静默？",
+            "de": "Verbirgt er verletzliche Spannung hinter einer Maske oder herrscht innen echte Stille?",
+            "ja": "仮面の裏で傷つきやすい感情を必死に抑えているのか、それとも内面が本当に凪いでいるのか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 3-я Эмоция внешне сдержанна, но внутри мучительно процессионна: она боится сорваться, стыдится слез и остро переживает чужую фальшь. У Аянокоджи нет внутреннего зажима или защитной маски — его аффективный контур попросту отключен за ненадобностью (4Э).",
+            "en": "FALSE LEAD. 3rd Emotion looks dry outside yet churns anxiously inside, fearing emotional exposure. Ayanokoji exhibits zero inner tension or defensive masking—his affective circuit simply powers down when unneeded (4E).",
+            "zh": "判断错误。3Э外冷内热、害怕情绪失控；绫小路毫无内部紧绷或防御伪装，纯粹是情绪断电节能（4Э）。",
+            "de": "FALSCH. 3E ist innerlich angespannt und verletzlich; bei Ayanokoji liegt echte affektive Abschaltung vor (4E).",
+            "ja": "不正解。3Эは内面に繊細な葛藤を抱えるが、綾小路には抑圧の緊張すらなく、純粋な省エネの凪（4Э）がある。"
+          },
+          "explanation": {
+            "ru": "Отсутствие внутреннего надрыва разделяет естественный штиль 4Э и зажатую 3Э.",
+            "en": "Absence of inner tension distinguishes genuine 4E stillness from guarded 3E.",
+            "zh": "毫无内在紧绷区分了4Э的自然静默与3Э的压抑。",
+            "de": "Fehlende innere Spannung trennt echte 4E-Stille von gehemmter 3E.",
+            "ja": "内的葛藤の欠如が、抑圧された3Эと自然な4Эの凪を分ける。"
+          }
+        },
+        {
+          "id": "a_opt_4e",
+          "function_code": "4Э",
+          "is_correct": true,
+          "text": {
+            "ru": "4-я Эмоция // Ледяной штиль под дождем («Пустячок»)",
+            "en": "4th Emotion // Icy Stillness in the Rain",
+            "zh": "第四情感 // 雨中冰封静默",
+            "de": "4. Emotion // Eisige Stille im Regen",
+            "ja": "第4感情 // 雨中の絶対静寂（凪）"
+          },
+          "axes": {
+            "ru": "Слабая / Результативная / Подстраивающаяся",
+            "en": "Weak / Resultative / Adapting",
+            "zh": "弱势 / 结果型 / 适应型",
+            "de": "Schwach / Resultativ / Anpassend",
+            "ja": "弱 / リザルト / アジャスト"
+          },
+          "hint": {
+            "ru": "Нулевая амплитуда собственных страстей в кризисе + легкая внешняя мимикрия под тон окружения в быту.",
+            "en": "Zero amplitude of personal passion in crisis + effortless surface alignment to everyday social tone.",
+            "zh": "危机中个人情绪振幅为零 + 日常社交中顺水推舟的表面配合。",
+            "de": "Null eigene Gefühlsamplitude in der Krise + mühelose Anpassung im Alltag.",
+            "ja": "危機における感情振幅ゼロ＋日常では周囲の空気に軽く合わせる省エネ特性。"
+          },
+          "breakdown": {
+            "ru": "ТОЧНОЕ ПОПАДАНИЕ (BREAKTHROUGH)! Каноническая 4-я Эмоция по Афанасьеву: минимальный собственный ресурс переживаний и мгновенное отключение аффекта под давлением [СЛАБАЯ], отсутствие потребности смаковать или проговаривать чувства — фокус только на сухом итоге [РЕЗУЛЬТАТИВНАЯ], и способность спокойно отражать чужой бытовой тон из удобства, не заражаясь истерикой по-настоящему [ПОДСТРАИВАЮЩАЯСЯ].",
+            "en": "EXACT MATCH (BREAKTHROUGH)! Canonical Afanasyev 4th Emotion: minimal intrinsic affective charge that switches off cleanly under crisis [WEAK], zero urge to dwell on or process feelings once the outcome stands [RESULTATIVE], and calm social mirroring in routine settings without true emotional entanglement [ADAPTING].",
+            "zh": "精准击破（BREAKTHROUGH）！经典的第四情感：高压下彻底切断情绪消耗【弱势】、只看最终结果而不反刍感受【结果型】、日常可随和配合外界氛围却不卷入风暴【适应型】。",
+            "de": "VOLLTREFFER (BREAKTHROUGH)! Kanonische 4. Emotion: minimale Affektenergie in der Krise [SCHWACH], Fokus aufs bloße Ergebnis ohne Gefühlsverarbeitung [RESULTATIV] und ruhige soziale Anpassung im Alltag [ANPASSEND].",
+            "ja": "完全一致（BREAKTHROUGH）！典型的な第4感情だ。極限下で真っ先に感情出力を切る省エネ性【弱】、感情の反芻を一切必要としない帰結志向【リザルト】、そして日常では周囲のトーンに無理なく合わせられる性質【アジャスト】が完全に一致している。"
+          },
+          "explanation": {
+            "ru": "Вердикт подтвержден: ледяной штиль под дождем без внутренней драмы — чистый маркер 4-й Эмоции.",
+            "en": "Verdict confirmed: unforced icy stillness under provocation is the signature of 4th Emotion.",
+            "zh": "裁决确认：毫无内在戏剧冲突的雨中冷寂锁定第四情感。",
+            "de": "Urteil bestätigt: Natürliche Stille ohne innere Dramatik identifiziert die 4. Emotion.",
+            "ja": "判定確定：内的葛藤を伴わない雨中の氷凪は第4感情の決定的証拠である。"
+          }
+        },
+        {
+          "id": "a_opt_2e",
+          "function_code": "2Э",
+          "is_correct": false,
+          "text": {
+            "ru": "2-я Эмоция // Тонкий эмпат («Актер»)",
+            "en": "2nd Emotion // Expressive Empath ('Actor')",
+            "zh": "第二情感 // 共情演说家",
+            "de": "2. Emotion // Empathischer Darsteller",
+            "ja": "第2感情 // 共感の演者"
+          },
+          "axes": {
+            "ru": "Сильная / Процессионная / Подстраивающаяся",
+            "en": "Strong / Processional / Adapting",
+            "zh": "强势 / 过程型 / 适应型",
+            "de": "Stark / Prozesshaft / Anpassend",
+            "ja": "強 / プロセス / アジャスト"
+          },
+          "hint": {
+            "ru": "Управляет ли он атмосферой через живую теплоту и богатство интонаций, или эмоции сведены к нулю?",
+            "en": "Does he steer the atmosphere with rich tonal warmth, or is emotional output flatlined at zero?",
+            "zh": "他是用丰富的语调感染力引导气氛，还是情绪输出彻底归零？",
+            "de": "Lenkt er die Atmosphäre mit reicher Ausdruckskraft oder liegt die Emotion bei null?",
+            "ja": "豊かな声色と情動で場を導いているか、それとも感情出力がゼロに張り付いているか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 2-я Эмоция сильна и процессионна: она мастерски играет оттенками чувств и согревает или разряжает обстановку. У Аянокоджи же эмоциональный регистр плоский и энергосберегающий (слабая и результативная 4Э).",
+            "en": "FALSE LEAD. 2nd Emotion is strong and processional, actively modulating emotional nuance to move others. Ayanokoji's affective register is flat and energy-saving (weak, resultative 4E).",
+            "zh": "判断错误。2Э情感充沛且善于调节气氛；绫小路声调平直、彻底节能，属于弱势结果型的4Э。",
+            "de": "FALSCH. 2E gestaltet Gefühle aktiv und nuancenreich; Ayanokoji spart jede emotionale Energie ein (4E).",
+            "ja": "不正解。2Эは豊かな感情表現で他者に働きかけるが、綾小路は感情出力を最小化する4Эである。"
+          },
+          "explanation": {
+            "ru": "Нулевая экспрессия указывает на слабую 4Э, а не на сильную 2Э.",
+            "en": "Zero expressive output points to weak 4E rather than strong 2E.",
+            "zh": "零情绪表现指向弱势4Э而非强势2Э。",
+            "de": "Null Ausdruckskraft weist auf schwache 4E statt starke 2E hin.",
+            "ja": "感情表現の欠如は強い2Эではなく弱い4Эを示している。"
+          }
+        },
+        {
+          "id": "a_opt_1v",
+          "function_code": "1В",
+          "is_correct": false,
+          "text": {
+            "ru": "1-я Воля // Властный триумфатор («Царь»)",
+            "en": "1st Will // Sovereign Conqueror ('Tsar')",
+            "zh": "第一意志 // 霸权征服者",
+            "de": "1. Wille // Herrscherpose",
+            "ja": "第1意志 // 覇権の支配者"
+          },
+          "axes": {
+            "ru": "Сильная / Результативная / Доминантная",
+            "en": "Strong / Resultative / Dominant",
+            "zh": "强势 / 结果型 / 主导型",
+            "de": "Stark / Resultativ / Dominant",
+            "ja": "強 / リザルト / ドミナント"
+          },
+          "hint": {
+            "ru": "Фокус сцены — открытое утверждение царской власти или феномен полного отсутствия эмоционального отклика?",
+            "en": "Is the scene centered on royal self-assertion, or on the phenomenon of total affective flatness?",
+            "zh": "本幕的侧写焦点是宣示王权，还是极端高压下情绪反应的彻底缺失？",
+            "de": "Geht es hier um herrschaftliche Machtdemonstration oder um völlige Affektstille?",
+            "ja": "この場面の焦点は王権の誇示か、それとも感情反応が完全に欠落している現象そのものか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. Хотя Аянокоджи полностью контролирует ситуацию, ключевая улика допроса под дождем — именно устройство его эмоционального контура: бытовая мимикрия в покое и мгновенный ледяной штиль в кризисе (подстраивающаяся, слабая и результативная 4Э).",
+            "en": "FALSE LEAD. While Ayanokoji controls the outcome, the decisive forensic clue in this rain scene is the architecture of his emotional circuit: casual social mirroring in peace and instant affective shutdown in crisis (4E).",
+            "zh": "判断错误。本案的关键法医特征在于其情绪回路结构：日常顺应环境，危机瞬间归于冷寂静默（4Э）。",
+            "de": "FALSCH. Der entscheidende Befund dieser Szene ist die Architektur seines Emotionskreislaufs: soziale Anpassung im Alltag und eiskalte Stille im Sturm (4E).",
+            "ja": "不正解。本シーンの決定的なプロファイル証拠は感情回路の構造――日常の同調と危機における完全な氷凪（4Э）にある。"
+          },
+          "explanation": {
+            "ru": "Центральный психософский феномен сцены — энергосберегающий штиль 4-й Эмоции.",
+            "en": "The scene's defining psychosophical phenomenon is the energy-saving stillness of 4th Emotion.",
+            "zh": "本幕的核心心理现象是第四情感的节能静默。",
+            "de": "Das Kernphänomen der Szene ist die energiesparende Stille der 4. Emotion.",
+            "ja": "この場面を規定する核心現象は第4感情の省エネ的な凪である。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "case_04_levi",
+      "case_number": "CASE #04",
+      "phase_code": "PHASE IV // ODM KINETIC MASTERY",
+      "time_limit_sec": 15,
+      "sprite": "assets/media/sprites/levi.png",
+      "background": "assets/media/backgrounds/case_04.png",
+      "case_title": {
+        "ru": "ДЕЛО #04 // ЛЕВИ АККЕРМАН: ГЕОМЕТРИЯ КЛИНКА",
+        "en": "CASE #04 // LEVI ACKERMAN: BLADE GEOMETRY",
+        "zh": "案件 #04 // 利威尔·阿克曼：刀刃与钢索几何",
+        "de": "FALL #04 // LEVI ACKERMAN: KLINGENGEOMETRIE",
+        "ja": "CASE #04 // リヴァイ・アッカーマン：刃と立体機動"
+      },
+      "character_name": {
+        "ru": "ЛЕВИ АККЕРМАН [КАПИТАН РАЗВЕДКОРПУСА]",
+        "en": "LEVI ACKERMAN [SURVEY CORPS CAPTAIN]",
+        "zh": "利威尔·阿克曼 [调查兵团兵长]",
+        "de": "LEVI ACKERMAN [HAUPTMANN]",
+        "ja": "リヴァイ・アッカーマン [調査兵団兵士長]"
+      },
+      "evidence_summary": {
+        "ru": "ДОСЬЕ УЛИК: Перегрузка 6.4G на тросах маневрирования. Мгновенная моторная перестройка тела при обрыве якоря, безупречный уход за клинками и спокойная, умелая перевязка раненого бойца в грязи боя без брезгливого ступора.",
+        "en": "EVIDENCE DOSSIER: 6.4G load on ODM cables. Split-second mid-air bodily recalibration after anchor snap, immaculate blade maintenance, and steady hands clasping a blood-soaked comrade without somatic hesitation.",
+        "zh": "证据档案：立体机动钢索承受6.4G过载。锚钩断裂瞬间完成空中姿态重构，极度注重刀刃清洁，却能在血污战场毫不犹豫握住濒死战友的手。",
+        "de": "BEWEISAKTE: 6,4G Belastung an den Drahtseilen. Blitzschnelle Körperanpassung in der Luft, makellose Waffenpflege und furchtlose physische Hilfe für blutüberströmte Kameraden.",
+        "ja": "証拠ファイル：ワイヤー機動時6.4G負荷。アンカー破損の瞬間に空中で身体軸を再構築し、刃の清掃を徹底しつつも、血まみれの部下の手を躊躇なく握る柔軟な身体統御。"
+      },
+      "sprites": {
+        "panic": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='lSil1' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1b332c'/><stop offset='100%' stop-color='#081014'/></linearGradient><filter id='lGlow1'><feDropShadow dx='0' dy='0' stdDeviation='12' flood-color='#00e676' flood-opacity='0.52'/></filter></defs><g filter='url(#lGlow1)'><path d='M130 900 L195 510 L300 465 L360 495 L420 465 L525 510 L590 900 Z' fill='url(#lSil1)' stroke='#00e676' stroke-width='3.2'/><polygon points='335,485 385,485 372,585 360,602 348,585' fill='#cfd8dc' stroke='#4fc3f7' stroke-width='2'/><path d='M270 225 L450 225 L434 368 L360 436 L286 368 Z' fill='#101b28' stroke='#00e676' stroke-width='3'/><path d='M248 242 L256 146 L360 118 L464 146 L472 242 L438 188 L360 232 L282 188 Z' fill='#090f18' stroke='#80cbc4' stroke-width='2.8'/><polygon points='286,282 342,286 338,298 290,295' fill='none' stroke='#80deea' stroke-width='3'/><polygon points='434,282 378,286 382,298 430,295' fill='none' stroke='#80deea' stroke-width='3'/><line x1='338' y1='378' x2='382' y2='376' stroke='#b0bec5' stroke-width='3'/><line x1='85' y1='640' x2='245' y2='455' stroke='#b0bec5' stroke-width='4'/><line x1='635' y1='640' x2='475' y2='455' stroke='#b0bec5' stroke-width='4'/></g></svg>",
+        "resolve": "<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='lSil2' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1f4237'/><stop offset='100%' stop-color='#071018'/></linearGradient><filter id='lGlow2'><feDropShadow dx='0' dy='0' stdDeviation='15' flood-color='#00e5ff' flood-opacity='0.78'/></filter></defs><g filter='url(#lGlow2)'><path d='M120 900 L190 500 L300 458 L360 490 L420 458 L530 500 L600 900 Z' fill='url(#lSil2)' stroke='#00e5ff' stroke-width='4'/><polygon points='335,480 385,480 372,580 360,598 348,580' fill='#ffffff' stroke='#00e5ff' stroke-width='2.5'/><path d='M270 218 L450 218 L434 362 L360 430 L286 362 Z' fill='#122233' stroke='#00e5ff' stroke-width='3.5'/><path d='M248 236 L256 140 L360 112 L464 140 L472 236 L438 182 L360 226 L282 182 Z' fill='#080e17' stroke='#00e676' stroke-width='3'/><polygon points='284,276 344,282 338,295 288,291' fill='#00e5ff'/><polygon points='436,276 376,282 382,295 432,291' fill='#00e5ff'/><line x1='65' y1='595' x2='275' y2='365' stroke='#00e5ff' stroke-width='5'/><line x1='655' y1='595' x2='445' y2='365' stroke='#00e5ff' stroke-width='5'/><line x1='80' y1='610' x2='290' y2='380' stroke='#ffffff' stroke-width='2'/></g></svg>"
+      },
+      "dialogue": [
+        {
+          "id": "l1",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ТАКТИЧЕСКИЙ ТЕРМИНАЛ",
+            "en": "TACTICAL TERMINAL",
+            "zh": "战术监测终端",
+            "de": "TAKTIK-TERMINAL",
+            "ja": "戦術監視ターミナル"
+          },
+          "text": {
+            "ru": "Порыв ветра и летящий обломок черепицы перебивают правый трос УПМ в полуметре от цели. Любой другой боец потерял бы ось вращения, но Леви перехватывает клинок обратным хватом и гасит инерцию касанием сапога о стену.",
+            "en": "A gust of wind and flying rubble sever the right ODM cable half a meter from impact. Any other soldier would spin out, yet Levi flips his blade into a reverse grip and bleeds off momentum with a single boot tap off the wall.",
+            "zh": "狂风与碎瓦在距目标半米处切断右侧钢索。常人早已失控坠落，利威尔却反手换握刀刃，借靴尖轻点墙面瞬间卸去惯性。",
+            "de": "Trümmer kappen das rechte Drahtseil kurz vor dem Ziel. Levi wechselt blitzschnell in den Rückhandgriff und fängt den Schwung mit einem einzigen Tritt an der Mauer ab.",
+            "ja": "突風と瓦礫が目標直前で右ワイヤーを切断。常人なら錐揉み落下する場面で、リヴァイは刃を逆手に持ち替え、壁を靴底で一蹴りして慣性を完全に殺した。"
+          }
+        },
+        {
+          "id": "l2",
+          "emotion": "panic",
+          "climax": false,
+          "speaker": {
+            "ru": "ЛЕВИ АККЕРМАН [КАПИТАН РАЗВЕДКОРПУСА]",
+            "en": "LEVI ACKERMAN [SURVEY CORPS CAPTAIN]",
+            "zh": "利威尔·阿克曼 [调查兵团兵长]",
+            "de": "LEVI ACKERMAN [HAUPTMANN]",
+            "ja": "リヴァイ・アッカーマン [調査兵団兵士長]"
+          },
+          "text": {
+            "ru": "Приземлившись на крышу, он чисто вытирает сталь от копоти, а секунду спустя без тени брезгливости сжимает окровавленную ладонь раненого солдата и туго фиксирует жгут на его плече.",
+            "en": "Landing on the slate roof, he wipes soot cleanly off his steel—then a second later clasps a wounded soldier's blood-drenched hand without a flicker of squeamishness and cinches a tourniquet tight.",
+            "zh": "落在屋顶后他利落地拭净刀面污垢，下一秒却毫不嫌弃地握住伤兵满是鲜血的手，稳稳扎紧止血带。",
+            "de": "Auf dem Dach wischt er den Stahl makellos sauber — und drückt eine Sekunde später ohne jede Scheu die blutüberströmte Hand eines Verwundeten.",
+            "ja": "屋根に降り立つと手際よく刃の汚れを拭い去り、その直後には一片の躊躇もなく血まみれの部下の手を強く握りしめて止血帯を締めた。"
+          }
+        },
+        {
+          "id": "l3",
+          "emotion": "resolve",
+          "climax": true,
+          "speaker": {
+            "ru": "ЛЕВИ АККЕРМАН [КАПИТАН РАЗВЕДКОРПУСА]",
+            "en": "LEVI ACKERMAN [SURVEY CORPS CAPTAIN]",
+            "zh": "利威尔·阿克曼 [调查兵团兵长]",
+            "de": "LEVI ACKERMAN [HAUPTMANN]",
+            "ja": "リヴァイ・アッカーマン [調査兵団兵士長]"
+          },
+          "text": {
+            "ru": "Не борись с тросом — слушай натяжение стали мышцами и подстраивай шаг под ветер. Чистота снаряжения нужна не ради каприза, а чтобы механизм и тело работали без осечки. Двигайся точно, береги живую плоть рядом и режь без лишнего замаха.",
+            "en": "Don't fight the cable—read the steel's tension through your muscles and adapt your angle to the wind. Clean gear isn't vanity; it keeps mechanism and body firing without a misfire. Move clean, steady the flesh beside you, and cut without wasted motion.",
+            "zh": "别跟钢索较劲——用肌肉去听钢铁的张力，顺着风向调整姿态。擦干净装备不是洁癖矫情，而是让器械与身体零故障运转。动作要准，护住身边的活人，一刀切开。",
+            "de": "Kämpf nicht gegen das Seil — lies die Spannung mit deinen Muskeln und passe deinen Winkel dem Wind an. Saubere Ausrüstung hält Körper und Mechanik fehlerfrei im Fluss.",
+            "ja": "ワイヤーに逆らうな――鋼の張力を筋肉で聴き、風に身体の角度を合わせろ。装備を磨くのは気取りじゃねえ、身体と機構を狂いなく連動させるためだ。無駄なく動き、隣で生きる肉体を支え、正確に斬れ。"
+          }
+        }
+      ],
+      "timeout_verdict": {
+        "title": {
+          "ru": "СТУПОР ВОЛИ // КРИТИЧЕСКАЯ НЕРЕШИТЕЛЬНОСТЬ",
+          "en": "WILL STUPOR // CRITICAL INDECISION",
+          "zh": "意志僵直 // 致命犹豫",
+          "de": "WILLENSSTARRE // KRITISCHE UNENTSCHLOSSENHEIT",
+          "ja": "意志硬直 // 致命的な逡巡"
+        },
+        "axes": {
+          "ru": "Сильная / Процессионная / Подстраивающаяся",
+          "en": "Strong / Processional / Adapting",
+          "zh": "强势 / 过程型 / 适应型",
+          "de": "Stark / Prozesshaft / Anpassend",
+          "ja": "強 / プロセス / アジャスト"
+        },
+        "breakdown": {
+          "ru": "ОШИБКА ПРОФАЙЛЕРА («СТУПОР ВОЛИ»): Доля секунды упущена! На скоростях УПМ промедление фатально. Истинный радикал Леви Аккермана — [2Ф] (Сильная / Процессионная / Подстраивающаяся Физика).",
+          "en": "PROFILER FAILURE ('WILL STUPOR'): Split-second window missed! At ODM speeds hesitation is fatal. Levi Ackerman's true radical is [2Ф] (Strong / Processional / Adapting Physics).",
+          "zh": "侧写失误：超时！利威尔·阿克曼的真实核心为 [2Ф]（强势 / 过程型 / 适应型物理）。",
+          "de": "PROFILER-FEHLER: Zeit abgelaufen! Levis wahres Profil ist [2Ф] (Stark / Prozesshaft / Anpassend).",
+          "ja": "プロファイラー失策：時間切れです。リヴァイの真のプロファイルは [2Ф]（強 / プロセス / アジャスト）でした。"
+        }
+      },
+      "options": [
+        {
+          "id": "l_opt_1f",
+          "function_code": "1Ф",
+          "is_correct": false,
+          "text": {
+            "ru": "1-я Физика // Тяжеловесная мощь («Собственник»)",
+            "en": "1st Physics // Heavy Material Excess ('Possessor')",
+            "zh": "第一物理 // 厚重占有欲",
+            "de": "1. Physik // Schwere Übermacht",
+            "ja": "第1物理 // 重厚な物質独占"
+          },
+          "axes": {
+            "ru": "Сильная / Результативная / Доминантная",
+            "en": "Strong / Resultative / Dominant",
+            "zh": "强势 / 结果型 / 主导型",
+            "de": "Stark / Resultativ / Dominant",
+            "ja": "強 / リザルト / ドミナント"
+          },
+          "hint": {
+            "ru": "Берет ли он грубой неповоротливой массой и гедонизмом, или непрерывной филигранной пластикой и заботой о технике?",
+            "en": "Does he rely on brute static mass and hedonism, or continuous kinetic finesse and practical care?",
+            "zh": "他靠的是笨重的蛮力与享乐，还是持续灵巧的动态微调与实用养护？",
+            "de": "Setzt er auf rohe statische Masse oder auf kontinuierliche motorische Feinabstimmung?",
+            "ja": "鈍重な剛力と快楽主義か、それとも絶え間ない身体調整と実践的な手入れか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 1-я Физика результативна и монологова: она тяготеет к грубой статичной силе, накоплению и бытовому комфорту «под себя». Сила Леви — в непрерывном процессе движения, мгновенной подстройке тела под вектор троса и деятельной заботе о гигиене и выживании отряда (2Ф).",
+            "en": "FALSE LEAD. 1st Physics is resultative and self-centered, leaning toward static brute force and personal comfort. Levi's mastery shines in continuous kinetic flow, instant mid-air adaptation, and hands-on physical care for his squad (2P).",
+            "zh": "判断错误。1Ф偏向静态蛮力与个人享乐；利威尔的精髓在于持续的动态操控、空中瞬时适应以及对战友伤势的利落照料（2Ф）。",
+            "de": "FALSCH. 1P neigt zu statischer Wucht; Levis Stärke liegt im dynamischen Bewegungsfluss und der Anpassung (2P).",
+            "ja": "不正解。1Фは静的な剛力や自己完結した快楽に傾くが、リヴァイの真髄は絶え間ない運動プロセスと環境への即応（2Ф）にある。"
+          },
+          "explanation": {
+            "ru": "Пластичная адаптация в полете и функциональная чистота указывают на процессионную 2Ф, а не 1Ф.",
+            "en": "Fluid mid-air adaptation and functional hygiene confirm processional 2P over static 1P.",
+            "zh": "空中的灵巧适应与功能性整洁指向2Ф而非1Ф。",
+            "de": "Geschmeidige Anpassung im Flug bestätigt die 2. Physik statt 1P.",
+            "ja": "空中での柔軟な即応と機能的な清潔さは1Фではなく2Фを示す。"
+          }
+        },
+        {
+          "id": "l_opt_2f",
+          "function_code": "2Ф",
+          "is_correct": true,
+          "text": {
+            "ru": "2-я Физика // Виртуоз тела и тросов («Мастер»)",
+            "en": "2nd Physics // Kinetic & Blade Virtuoso ('Master')",
+            "zh": "第二物理 // 躯体与钢索大师",
+            "de": "2. Physik // Virtuose von Körper & Seil",
+            "ja": "第2物理 // 身体とワイヤーの熟練者"
+          },
+          "axes": {
+            "ru": "Сильная / Процессионная / Подстраивающаяся",
+            "en": "Strong / Processional / Adapting",
+            "zh": "强势 / 过程型 / 适应型",
+            "de": "Stark / Prozesshaft / Anpassend",
+            "ja": "強 / プロセス / アジャスト"
+          },
+          "hint": {
+            "ru": "Бесстрашная выносливость + непрерывная работа с пространством и чистотой снаряжения + отсутствие брезгливого ступора к крови товарища.",
+            "en": "Fearless somatic stamina + continuous engagement with gear/motion + zero squeamishness clasping a bloody comrade.",
+            "zh": "无畏的身体机能 + 对器械与动作过程的精密把控 + 握住血污战友时毫无洁癖僵直。",
+            "de": "Furchtlose Körperbeherrschung + präzise Pflege der Ausrüstung + keine Berührungsangst bei Verwundeten.",
+            "ja": "無類の身体耐性＋装備と運動の絶え間ない調整＋血まみれの仲間に触れる際の躊躇のなさに注目せよ。"
+          },
+          "breakdown": {
+            "ru": "ТОЧНОЕ ПОПАДАНИЕ (BREAKTHROUGH)! Перед нами эталонная 2-я Физика! Часто чистоплотность Леви ошибочно принимают за невроз 3Ф, но улика на поле боя ставит точку: 3Ф цепенеет от брезгливости и боится боли, тогда как Леви спокойно сжимает окровавленную руку солдата и владеет телом с бесстрашной мощью [СИЛЬНАЯ], непрерывно ощущает и оттачивает механику клинков, тросов и пространства [ПРОЦЕССИОННАЯ], и молниеносно подстраивает траекторию под обрыв троса и ветер [ПОДСТРАИВАЮЩАЯСЯ].",
+            "en": "EXACT MATCH (BREAKTHROUGH)! Textbook 2nd Physics! Amateur profilers often mistake Levi's cleanliness for neurotic 3P, yet battlefield evidence settles it: 3P freezes in squeamishness and somatic anxiety, whereas Levi clasps a blood-soaked hand without flinching and commands his body with fearless power [STRONG], continuously refines blade, cable, and spatial mechanics [PROCESSIONAL], and recalibrates mid-air to wind and snapped anchors in a heartbeat [ADAPTING].",
+            "zh": "精准击破（BREAKTHROUGH）！教科书级的第二物理！外行常把利威尔的爱干净误判为3Ф洁癖，但战场证据一锤定音：3Ф会因血污嫌恶或疼痛恐惧而僵住，利威尔却能毫不犹豫紧握伤兵血手，拥有无畏的躯体掌控【强势】、持续打磨器械与动作细节【过程型】，并在断索瞬间顺风重构轨迹【适应型】。",
+            "de": "VOLLTREFFER (BREAKTHROUGH)! Paradebeispiel der 2. Physik! Oft wird Levis Sauberkeit mit neurotischer 3P verwechselt, doch das Gefecht beweist das Gegenteil: Furchtlose Körperkraft ohne Ekelstarre [STARK], kontinuierliche Feinabstimmung von Klinge und Raum [PROZESSHAFT] und sofortige Anpassung an Wind und Seilriss [ANPASSEND].",
+            "ja": "完全一致（BREAKTHROUGH）！これぞ模範的な第2物理だ。リヴァイの潔癖さはしばしば3Фと誤認されるが、戦場の証拠が決定づける。3Фなら汚血や痛みに過敏に硬直するところ、彼は躊躇なく血まみれの手を握り、無類の身体強度【強】と、刃・空間・手入れへの絶え間ない働きかけ【プロセス】、そしてワイヤー切断に即応する柔軟性【アジャスト】を完璧に兼ね備えている。"
+          },
+          "explanation": {
+            "ru": "Вердикт подтвержден: виртуозная пластика тела и функциональная дисциплина без телесного страха — чистая 2-я Физика.",
+            "en": "Verdict confirmed: fearless kinetic virtuosity paired with functional care defines 2nd Physics.",
+            "zh": "裁决确认：无畏的躯体技艺与实用整洁定义了第二物理。",
+            "de": "Urteil bestätigt: Furchtlose Körpervirtuosität und funktionale Pflege definieren die 2. Physik.",
+            "ja": "判定確定：恐れを知らぬ身体技法と機能的な規律は純粋な第2物理である。"
+          }
+        },
+        {
+          "id": "l_opt_3f",
+          "function_code": "3Ф",
+          "is_correct": false,
+          "text": {
+            "ru": "3-я Физика // Болезненная брезгливость («Недотрога»)",
+            "en": "3rd Physics // Squeamish Hyper-Sensitivity",
+            "zh": "第三物理 // 病态洁癖与躯体焦虑",
+            "de": "3. Physik // Überempfindliche Berührungsscheu",
+            "ja": "第3物理 // 過敏な潔癖と身体不安"
+          },
+          "axes": {
+            "ru": "Слабая / Процессионная / Доминантная",
+            "en": "Weak / Processional / Dominant",
+            "zh": "弱势 / 过程型 / 主导型",
+            "de": "Schwach / Prozesshaft / Dominant",
+            "ja": "弱 / プロセス / ドミナント"
+          },
+          "hint": {
+            "ru": "Ловушка! Мешает ли его требование к чистоте сжимать окровавленную руку товарища и переносить перегрузки 6.4G?",
+            "en": "Trap alert! Does his demand for cleanliness stop him from clasping a bloody hand or enduring 6.4G loads?",
+            "zh": "注意陷阱！他对整洁的要求会妨碍他在血污中紧握战友、承受6.4G过载吗？",
+            "de": "Falle! Hindert ihn seine Sauberkeit daran, blutige Hände zu greifen oder 6,4G auszuhalten?",
+            "ja": "罠に注意せよ！彼の清潔好きは、血まみれの仲間の手を握ることや6.4Gの負荷に耐える妨げになっているか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД (КЛАССИЧЕСКАЯ ЛОВУШКА). Бытовую требовательность Леви к чистоте легко спутать с 3Ф, но 3-я Физика слаба и тревожна: она скована в координации и страдает от панической брезгливости к крови. Леви же бесстрашен в плоти, мгновенно берет раненого за окровавленную ладонь и демонстрирует абсолютную моторную свободу сильной 2Ф.",
+            "en": "FALSE LEAD (CLASSIC TRAP). Levi's demand for order is often misread as 3P, yet 3rd Physics is weak, motor-anxious, and paralyzed by blood/filth. Levi shows fearless somatic mastery and clasps a bloodied comrade without hesitation—hallmarks of strong 2P.",
+            "zh": "判断错误（经典陷阱）。3Ф身体脆弱且对血污极度恐慌；利威尔躯体强悍无畏，握住血手毫无迟疑，属于强势2Ф。",
+            "de": "FALSCH (KLASSISCHE FALLE). 3P ist körperlich unsicher und ekelgelähmt; Levi agiert furchtlos und motorisch souverän (2P).",
+            "ja": "不正解（典型的な罠）。3Фは身体への不安と汚血への恐怖で硬直するが、リヴァイは血を恐れず完璧な身体統御を見せる強い2Фだ。"
+          },
+          "explanation": {
+            "ru": "Отсутствие телесной скованности и брезгливого паралича опровергает версию 3Ф.",
+            "en": "Zero motor stiffness or squeamish paralysis refutes the 3P hypothesis.",
+            "zh": "毫无肢体僵硬与洁癖麻痹推翻了3Ф假设。",
+            "de": "Fehlende motorische Hemmung widerlegt die 3P-Hypothese.",
+            "ja": "身体の硬直や汚血への麻痺が皆無である点が3Ф説を覆す。"
+          }
+        },
+        {
+          "id": "l_opt_4f",
+          "function_code": "4Ф",
+          "is_correct": false,
+          "text": {
+            "ru": "4-я Физика // Телесное безразличие («Аскет»)",
+            "en": "4th Physics // Somatic Indifference ('Ascetic')",
+            "zh": "第四物理 // 躯体淡漠",
+            "de": "4. Physik // Körperliche Gleichgültigkeit",
+            "ja": "第4物理 // 物質・身体への無頓着"
+          },
+          "axes": {
+            "ru": "Слабая / Результативная / Подстраивающаяся",
+            "en": "Weak / Resultative / Adapting",
+            "zh": "弱势 / 结果型 / 适应型",
+            "de": "Schwach / Resultativ / Anpassend",
+            "ja": "弱 / リザルト / アジャスト"
+          },
+          "hint": {
+            "ru": "Наплевать ли ему на чистоту клинков, дисциплину быта и точность телесной техники?",
+            "en": "Is he indifferent to blade maintenance, physical order, and precision mechanics?",
+            "zh": "他对刀刃保养、环境整洁和躯体发力细节漠不关心吗？",
+            "de": "Ist ihm die Pflege von Klingen, Ordnung und Körpertechnik gleichgültig?",
+            "ja": "彼は刃の手入れや生活規律、身体技術の細部に無頓着だろうか？"
+          },
+          "breakdown": {
+            "ru": "ЛОЖНЫЙ СЛЕД. 4-я Физика небрежна к быту, инвентарю и тонкостям физической формы, экономя телесный ресурс. Леви же неустанно вовлечен в материальный порядок, уход за экипировкой и филигранную технику движения (сильная процессионная 2Ф).",
+            "en": "FALSE LEAD. 4th Physics neglects surroundings, gear upkeep, and physical nuance to conserve energy. Levi is tirelessly engaged in material order, blade care, and precision movement (strong, processional 2P).",
+            "zh": "判断错误。4Ф忽视环境与器械保养；利威尔对装备整洁与动作精度的持续投入属于强势过程型的2Ф。",
+            "de": "FALSCH. 4P vernachlässigt Umfeld und Ausrüstung; Levi lebt präzise körperliche Meisterschaft (2P).",
+            "ja": "不正解。4Фは環境や装備の手入れに無頓着だが、リヴァイは物質的規律と身体技術に絶えず関与する2Фである。"
+          },
+          "explanation": {
+            "ru": "Высочайшая требовательность к экипировке и технике исключает безразличную 4Ф.",
+            "en": "Rigorous attention to gear and somatic craft rules out indifferent 4P.",
+            "zh": "对装备与身体技术的严苛把控排除了4Ф。",
+            "de": "Höchste Aufmerksamkeit für Ausrüstung und Körpertechnik schließt 4P aus.",
+            "ja": "装備と身体技術への徹底した配慮は無頓着な4Фを否定する。"
+          }
+        }
+      ]
+    }
+  ]
+}

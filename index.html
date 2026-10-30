@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+  <title>PSYCHO-PROFILE // ANALYZER</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <!-- 16:9 Letterboxing Viewport Shell -->
+  <div id="viewport-wrapper">
+    <!-- Fixed 1920x1080 Virtual Stage -->
+    <main id="game-stage" aria-label="Psycho-Profile Terminal">
+
+      <!-- =========================================================
+           ADV LAYER 1: BACKGROUND LAYER (z-index: 10)
+           ========================================================= -->
+      <section id="layer-background" class="stage-layer">
+        <div id="camera-rig" class="camera-rig">
+          <div id="procedural-terminal-bg" class="procedural-terminal-bg"></div>
+          <img id="bg-image" class="adv-media bg-media hidden" alt="" draggable="false" />
+        </div>
+        <div class="bg-radial-vignette"></div>
+        <div class="bg-scanlines"></div>
+        <div class="terminal-neon-frame"></div>
+        <div id="danger-pulse-overlay" class="danger-pulse-overlay"></div>
+      </section>
+
+      <!-- =========================================================
+           ADV LAYER 2: CHARACTER LAYER (z-index: 20)
+           ========================================================= -->
+      <section id="layer-character" class="stage-layer">
+        <div id="char-camera-rig" class="char-camera-rig">
+          <img id="char-sprite" class="adv-media char-sprite" alt="" draggable="false" />
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ADV LAYER 3: UI OVERLAY / TOP STATUS BAR (z-index: 30)
+           ========================================================= -->
+      <header id="layer-hud" class="stage-layer hud-bar hidden">
+        <div class="hud-left">
+          <div class="hud-chip hud-chip-primary">
+            <span class="hud-label" data-i18n="hud_case"></span>
+            <span id="hud-case-val" class="hud-value"></span>
+          </div>
+          <div class="hud-chip">
+            <span class="hud-label" data-i18n="hud_phase"></span>
+            <span id="hud-phase-val" class="hud-value"></span>
+          </div>
+          <div id="hud-mode-badge" class="hud-mode-badge"></div>
+        </div>
+
+        <div class="hud-center">
+          <div id="hud-timer-module" class="hud-timer-module">
+            <div class="hud-timer-top">
+              <span class="hud-label" data-i18n="hud_timer"></span>
+              <span id="hud-timer-digits" class="hud-timer-digits">--.-s</span>
+            </div>
+            <div class="hud-timer-track">
+              <div id="hud-timer-fill" class="hud-timer-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-right">
+          <div class="hud-chip">
+            <span class="hud-label" data-i18n="hud_accuracy"></span>
+            <span id="hud-accuracy-val" class="hud-value hud-accent-cyan">100%</span>
+          </div>
+          <div class="hud-chip">
+            <span class="hud-label" data-i18n="hud_score"></span>
+            <span id="hud-score-val" class="hud-value hud-accent-gold">0</span>
+          </div>
+          <button type="button" id="btn-hud-backlog" class="hud-action-btn" data-i18n="hud_backlog_btn"></button>
+          <button type="button" id="btn-hud-menu" class="hud-action-btn hud-action-warn" data-i18n="hud_menu_btn"></button>
+        </div>
+      </header>
+
+      <!-- =========================================================
+           ADV LAYER 4: DIALOGUE BOX (z-index: 40)
+           ========================================================= -->
+      <section id="layer-dialogue" class="stage-layer dialogue-zone hidden">
+        <div id="dlg-hint-drawer" class="dlg-hint-drawer hidden">
+          <div class="dlg-hint-title" data-i18n="hint_box_title"></div>
+          <div id="dlg-hint-content" class="dlg-hint-content"></div>
+        </div>
+
+        <div id="dialogue-panel" class="dialogue-panel">
+          <div class="dialogue-header-row">
+            <div id="dlg-speaker-badge" class="speaker-badge"></div>
+            <div id="dlg-climax-badge" class="climax-badge hidden" data-i18n="dlg_climax_badge"></div>
+            <div id="dlg-step-counter" class="dlg-step-counter"></div>
+          </div>
+
+          <p id="dlg-text" class="dialogue-text"></p>
+
+          <div class="dialogue-footer-row">
+            <span id="controls-bar-text" class="controls-bar-text" data-i18n="controls_bar"></span>
+            <button type="button" id="btn-dlg-advance" class="dlg-advance-btn" data-i18n="dlg_continue"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ADV LAYER 5: VERDICT PANEL (z-index: 50)
+           ========================================================= -->
+      <aside id="layer-verdict-panel" class="stage-layer verdict-panel hidden">
+        <div class="verdict-panel-header">
+          <div class="verdict-panel-title" data-i18n="verdict_header"></div>
+          <div id="verdict-panel-subtitle" class="verdict-panel-subtitle"></div>
+          <div id="verdict-crisis-bar-wrap" class="verdict-crisis-bar-wrap">
+            <div id="verdict-crisis-bar-fill" class="verdict-crisis-bar-fill"></div>
+          </div>
+        </div>
+
+        <div id="verdict-options-list" class="verdict-options-list" role="listbox"></div>
+
+        <div class="verdict-panel-tools">
+          <button type="button" id="btn-evidence-hint" class="btn-tactical-hint hidden" data-i18n="hint_btn_label"></button>
+        </div>
+      </aside>
+
+      <!-- =========================================================
+           SCREEN: LOADING (FSM: LOADING)
+           ========================================================= -->
+      <section id="screen-loading" class="fullscreen-overlay">
+        <div class="boot-box">
+          <div class="boot-glitch-bar"></div>
+          <h1 class="boot-title" data-i18n="app_title"></h1>
+          <p id="boot-status-text" class="boot-status" data-i18n="loading_status"></p>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SCREEN: MAIN MENU (FSM: MENU_IDLE)
+           ========================================================= -->
+      <section id="screen-menu" class="fullscreen-overlay menu-screen hidden">
+        <img id="menu-bg-image" class="adv-media menu-bg-media hidden" alt="" draggable="false" />
+        <div class="menu-bg-vignette"></div>
+        <div class="menu-grid-decor"></div>
+        <div class="menu-container">
+          <div class="menu-brand-column">
+            <div class="terminal-tag">STEAMWORKS // OFFLINE ENGINE 1920x1080</div>
+            <h1 class="menu-logo-title" data-i18n="app_title"></h1>
+            <p class="menu-logo-subtitle" data-i18n="app_subtitle"></p>
+
+            <div class="menu-mode-section">
+              <div class="section-kicker" data-i18n="menu_select_mode"></div>
+              <div class="mode-cards-grid">
+                <button type="button" id="card-mode-scout" class="mode-card active" data-mode="scout">
+                  <div class="mode-card-title" data-i18n="mode_scout_name"></div>
+                  <div class="mode-card-desc" data-i18n="mode_scout_desc"></div>
+                </button>
+                <button type="button" id="card-mode-mindhunter" class="mode-card" data-mode="mindhunter">
+                  <div class="mode-card-title" data-i18n="mode_mindhunter_name"></div>
+                  <div class="mode-card-desc" data-i18n="mode_mindhunter_desc"></div>
+                </button>
+              </div>
+            </div>
+
+            <div id="menu-lang-strip" class="menu-lang-strip"></div>
+          </div>
+
+          <nav class="menu-actions-column">
+            <button type="button" id="btn-menu-start" class="menu-skew-btn menu-btn-primary" data-i18n="menu_start_btn"></button>
+            <button type="button" id="btn-menu-tutorial" class="menu-skew-btn menu-btn-accent" data-i18n="menu_tutorial_btn"></button>
+            <button type="button" id="btn-menu-settings" class="menu-skew-btn" data-i18n="menu_settings_btn"></button>
+          </nav>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SCREEN: TYPOLOGY TUTORIAL TERMINAL (FSM: TUTORIAL_READ)
+           ========================================================= -->
+      <section id="screen-tutorial" class="fullscreen-overlay tutorial-screen hidden">
+        <div class="tutorial-shell">
+          <header class="tutorial-topbar">
+            <button type="button" id="btn-tut-back" class="skew-action-btn" data-i18n="tutorial_back"></button>
+            <h2 id="tut-header-title" class="tutorial-main-title"></h2>
+            <button type="button" id="btn-tut-start-game" class="skew-action-btn btn-neon-crimson" data-i18n="tutorial_start"></button>
+          </header>
+
+          <div class="tutorial-tabs-row">
+            <button type="button" class="tut-tab-btn active" data-tut-tab="aspects" id="tab-btn-aspects"></button>
+            <button type="button" class="tut-tab-btn" data-tut-tab="positions" id="tab-btn-positions"></button>
+            <button type="button" class="tut-tab-btn" data-tut-tab="simulator" id="tab-btn-simulator"></button>
+          </div>
+
+          <div id="tutorial-body-content" class="tutorial-body-content"></div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SCREEN: CASE DOSSIER SUMMARY (FSM: SUMMARY_READ)
+           ========================================================= -->
+      <section id="screen-summary" class="fullscreen-overlay summary-screen hidden">
+        <div class="summary-card">
+          <div class="summary-banner-tag" data-i18n="summary_header"></div>
+          <h2 id="summary-status-headline" class="summary-headline"></h2>
+
+          <div class="summary-metrics-grid">
+            <div class="summary-metric-item">
+              <span class="summary-metric-label" data-i18n="summary_metric_case"></span>
+              <span id="sum-val-case" class="summary-metric-val"></span>
+            </div>
+            <div class="summary-metric-item">
+              <span class="summary-metric-label" data-i18n="summary_metric_profile"></span>
+              <span id="sum-val-profile" class="summary-metric-val hud-accent-cyan"></span>
+            </div>
+            <div class="summary-metric-item">
+              <span class="summary-metric-label" data-i18n="summary_metric_score"></span>
+              <span id="sum-val-score" class="summary-metric-val hud-accent-gold"></span>
+            </div>
+            <div class="summary-metric-item">
+              <span class="summary-metric-label" data-i18n="summary_metric_accuracy"></span>
+              <span id="sum-val-accuracy" class="summary-metric-val"></span>
+            </div>
+            <div class="summary-metric-item">
+              <span class="summary-metric-label" data-i18n="summary_metric_time"></span>
+              <span id="sum-val-time" class="summary-metric-val"></span>
+            </div>
+          </div>
+
+          <p id="sum-explanation-note" class="summary-explanation"></p>
+
+          <div class="summary-actions-row">
+            <button type="button" id="btn-sum-next" class="menu-skew-btn menu-btn-primary hidden" data-i18n="summary_next_case_btn"></button>
+            <button type="button" id="btn-sum-retry" class="menu-skew-btn menu-btn-accent" data-i18n="summary_retry_btn"></button>
+            <button type="button" id="btn-sum-menu" class="menu-skew-btn" data-i18n="summary_menu_btn"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ADV LAYER 6: BACKLOG MODAL (z-index: 70)
+           ========================================================= -->
+      <div id="modal-backlog" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="modal-window backlog-window">
+          <header class="modal-header">
+            <h3 class="modal-title" data-i18n="backlog_title"></h3>
+            <button type="button" id="btn-close-backlog" class="skew-action-btn" data-i18n="close_btn"></button>
+          </header>
+          <div id="backlog-scroll-body" class="backlog-scroll-body"></div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           ADV LAYER 7: VERDICT AUTOPSY MODAL (z-index: 80, FSM: VERDICT_ANIM)
+           ========================================================= -->
+      <div id="modal-verdict" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div id="verdict-modal-card" class="modal-window verdict-autopsy-window">
+          <div id="verdict-outcome-ribbon" class="verdict-outcome-ribbon"></div>
+
+          <div class="verdict-compare-row">
+            <div class="verdict-compare-box">
+              <span class="verdict-compare-label" data-i18n="verdict_chosen_label"></span>
+              <strong id="verdict-chosen-val" class="verdict-compare-val"></strong>
+            </div>
+            <div class="verdict-compare-box verdict-compare-truth">
+              <span class="verdict-compare-label" data-i18n="verdict_correct_label"></span>
+              <strong id="verdict-correct-val" class="verdict-compare-val"></strong>
+            </div>
+          </div>
+
+          <div class="verdict-axes-section">
+            <div class="verdict-section-label" data-i18n="verdict_axes_label"></div>
+            <div id="verdict-axes-tags" class="verdict-axes-tags"></div>
+          </div>
+
+          <div class="verdict-breakdown-section">
+            <div class="verdict-section-label" data-i18n="verdict_breakdown_label"></div>
+            <p id="verdict-breakdown-text" class="verdict-breakdown-text"></p>
+          </div>
+
+          <div class="verdict-modal-footer">
+            <button type="button" id="btn-verdict-continue" class="menu-skew-btn menu-btn-primary" data-i18n="verdict_to_summary_btn"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           MODAL: SETTINGS & PAUSE OVERLAY (z-index: 90)
+           ========================================================= -->
+      <div id="modal-settings" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="modal-window settings-window">
+          <header class="modal-header">
+            <h3 class="modal-title" data-i18n="settings_title"></h3>
+            <button type="button" id="btn-close-settings" class="skew-action-btn" data-i18n="close_btn"></button>
+          </header>
+
+          <div class="settings-body">
+            <div class="settings-group">
+              <label class="settings-label" data-i18n="settings_lang_label"></label>
+              <div id="settings-lang-buttons" class="settings-pill-row"></div>
+            </div>
+
+            <div class="settings-group">
+              <label class="settings-label" data-i18n="settings_audio_label"></label>
+              <div class="settings-pill-row">
+                <button type="button" id="btn-audio-toggle" class="settings-pill-btn"></button>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <label class="settings-label" data-i18n="settings_scout_notimer_label"></label>
+              <div class="settings-pill-row">
+                <button type="button" id="btn-scout-timer-toggle" class="settings-pill-btn"></button>
+              </div>
+            </div>
+          </div>
+
+          <footer class="settings-footer">
+            <button type="button" id="btn-settings-resume" class="skew-action-btn btn-neon-cyan" data-i18n="settings_resume_btn"></button>
+            <button type="button" id="btn-settings-quit-menu" class="skew-action-btn btn-neon-crimson hidden" data-i18n="settings_to_menu_btn"></button>
+          </footer>
+        </div>
+      </div>
+
+      <!-- BREAKTHROUGH FLASH OVERLAY -->
+      <div id="breakthrough-flash" class="breakthrough-flash hidden">
+        <div class="breakthrough-slash-text">BREAKTHROUGH // ПРОРЫВ</div>
+      </div>
+
+      <!-- STEAM ACHIEVEMENT TOAST -->
+      <div id="achievement-toast-rack" class="achievement-toast-rack" aria-live="polite"></div>
+
+    </main>
+  </div>
+
+  <!-- Strictly Local Engine Scripts -->
+  <script src="assets/js/achievements.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/engine.js"></script>
+  <script src="assets/js/ui.js"></script>
+</body>
+</html>
