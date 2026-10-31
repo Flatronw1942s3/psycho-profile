@@ -115,32 +115,32 @@
         header: 'БАЗА ТИПОЛОГИЙ',
         back_btn: '[ ◂ ВЕРНУТЬСЯ В МЕНЮ ]',
         start_case_btn: '[ СРАЗУ К РАССЛЕДОВАНИЮ ▸ ]',
-        tab_aspects: '01 — 4 АСПЕКТА',
-        tab_positions: '02 — 4 ПОЗИЦИИ И ОСИ',
-        tab_simulator: '03 — ТРЕНАЖЕР ПРОРЫВА',
-        aspects_intro: 'Психософия исследует приоритеты информационно-энергетического обмена человека по четырем фундаментальным аспектам бытия:',
+        tab_aspects: 'АСПЕКТЫ',
+        tab_positions: 'ПОЗИЦИИ И ОСИ',
+        tab_simulator: 'ТРЕНАЖЕР',
+        aspects_intro: 'В критический момент подозреваемый выдает себя через одну из 4 сфер личности:',
         aspects_list: [
           {
             code: 'В — ВОЛЯ',
-            title: 'ВОЛЯ (Субъектность, Власть, Стержень)',
+            title: 'ВОЛЯ — Кто здесь решает?',
             desc: 'Отвечает за чувство собственного достоинства, право принимать решения, иерархию, ответственность за судьбу и устойчивость намерения.',
             markers: 'Маркеры в допросе: реакция на унижение, приказы, выбор в тупике, фразы «я решу сам», «я ничтожество» или «будет по-моему».'
           },
           {
             code: 'Л — ЛОГИКА',
-            title: 'ЛОГИКА (Истина, Структура, Доказательство)',
+            title: 'ЛОГИКА — Где доказательства?',
             desc: 'Отвечает за построение причинно-следственных связей, отношение к аргументам, теориям, сомнениям и интеллектуальному авторитету.',
             markers: 'Маркеры в допросе: отношение к спору, страх логической ошибки, догматизм выводов либо бесконечная перепроверка фактов.'
           },
           {
             code: 'Ф — ФИЗИКА',
-            title: 'ФИЗИКА (Материя, Тело, Ресурс, Пространство)',
+            title: 'ФИЗИКА — Что с телом и ресурсами?',
             desc: 'Отвечает за контакт с телом, болью, вещами, деньгами, территорией, бытом и инстинктом физического выживания.',
             markers: 'Маркеры в допросе: телесная скованность или ловкость, брезгливость, жадность или щедрость, реакция на физическую угрозу.'
           },
           {
             code: 'Э — ЭМОЦИЯ',
-            title: 'ЭМОЦИЯ (Аффект, Переживание, Экспрессия)',
+            title: 'ЭМОЦИЯ — Сколько здесь драмы?',
             desc: 'Отвечает за глубину и громкость чувств, драматизм, искренность интонаций, эмоциональное заражение или холодный штиль.',
             markers: 'Маркеры в допросе: слезы, пафос, истерика, стыд за проявление чувств либо полное отключение эмоций в кризисе.'
           }
@@ -149,22 +149,22 @@
         axes_legend: '[СИЛЬНАЯ / СЛАБАЯ] — запас энергии  •  [РЕЗУЛЬТАТИВНАЯ / ПРОЦЕССИОННАЯ] — монолог или диалог  •  [ДОМИНАНТНАЯ / ПОДСТРАИВАЮЩАЯСЯ] — принципиальность «Я» или учет «Другого»',
         positions_list: [
           {
-            pos: '1-я ПОЗИЦИЯ — «ЦАРЬ» (МОЛОТ)',
+            pos: 'ПОЗИЦИЯ I — ДИКТАТ',
             axes: ['СИЛЬНАЯ', 'РЕЗУЛЬТАТИВНАЯ', 'ДОМИНАНТНАЯ'],
             summary: 'Избыток и монолог. Уверена в своем праве по умолчанию, не нуждается в обсуждении и не зависит от чужой оценки. Действует сверху вниз, быстро и бескомпромиссно.'
           },
           {
-            pos: '2-я ПОЗИЦИЯ — «МАСТЕР» (РЕКА)',
+            pos: 'ПОЗИЦИЯ II — МАСТЕРСТВО',
             axes: ['СИЛЬНАЯ', 'ПРОЦЕССИОННАЯ', 'ПОДСТРАИВАЮЩАЯСЯ'],
             summary: 'Норма, гибкость и диалог. Свободно и без страха вовлекает других в совместный процесс, легко маневрирует, не самоутверждается за чужой счет.'
           },
           {
-            pos: '3-я ПОЗИЦИЯ — «ЯЗВА» (КОМПЛЕКС)',
+            pos: 'ПОЗИЦИЯ III — УЯЗВИМОСТЬ',
             axes: ['СЛАБАЯ', 'ПРОЦЕССИОННАЯ', 'ДОМИНАНТНАЯ'],
             summary: 'Уязвимость, защита и суперпроцесс. Мучительно сомневается в себе, гиперчувствительна к насмешкам, но яростно отказывается подчиняться. В кризисе способна на отчаянное сверхусилие.'
           },
           {
-            pos: '4-я ПОЗИЦИЯ — «ШТИЛЬ» (ПУСТЯЧОК)',
+            pos: 'ПОЗИЦИЯ IV — ШТИЛЬ',
             axes: ['СЛАБАЯ', 'РЕЗУЛЬТАТИВНАЯ', 'ПОДСТРАИВАЮЩАЯСЯ'],
             summary: 'Безразличие и энергосбережение. Легко делегирует сферу другим, принимает готовый результат, а в экстремальной перегрузке первой «отключается».'
           }
@@ -174,20 +174,20 @@
         sim_quote: '«Вы все за спиной шепчетесь, будто я пешка без хребта?! Да, у меня дрожат руки... но клянусь, я НЕ ПОЗВОЛЮ вам решать за меня — я сам сделаю этот шаг!»',
         sim_options: [
           {
-            code: '1В',
-            label: '1-я Воля (Сильная / Результативная / Доминантная)',
+            code: 'I',
+            label: '[ I ] ВОЛЯ — ДИКТАТ (Сильная • Результативная • Доминантная)',
             correct: false,
             feedback: 'Мимо: 1-я Воля не фиксируется на перешептываниях за спиной и не оправдывается за дрожащие руки.'
           },
           {
-            code: '3В',
-            label: '3-я Воля (Слабая / Процессионная / Доминантная)',
+            code: 'III',
+            label: '[ III ] ВОЛЯ — УЯЗВИМОСТЬ (Слабая • Процессионная • Доминантная)',
             correct: true,
             feedback: 'ПРОРЫВ АКТИВИРОВАН! Когда вы точно определяете все три оси ядра подозреваемого ([СЛАБАЯ] дрожь и боль самооценки + [ПРОЦЕССИОННАЯ] фиксация на чужом шепоте + [ДОМИНАНТНАЯ] «не позволю решать за меня»), защита субъекта рушится, фиксируя психологический прорыв!'
           },
           {
-            code: '4В',
-            label: '4-я Воля (Слабая / Результативная / Подстраивающаяся)',
+            code: 'IV',
+            label: '[ IV ] ВОЛЯ — ШТИЛЬ (Слабая • Результативная • Подстраивающаяся)',
             correct: false,
             feedback: 'Мимо: 4-я Воля спокойно уступает инициативу в кризисе и не идет на яростный бунт ради самоутверждения.'
           }
@@ -274,32 +274,32 @@
         header: 'TYPOLOGY DATABASE',
         back_btn: '[ ◂ BACK TO MENU ]',
         start_case_btn: '[ JUMP TO INVESTIGATION ▸ ]',
-        tab_aspects: '01 — 4 ASPECTS',
-        tab_positions: '02 — 4 POSITIONS & AXES',
-        tab_simulator: '03 — BREAKTHROUGH SIMULATOR',
-        aspects_intro: 'Psychosophy maps human cognitive-energetic priorities across four fundamental aspects of existence:',
+        tab_aspects: 'ASPECTS',
+        tab_positions: 'POSITIONS & AXES',
+        tab_simulator: 'TRAINER',
+        aspects_intro: 'In critical moments, the suspect reveals themselves through one of four personality spheres:',
         aspects_list: [
           {
             code: 'W — WILL (В)',
-            title: 'WILL (Agency, Sovereignty, Core Drive)',
+            title: 'WILL — Who decides here?',
             desc: 'Governs personal dignity, decision-making authority, hierarchy, ownership of fate, and resolve under pressure.',
             markers: 'Interrogation markers: reaction to humiliation, orders, deadlocks, phrases like "I decide my fate" or acute status shame.'
           },
           {
             code: 'L — LOGIC (Л)',
-            title: 'LOGIC (Truth, Structure, Proof)',
+            title: 'LOGIC — Where is the evidence?',
             desc: 'Governs causal reasoning, attitude toward arguments, theories, skepticism, and intellectual rigor.',
             markers: 'Interrogation markers: debate behavior, fear of logical flaws, dogmatic conclusions vs endless proof-checking.'
           },
           {
             code: 'P — PHYSICS (Ф)',
-            title: 'PHYSICS (Matter, Body, Territory, Survival)',
+            title: 'PHYSICS — What about body and resources?',
             desc: 'Governs bodily awareness, pain threshold, material resources, space, comfort, and physical instinct.',
             markers: 'Interrogation markers: motor confidence vs somatic paralysis, territoriality, reaction to physical hazard.'
           },
           {
             code: 'E — EMOTION (Э)',
-            title: 'EMOTION (Affect, Expression, Resonance)',
+            title: 'EMOTION — How much drama is here?',
             desc: 'Governs emotional intensity, dramatic expression, tonal sincerity, affective contagion, or emotional shutdown.',
             markers: 'Interrogation markers: tears, rage outbursts, vulnerability about feelings, or icy affective flatness in crisis.'
           }
@@ -308,22 +308,22 @@
         axes_legend: '[STRONG / WEAK] — energy reserve  •  [RESULTATIVE / PROCESSIONAL] — monologue vs dialogue  •  [DOMINANT / ADAPTING] — self-priority vs alignment',
         positions_list: [
           {
-            pos: '1ST POSITION — "TSAR" (EXCESS)',
+            pos: 'POSITION I — DICTATE',
             axes: ['STRONG', 'RESULTATIVE', 'DOMINANT'],
             summary: 'Abundance and monologue. Treats its authority as self-evident, needs no debate, and ignores external judgment. Acts swiftly top-down.'
           },
           {
-            pos: '2ND POSITION — "MASTER" (NORM)',
+            pos: 'POSITION II — MASTERY',
             axes: ['STRONG', 'PROCESSIONAL', 'ADAPTING'],
             summary: 'Balanced mastery and dialogue. Engages others fluidly without ego defensiveness, adapting creatively in real time.'
           },
           {
-            pos: '3RD POSITION — "ULCER" (COMPLEX)',
+            pos: 'POSITION III — VULNERABILITY',
             axes: ['WEAK', 'PROCESSIONAL', 'DOMINANT'],
             summary: 'Vulnerability, defense, and hyper-process. Suffers acute self-doubt and sensitivity to mockery, yet fiercely refuses submission—capable of explosive breakthroughs.'
           },
           {
-            pos: '4TH POSITION — "STILLNESS" (INDIFFERENCE)',
+            pos: 'POSITION IV — CALM',
             axes: ['WEAK', 'RESULTATIVE', 'ADAPTING'],
             summary: 'Energy conservation and calm delegation. Accepts ready-made outcomes and powers down first during extreme stress.'
           }
@@ -333,20 +333,20 @@
         sim_quote: '"You are all whispering behind my back like I am a spineless pawn?! Yes, my hands are shaking... but I swear I WILL NOT let you decide for me—I will take this step myself!"',
         sim_options: [
           {
-            code: '1В',
-            label: '1st Will (Strong / Resultative / Dominant)',
+            code: 'I',
+            label: '[ I ] WILL — DICTATE (Strong • Resultative • Dominant)',
             correct: false,
             feedback: 'Miss: 1st Will does not obsess over whispers behind its back or apologize for trembling hands.'
           },
           {
-            code: '3В',
-            label: '3rd Will (Weak / Processional / Dominant)',
+            code: 'III',
+            label: '[ III ] WILL — VULNERABILITY (Weak • Processional • Dominant)',
             correct: true,
             feedback: 'BREAKTHROUGH TRIGGERED! Locking onto all three axes ([WEAK] trembling self-doubt + [PROCESSIONAL] fixation on observers + [DOMINANT] fierce claim to autonomy) shatters the psychological barrier!'
           },
           {
-            code: '4В',
-            label: '4th Will (Weak / Resultative / Adapting)',
+            code: 'IV',
+            label: '[ IV ] WILL — CALM (Weak • Resultative • Adapting)',
             correct: false,
             feedback: 'Miss: 4th Will yields initiative calmly rather than erupting in defiant pride.'
           }
@@ -433,10 +433,10 @@
         header: '类型学数据库',
         back_btn: '[ ◂ 返回主菜单 ]',
         start_case_btn: '[ 立即开始调查 ▸ ]',
-        tab_aspects: '01 — 四大要素',
-        tab_positions: '02 — 四个位置与三轴',
-        tab_simulator: '03 — 击破模拟器',
-        aspects_intro: '心理苏菲学派通过四个核心要素解析人类在高压情境下的精神优先级：',
+        tab_aspects: '要素',
+        tab_positions: '顺位与轴向',
+        tab_simulator: '演练器',
+        aspects_intro: '在关键时刻，嫌疑人必然通过四大核心要素之一暴露自身弱点：',
         aspects_list: [
           {
             code: 'В — 意志 (WILL)',
@@ -467,45 +467,45 @@
         axes_legend: '【强势 / 弱势】能量储备  •  【结果型 / 过程型】独白或反复拉锯  •  【主导型 / 适应型】自我优先或顺应他人',
         positions_list: [
           {
-            pos: '第1位置 — “君王”（过剩）',
+            pos: '顺位 I — 主导',
             axes: ['强势', '结果型', '主导型'],
             summary: '能量充沛且独白式输出。视自身主权为理所当然，无需争辩，不受外界嘲讽动摇。'
           },
           {
-            pos: '第2位置 — “大师”（规范）',
+            pos: '顺位 II — 掌控',
             axes: ['强势', '过程型', '适应型'],
             summary: '游刃有余的双向互动。灵活协调，乐于对话，没有病态防御心。'
           },
           {
-            pos: '第3位置 — “裂痕 / 痛处”（情结）',
+            pos: '顺位 III — 弱点',
             axes: ['弱势', '过程型', '主导型'],
             summary: '脆弱、防御与过度纠结。深陷自我怀疑且极度在意他人目光，但绝不肯屈服，绝境中能爆发出极限突破。'
           },
           {
-            pos: '第4位置 — “静默”（淡漠）',
+            pos: '顺位 IV — 忽视',
             axes: ['弱势', '结果型', '适应型'],
             summary: '节能与顺应。乐于交出主导权，在极端高压下最先关闭消耗。'
           }
         ],
-        sim_title: '实战训练器 — 心理击破机制',
+        sim_title: '实战演练器 — 击破机制',
         sim_instruction: '阅读下方测试嫌疑人证词，点击匹配的功能铭牌体验“心理击破”：',
         sim_quote: '“你们都在背后窃窃私语，觉得我是个没骨气的棋子吗？！没错，我的手在发抖……但我绝不让你们替我做决定——这一步我自己走！”',
         sim_options: [
           {
-            code: '1В',
-            label: '第一意志（强势 / 结果型 / 主导型）',
+            code: 'I',
+            label: '[ I ] 意志 — 主导（强势 • 结果型 • 主导型）',
             correct: false,
             feedback: '偏差：第一意志不会在意背后的议论，更不会为双手发抖而产生屈辱感。'
           },
           {
-            code: '3В',
-            label: '第三意志（弱势 / 过程型 / 主导型）',
+            code: 'III',
+            label: '[ III ] 意志 — 弱点（弱势 • 过程型 • 主导型）',
             correct: true,
             feedback: '心理击破成功！当你同时锁定【弱势】自我怀疑、【过程型】对旁人目光的敏感拉锯与【主导型】夺回自主权的执念时，即可瞬间瓦解目标心理防线！'
           },
           {
-            code: '4В',
-            label: '第四意志（弱势 / 结果型 / 适应型）',
+            code: 'IV',
+            label: '[ IV ] 意志 — 忽视（弱势 • 结果型 • 适应型）',
             correct: false,
             feedback: '偏差：第四意志在危机中倾向于平静让渡决定权，而非激烈反抗。'
           }
@@ -592,10 +592,10 @@
         header: 'TYPOLOGIE-DATENBANK',
         back_btn: '[ ◂ ZURÜCK ZUM MENÜ ]',
         start_case_btn: '[ DIREKT ZUR ERMITTLUNG ▸ ]',
-        tab_aspects: '01 — 4 ASPEKTE',
-        tab_positions: '02 — 4 POSITIONEN & ACHSEN',
-        tab_simulator: '03 — DURCHBRUCH-SIMULATOR',
-        aspects_intro: 'Die Psychosophie analysiert menschliche Prioritäten über vier fundamentale Existenzaspekte:',
+        tab_aspects: 'ASPEKTE',
+        tab_positions: 'POSITIONEN & ACHSEN',
+        tab_simulator: 'TRAINER',
+        aspects_intro: 'Im kritischen Moment verrät sich der Verdächtige über einen von 4 Persönlichkeitsbereichen:',
         aspects_list: [
           {
             code: 'W — WILLE (В)',
@@ -626,22 +626,22 @@
         axes_legend: '[STARK / SCHWACH] Energie  •  [RESULTATIV / PROZESSHAFT] Monolog vs. Ringen  •  [DOMINANT / ANPASSEND] Eigenanspruch vs. Ausgleich',
         positions_list: [
           {
-            pos: '1. POSITION — „ZAR“ (ÜBERFLUSS)',
+            pos: 'POSITION I — DIKTAT',
             axes: ['STARK', 'RESULTATIV', 'DOMINANT'],
             summary: 'Monolog und Gewissheit. Beansprucht Führung selbstverständlich und ist immun gegen fremden Spott.'
           },
           {
-            pos: '2. POSITION — „MEISTER“ (NORM)',
+            pos: 'POSITION II — MEISTERSCHAFT',
             axes: ['STARK', 'PROZESSHAFT', 'ANPASSEND'],
             summary: 'Flexibler Dialog auf Augenhöhe. Souverän, kreativ und frei von schmerzhafter Abwehr.'
           },
           {
-            pos: '3. POSITION — „WUNDE“ (KOMPLEX)',
+            pos: 'POSITION III — VERLETZLICHKEIT',
             axes: ['SCHWACH', 'PROZESSHAFT', 'DOMINANT'],
             summary: 'Verletzlichkeit und Abwehr. Quälende Selbstzweifel bei gleichzeitigem Stolz — fähig zum explosiven Durchbruch.'
           },
           {
-            pos: '4. POSITION — „STILLE“ (GLEICHMUT)',
+            pos: 'POSITION IV — STILLE',
             axes: ['SCHWACH', 'RESULTATIV', 'ANPASSEND'],
             summary: 'Energiesparmodus. Delegiert mühelos und schaltet unter Extremlast zuerst ab.'
           }
@@ -651,20 +651,20 @@
         sim_quote: '„Ihr flüstert hinter meinem Rücken, als wäre ich eine rückgratlose Figur?! Ja, meine Hände zittern... aber ich lasse euch NICHT über mich bestimmen — diesen Schritt gehe ich selbst!“',
         sim_options: [
           {
-            code: '1В',
-            label: '1. Wille (Stark / Resultativ / Dominant)',
+            code: 'I',
+            label: '[ I ] WILLE — DIKTAT (Stark • Resultativ • Dominant)',
             correct: false,
             feedback: 'Verfehlt: Der 1. Wille kümmert sich nicht um Geflüster hinter seinem Rücken.'
           },
           {
-            code: '3В',
-            label: '3. Wille (Schwach / Prozesshaft / Dominant)',
+            code: 'III',
+            label: '[ III ] WILLE — VERLETZLICHKEIT (Schwach • Prozesshaft • Dominant)',
             correct: true,
             feedback: 'DURCHBRUCH AKTIVIERT! Die Kombination aus [SCHWACH] Zittern & Scham, [PROZESSHAFT] Fokus auf fremde Blicke und [DOMINANT] unbeugsamem Selbstbestimmungsdrang sprengt die Schutzmauer!'
           },
           {
-            code: '4В',
-            label: '4. Wille (Schwach / Resultativ / Anpassend)',
+            code: 'IV',
+            label: '[ IV ] WILLE — STILLE (Schwach • Resultativ • Anpassend)',
             correct: false,
             feedback: 'Verfehlt: Der 4. Wille gibt in Krisen ruhig nach, statt stolz zu rebellieren.'
           }
@@ -751,10 +751,10 @@
         header: '類型論データベース',
         back_btn: '[ ◂ メニューに戻る ]',
         start_case_btn: '[ 直ちに捜査を開始 ▸ ]',
-        tab_aspects: '01 — 4つの側面',
-        tab_positions: '02 — 4つの順位と3軸',
-        tab_simulator: '03 — 心理撃破演習',
-        aspects_intro: 'サイコソフィー（心理ソフィー）は、人間の精神的優先順位を4つの根源的側面から解明します：',
+        tab_aspects: '側面',
+        tab_positions: '順位と軸',
+        tab_simulator: '演習',
+        aspects_intro: '極限状態において、容疑者は4つの人格側面のいずれかを通じて本性を露わにする：',
         aspects_list: [
           {
             code: 'В — 意志 (WILL)',
@@ -785,22 +785,22 @@
         axes_legend: '【強 / 弱】エネルギー量  •  【リザルト / プロセス】独白か反芻か  •  【ドミナント / アジャスト】自己優先か調和か',
         positions_list: [
           {
-            pos: '第1順位 — 『王』（過剰・独白）',
+            pos: '順位 I — 独断',
             axes: ['強', 'リザルト', 'ドミナント'],
             summary: '圧倒的な確信とトップダウンの決断。他者の嘲笑に揺らがず、議論を必要としない。'
           },
           {
-            pos: '第2順位 — 『職人』（規範・対話）',
+            pos: '順位 II — 熟達',
             axes: ['強', 'プロセス', 'アジャスト'],
             summary: '柔軟で安定した対話型。防衛的にならず、状況や他者と自在に協調できる。'
           },
           {
-            pos: '第3順位 — 『傷口 / コンプレックス』（防衛）',
+            pos: '順位 III — 脆弱',
             axes: ['弱', 'プロセス', 'ドミナント'],
             summary: '過敏な傷つきやすさと強烈なプライドの同居。激しい自己疑念に苦しみながらも決して屈服せず、極限で爆発的な突破を見せる。'
           },
           {
-            pos: '第4順位 — 『凪』（省エネ・受容）',
+            pos: '順位 IV — 静寂',
             axes: ['弱', 'リザルト', 'アジャスト'],
             summary: '執着の薄さと委任。極限ストレス下では真っ先にスイッチを切って消耗を防ぐ。'
           }
@@ -810,20 +810,20 @@
         sim_quote: '「お前ら全員、陰で俺を骨抜きだと笑っているのか！？ああ、手は震えてるさ……だが断じてお前らには決めさせねえ、この一歩は俺自身が踏み出すっ！」',
         sim_options: [
           {
-            code: '1В',
-            label: '第1意志（強 / リザルト / ドミナント）',
+            code: 'I',
+            label: '[ I ] 意志 — 独断（強 • リザルト • ドミナント）',
             correct: false,
             feedback: '不一致：第1意志は陰口に過敏に反応したり、手の震えに引け目を感じたりしない。'
           },
           {
-            code: '3В',
-            label: '第3意志（弱 / プロセス / ドミナント）',
+            code: 'III',
+            label: '[ III ] 意志 — 脆弱（弱 • プロセス • ドミナント）',
             correct: true,
             feedback: '心理撃破発動！【弱】震えと自己疑念＋【プロセス】周囲の視線への過敏な反応＋【ドミナント】決定権を譲らない意地の3軸が一致し、心理防壁が撃破された！'
           },
           {
-            code: '4В',
-            label: '第4意志（弱 / リザルト / アジャスト）',
+            code: 'IV',
+            label: '[ IV ] 意志 — 静寂（弱 • リザルト • アジャスト）',
             correct: false,
             feedback: '不一致：第4意志は危機において穏やかに主導権を委ねるため、激しい反発は起こさない。'
           }

@@ -584,6 +584,12 @@
           el.textContent = tutObj.back_btn;
         } else if (key === 'tutorial_start') {
           el.textContent = tutObj.start_case_btn;
+        } else if (key === 'tut_tab_aspects') {
+          el.textContent = tutObj.tab_aspects;
+        } else if (key === 'tut_tab_positions') {
+          el.textContent = tutObj.tab_positions;
+        } else if (key === 'tut_tab_simulator') {
+          el.textContent = tutObj.tab_simulator;
         } else {
           const val = this.i18n.t(key);
           if (typeof val === 'string') {
@@ -1020,6 +1026,42 @@
       this.els.dangerOverlay.classList.toggle('critical-active', isCritical);
     }
 
+    _formatFunctionSlot(option) {
+      if (!option) return '—';
+      const code = option.function_code || '';
+      const numMatch = code.match(/^[1-4]/);
+      const romanMap = { '1': 'I', '2': 'II', '3': 'III', '4': 'IV' };
+      const roman = numMatch ? romanMap[numMatch[0]] : code;
+
+      const aspectLetter = code.replace(/^[1-4]/, '').toUpperCase();
+      let aspectName = 'ФУНКЦИЯ';
+      const curLang = this.i18n && typeof this.i18n.getLang === 'function' ? this.i18n.getLang() : 'ru';
+      const aspectNames = {
+        'В': { ru: 'ВОЛЯ', en: 'WILL', zh: '意志', de: 'WILLE', ja: '意志' },
+        'W': { ru: 'ВОЛЯ', en: 'WILL', zh: '意志', de: 'WILLE', ja: '意志' },
+        'Л': { ru: 'ЛОГИКА', en: 'LOGIC', zh: '逻辑', de: 'LOGIK', ja: '論理' },
+        'L': { ru: 'ЛОГИКА', en: 'LOGIC', zh: '逻辑', de: 'LOGIK', ja: '論理' },
+        'Ф': { ru: 'ФИЗИКА', en: 'PHYSICS', zh: '物理', de: 'PHYSIK', ja: '物理' },
+        'P': { ru: 'ФИЗИКА', en: 'PHYSICS', zh: '物理', de: 'PHYSIK', ja: '物理' },
+        'F': { ru: 'ФИЗИКА', en: 'PHYSICS', zh: '物理', de: 'PHYSIK', ja: '物理' },
+        'Э': { ru: 'ЭМОЦИЯ', en: 'EMOTION', zh: '情感', de: 'EMOTION', ja: '感情' },
+        'E': { ru: 'ЭМОЦИЯ', en: 'EMOTION', zh: '情感', de: 'EMOTION', ja: '感情' }
+      };
+      if (aspectNames[aspectLetter]) {
+        aspectName = aspectNames[aspectLetter][curLang] || aspectNames[aspectLetter].ru;
+      }
+
+      const fullText = this.i18n.localizeField(option.text) || '';
+      let title = fullText;
+      if (fullText.includes('—')) {
+        title = fullText.split('—').slice(1).join('—').trim();
+      } else if (fullText.includes('-')) {
+        title = fullText.split('-').slice(1).join('-').trim();
+      }
+
+      return `[ ${roman} ] ${aspectName} — ${title}`;
+    }
+
     /**
      * Play Verdict FX (Breakthrough flash or Screen-Shake) & Populate Psychological Autopsy Modal (`VERDICT_ANIM`)
      */
@@ -1050,15 +1092,15 @@
         this.els.verdictRibbon.textContent = this.i18n.t('verdict_lose_tag');
       }
 
-      // Chosen vs True Function
+      // Chosen vs True Function (Roman numeral slot format)
       if (isTimeout) {
         this.els.verdictChosenVal.textContent = this.i18n.t('verdict_timeout_value');
       } else if (chosenOption) {
-        this.els.verdictChosenVal.textContent = `[${chosenOption.function_code}] ${this.i18n.localizeField(chosenOption.text)}`;
+        this.els.verdictChosenVal.textContent = this._formatFunctionSlot(chosenOption);
       }
 
       if (correctOption) {
-        this.els.verdictCorrectVal.textContent = `[${correctOption.function_code}] ${this.i18n.localizeField(correctOption.text)}`;
+        this.els.verdictCorrectVal.textContent = this._formatFunctionSlot(correctOption);
       }
 
       // Canonical Axis Tags e.g. [СЛАБАЯ] [ПРОЦЕССИОННАЯ] [ДОМИНАНТНАЯ]
@@ -1107,7 +1149,7 @@
 
       this.els.sumValCase.textContent = this.i18n.localizeField(verdict.scenario.case_title);
       this.els.sumValProfile.textContent = verdict.correctOption
-        ? `[${verdict.correctOption.function_code}] ${this.i18n.localizeField(verdict.correctOption.axes)}`
+        ? `${this._formatFunctionSlot(verdict.correctOption)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
         : '—';
       this.els.sumValScore.textContent = `${tel.score} (+${verdict.pointsEarned})`;
       this.els.sumValAccuracy.textContent = `${tel.accuracy}%`;
@@ -1125,7 +1167,7 @@
         this.els.sumExplanation.classList.add('status-failed');
         const prefix = this.i18n.t('summary_failed_explanation_prefix');
         const correctInfo = verdict.correctOption
-          ? `[${verdict.correctOption.function_code}] ${this.i18n.localizeField(verdict.correctOption.text)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
+          ? `${this._formatFunctionSlot(verdict.correctOption)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
           : '—';
         this.els.sumExplanation.textContent = `${prefix}${correctInfo}`;
       }
@@ -1239,7 +1281,17 @@
 
         const quoteBox = document.createElement('div');
         quoteBox.className = 'sim-quote-box';
-        quoteBox.textContent = tut.sim_quote;
+
+        const quoteLabel = document.createElement('div');
+        quoteLabel.className = 'sim-quote-label';
+        quoteLabel.textContent = '// ПЕРЕХВАТ АУДИОЗАПИСИ — ТЕСТОВЫЙ ОБЪЕКТ';
+
+        const quoteText = document.createElement('div');
+        quoteText.className = 'simulator-quote sim-quote-text';
+        quoteText.textContent = tut.sim_quote;
+
+        quoteBox.appendChild(quoteLabel);
+        quoteBox.appendChild(quoteText);
 
         const rightCol = document.createElement('div');
         const stack = document.createElement('div');
@@ -1263,7 +1315,7 @@
           const lbl = document.createElement('span');
           lbl.className = 'plate-main-label';
           lbl.style.fontSize = '20px';
-          lbl.textContent = `[${simOpt.code}] ${simOpt.label}`;
+          lbl.textContent = simOpt.label.startsWith('[') ? simOpt.label : `[ ${simOpt.code} ] ${simOpt.label}`;
 
           top.appendChild(hk);
           top.appendChild(lbl);

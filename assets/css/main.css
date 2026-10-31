@@ -1165,8 +1165,16 @@ button {
   background: rgba(255, 171, 0, 0.1);
   border-left: 4px solid var(--neon-amber);
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
   color: #ffe082;
+}
+
+.tut-info-card .axis-tag-pill {
+  font-size: 14px;
+  padding: 6px 14px;
+  letter-spacing: 0.06em;
 }
 
 .tut-cards-grid {
@@ -1224,12 +1232,28 @@ button {
 }
 
 .sim-quote-box {
-  padding: 30px;
+  padding: 26px 30px;
   background: rgba(22, 11, 24, 0.92);
   border-left: 6px solid var(--neon-crimson);
-  font-size: 24px;
-  line-height: 1.55;
-  color: #ffffff;
+}
+
+.sim-quote-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--neon-amber);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.simulator-quote,
+.sim-quote-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 16px;
+  line-height: 1.7;
+  font-style: italic;
+  color: #e2f1ff;
 }
 
 .sim-choices-stack {
