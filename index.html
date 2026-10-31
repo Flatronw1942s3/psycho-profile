@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
-  <title>PSYCHO-PROFILE // ANALYZER</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; media-src 'self' data: blob: mediastream:;" />
+  <title>PSYCHO-PROFILE</title>
   <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 <body>
@@ -42,12 +42,8 @@
       <header id="layer-hud" class="stage-layer hud-bar hidden">
         <div class="hud-left">
           <div class="hud-chip hud-chip-primary">
-            <span class="hud-label" data-i18n="hud_case"></span>
+            <span id="hud-case-label" class="hud-label"></span>
             <span id="hud-case-val" class="hud-value"></span>
-          </div>
-          <div class="hud-chip">
-            <span class="hud-label" data-i18n="hud_phase"></span>
-            <span id="hud-phase-val" class="hud-value"></span>
           </div>
           <div id="hud-mode-badge" class="hud-mode-badge"></div>
         </div>
@@ -56,7 +52,7 @@
           <div id="hud-timer-module" class="hud-timer-module">
             <div class="hud-timer-top">
               <span class="hud-label" data-i18n="hud_timer"></span>
-              <span id="hud-timer-digits" class="hud-timer-digits">--.-s</span>
+              <span id="hud-timer-digits" class="hud-timer-digits">60.0 сек</span>
             </div>
             <div class="hud-timer-track">
               <div id="hud-timer-fill" class="hud-timer-fill"></div>
@@ -73,7 +69,6 @@
             <span class="hud-label" data-i18n="hud_score"></span>
             <span id="hud-score-val" class="hud-value hud-accent-gold">0</span>
           </div>
-          <button type="button" id="btn-hud-backlog" class="hud-action-btn" data-i18n="hud_backlog_btn"></button>
           <button type="button" id="btn-hud-menu" class="hud-action-btn hud-action-warn" data-i18n="hud_menu_btn"></button>
         </div>
       </header>
@@ -97,7 +92,6 @@
           <p id="dlg-text" class="dialogue-text"></p>
 
           <div class="dialogue-footer-row">
-            <span id="controls-bar-text" class="controls-bar-text" data-i18n="controls_bar"></span>
             <button type="button" id="btn-dlg-advance" class="dlg-advance-btn" data-i18n="dlg_continue"></button>
           </div>
         </div>
@@ -142,9 +136,7 @@
         <div class="menu-grid-decor"></div>
         <div class="menu-container">
           <div class="menu-brand-column">
-            <div class="terminal-tag">STEAMWORKS // OFFLINE ENGINE 1920x1080</div>
             <h1 class="menu-logo-title" data-i18n="app_title"></h1>
-            <p class="menu-logo-subtitle" data-i18n="app_subtitle"></p>
 
             <div class="menu-mode-section">
               <div class="section-kicker" data-i18n="menu_select_mode"></div>
@@ -159,8 +151,6 @@
                 </button>
               </div>
             </div>
-
-            <div id="menu-lang-strip" class="menu-lang-strip"></div>
           </div>
 
           <nav class="menu-actions-column">
@@ -234,19 +224,6 @@
       </section>
 
       <!-- =========================================================
-           ADV LAYER 6: BACKLOG MODAL (z-index: 70)
-           ========================================================= -->
-      <div id="modal-backlog" class="modal-backdrop hidden" role="dialog" aria-modal="true">
-        <div class="modal-window backlog-window">
-          <header class="modal-header">
-            <h3 class="modal-title" data-i18n="backlog_title"></h3>
-            <button type="button" id="btn-close-backlog" class="skew-action-btn" data-i18n="close_btn"></button>
-          </header>
-          <div id="backlog-scroll-body" class="backlog-scroll-body"></div>
-        </div>
-      </div>
-
-      <!-- =========================================================
            ADV LAYER 7: VERDICT AUTOPSY MODAL (z-index: 80, FSM: VERDICT_ANIM)
            ========================================================= -->
       <div id="modal-verdict" class="modal-backdrop hidden" role="dialog" aria-modal="true">
@@ -291,23 +268,68 @@
           </header>
 
           <div class="settings-body">
-            <div class="settings-group">
-              <label class="settings-label" data-i18n="settings_lang_label"></label>
+            <!-- SECTION: INTERFACE LANGUAGE -->
+            <section class="settings-section-card">
+              <div class="settings-section-title" data-i18n="settings_sec_lang"></div>
               <div id="settings-lang-buttons" class="settings-pill-row"></div>
-            </div>
+            </section>
 
-            <div class="settings-group">
-              <label class="settings-label" data-i18n="settings_audio_label"></label>
-              <div class="settings-pill-row">
-                <button type="button" id="btn-audio-toggle" class="settings-pill-btn"></button>
-              </div>
-            </div>
+            <div class="settings-columns-grid">
+              <!-- SECTION: AUDIO -->
+              <section class="settings-section-card">
+                <div class="settings-section-title" data-i18n="settings_sec_audio"></div>
 
-            <div class="settings-group">
-              <label class="settings-label" data-i18n="settings_scout_notimer_label"></label>
-              <div class="settings-pill-row">
-                <button type="button" id="btn-scout-timer-toggle" class="settings-pill-btn"></button>
-              </div>
+                <div class="settings-control-row">
+                  <label class="settings-row-label" for="settings-master-volume" data-i18n="settings_master_vol"></label>
+                  <div class="settings-slider-wrap">
+                    <input
+                      type="range"
+                      id="settings-master-volume"
+                      class="settings-slider"
+                      min="0"
+                      max="100"
+                      step="1"
+                      value="80"
+                    />
+                    <span id="settings-master-volume-val" class="settings-slider-val">80%</span>
+                  </div>
+                </div>
+
+                <div class="settings-control-row">
+                  <span class="settings-row-label" data-i18n="settings_bgm_label"></span>
+                  <button type="button" id="btn-bgm-toggle" class="settings-switch-btn active"></button>
+                </div>
+
+                <div class="settings-control-row">
+                  <span class="settings-row-label" data-i18n="settings_sfx_label"></span>
+                  <button type="button" id="btn-sfx-toggle" class="settings-switch-btn active"></button>
+                </div>
+
+                <div class="settings-control-row settings-control-row-stack">
+                  <label class="settings-row-label" for="settings-audio-device" data-i18n="settings_sink_label"></label>
+                  <select id="settings-audio-device" class="settings-select"></select>
+                </div>
+              </section>
+
+              <!-- SECTION: VISUALS -->
+              <section class="settings-section-card">
+                <div class="settings-section-title" data-i18n="settings_sec_visual"></div>
+
+                <div class="settings-control-row">
+                  <span class="settings-row-label" data-i18n="settings_shake_label"></span>
+                  <button type="button" id="btn-shake-toggle" class="settings-switch-btn active"></button>
+                </div>
+
+                <div class="settings-control-row">
+                  <span class="settings-row-label" data-i18n="settings_crt_label"></span>
+                  <button type="button" id="btn-crt-toggle" class="settings-switch-btn active"></button>
+                </div>
+
+                <div class="settings-control-row settings-control-row-stack">
+                  <span class="settings-row-label" data-i18n="settings_fullscreen_label"></span>
+                  <button type="button" id="btn-fullscreen-toggle" class="skew-action-btn settings-fullscreen-btn"></button>
+                </div>
+              </section>
             </div>
           </div>
 
@@ -318,9 +340,12 @@
         </div>
       </div>
 
+      <!-- GLOBAL CRT / SCANLINES STAGE OVERLAY -->
+      <div id="stage-crt-overlay" class="stage-crt-overlay" aria-hidden="true"></div>
+
       <!-- BREAKTHROUGH FLASH OVERLAY -->
       <div id="breakthrough-flash" class="breakthrough-flash hidden">
-        <div class="breakthrough-slash-text">BREAKTHROUGH // ПРОРЫВ</div>
+        <div class="breakthrough-slash-text" data-i18n="breakthrough_banner">ПРОРЫВ</div>
       </div>
 
       <!-- STEAM ACHIEVEMENT TOAST -->
@@ -328,6 +353,9 @@
 
     </main>
   </div>
+
+  <!-- Hardware Audio Output Routing Bridge (HTMLMediaElement.setSinkId) -->
+  <audio id="audio-sink-bridge" class="hidden" playsinline></audio>
 
   <!-- Strictly Local Engine Scripts -->
   <script src="assets/js/achievements.js"></script>

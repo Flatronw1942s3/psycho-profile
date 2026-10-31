@@ -27,7 +27,7 @@
     [FSM_STATES.LOADING]: [FSM_STATES.MENU_IDLE, FSM_STATES.DIALOGUE_TYPE],
     [FSM_STATES.MENU_IDLE]: [FSM_STATES.DIALOGUE_TYPE, FSM_STATES.TUTORIAL_READ],
     [FSM_STATES.TUTORIAL_READ]: [FSM_STATES.MENU_IDLE, FSM_STATES.DIALOGUE_TYPE],
-    [FSM_STATES.DIALOGUE_TYPE]: [FSM_STATES.CHOICE_IDLE, FSM_STATES.MENU_IDLE],
+    [FSM_STATES.DIALOGUE_TYPE]: [FSM_STATES.CHOICE_IDLE, FSM_STATES.VERDICT_ANIM, FSM_STATES.MENU_IDLE],
     [FSM_STATES.CHOICE_IDLE]: [FSM_STATES.VERDICT_ANIM, FSM_STATES.MENU_IDLE],
     [FSM_STATES.VERDICT_ANIM]: [FSM_STATES.SUMMARY_READ, FSM_STATES.MENU_IDLE],
     [FSM_STATES.SUMMARY_READ]: [FSM_STATES.DIALOGUE_TYPE, FSM_STATES.MENU_IDLE]
@@ -44,7 +44,6 @@
     scenarioRequired: [
       'id',
       'case_number',
-      'phase_code',
       'time_limit_sec',
       'sprite',
       'background',
@@ -78,6 +77,13 @@
         if (!(field in scenario)) {
           errors.push(`${prefix}: Missing required field "${field}".`);
         }
+      }
+
+      const validCaseNumber =
+        (typeof scenario.case_number === 'string' && scenario.case_number.trim().length > 0) ||
+        this.isLocalizedObject(scenario.case_number, requiredLocales);
+      if (!validCaseNumber) {
+        errors.push(`${prefix}: "case_number" must be a localized object or non-empty string.`);
       }
 
       if (typeof scenario.time_limit_sec !== 'number' || scenario.time_limit_sec <= 0) {
@@ -196,46 +202,330 @@
   }
 
   /**
-   * Procedural Web Audio API Sound Effects Synthesizer (100% Autonomous / Zero External Assets)
+   * Procedural Web Audio API Synthesizer — Neo-Noir Ambient BGM, Interface/Timer SFX & Sink Routing
+   * (100% Autonomous / Zero External Assets)
    */
   class ProceduralAudioSynth {
     constructor() {
       this._ctx = null;
-      this._enabled = true;
+      this._masterGain = null;
+      this._bgmGain = null;
+      this._sfxGain = null;
+      this._streamDest = null;
+      this._sinkAudioEl = null;
+      this._usingStreamBridge = false;
+      this._bridgeStarting = false;
+
+      this._masterVolume = 0.8;
+      this._bgmEnabled = true;
+      this._sfxEnabled = true;
+      this._sinkId = '';
+
       this._lastBlipTime = 0;
+      this._bgmDroneStarted = false;
+      this._bgmInterval = null;
+      this._bgmStep = 0;
+    }
+
+    attachSinkElement(audioEl) {
+      if (!audioEl) return;
+      this._sinkAudioEl = audioEl;
+      this._sinkAudioEl.playsInline = true;
+    }
+
+    setMasterVolume(vol) {
+      const clamped = Math.max(0, Math.min(1, Number.isFinite(Number(vol)) ? Number(vol) : 0.8));
+      this._masterVolume = clamped;
+      if (this._ctx && this._masterGain) {
+        const now = this._ctx.currentTime;
+        this._masterGain.gain.cancelScheduledValues(now);
+        this._masterGain.gain.setTargetAtTime(clamped, now, 0.02);
+        this._syncBgmPlayback();
+      }
+    }
+
+    getMasterVolume() {
+      return this._masterVolume;
+    }
+
+    setBgmEnabled(flag) {
+      this._bgmEnabled = Boolean(flag);
+      if (this._ctx && this._bgmGain) {
+        this._syncBgmPlayback();
+      }
+    }
+
+    isBgmEnabled() {
+      return this._bgmEnabled;
+    }
+
+    setSfxEnabled(flag) {
+      this._sfxEnabled = Boolean(flag);
+      if (this._ctx && this._sfxGain) {
+        const now = this._ctx.currentTime;
+        this._sfxGain.gain.cancelScheduledValues(now);
+        this._sfxGain.gain.setTargetAtTime(this._sfxEnabled ? 1.0 : 0.0, now, 0.015);
+      }
+    }
+
+    isSfxEnabled() {
+      return this._sfxEnabled;
     }
 
     setEnabled(flag) {
-      this._enabled = Boolean(flag);
+      const val = Boolean(flag);
+      this.setBgmEnabled(val);
+      this.setSfxEnabled(val);
     }
 
     isEnabled() {
-      return this._enabled;
+      return this._bgmEnabled || this._sfxEnabled;
     }
 
-    _ensureContext() {
-      if (!this._enabled) return null;
+    getSinkId() {
+      return this._sinkId;
+    }
+
+    async setSinkId(deviceId) {
+      const normalized = typeof deviceId === 'string' ? deviceId : '';
+      this._sinkId = normalized;
+
+      if (this._ctx) {
+        await this._activateSinkBridge();
+      }
+
+      if (this._sinkAudioEl && typeof this._sinkAudioEl.setSinkId === 'function') {
+        try {
+          await this._sinkAudioEl.setSinkId(this._sinkId);
+          if (this._usingStreamBridge && this._sinkAudioEl.paused) {
+            this._sinkAudioEl.play().catch(() => {});
+          }
+        } catch (_) {
+          this._sinkId = '';
+          try {
+            await this._sinkAudioEl.setSinkId('');
+          } catch (__) {
+            // Ignore fallback error
+          }
+        }
+      } else if (this._ctx && typeof this._ctx.setSinkId === 'function') {
+        try {
+          await this._ctx.setSinkId(this._sinkId);
+        } catch (_) {
+          this._sinkId = '';
+        }
+      }
+
+      return this._sinkId;
+    }
+
+    /**
+     * Unlock AudioContext, activate <audio> sinkId bridge, and sync ambient BGM on user gesture
+     */
+    unlockAndSync() {
+      const ctx = this._ensureContext(true);
+      if (!ctx) return;
+      this._activateSinkBridge();
+      this._syncBgmPlayback();
+    }
+
+    _ensureContext(forceInit = false) {
+      if (!forceInit && !this._sfxEnabled && !this._bgmEnabled) return null;
       const AudioCtx = global.AudioContext || global.webkitAudioContext;
       if (!AudioCtx) return null;
+
       if (!this._ctx) {
         try {
           this._ctx = new AudioCtx();
+          this._masterGain = this._ctx.createGain();
+          this._bgmGain = this._ctx.createGain();
+          this._sfxGain = this._ctx.createGain();
+
+          this._masterGain.gain.value = this._masterVolume;
+          this._bgmGain.gain.value = this._bgmEnabled ? 1.0 : 0.0;
+          this._sfxGain.gain.value = this._sfxEnabled ? 1.0 : 0.0;
+
+          this._bgmGain.connect(this._masterGain);
+          this._sfxGain.connect(this._masterGain);
+          this._masterGain.connect(this._ctx.destination);
         } catch (_) {
+          this._ctx = null;
           return null;
         }
       }
+
       if (this._ctx.state === 'suspended') {
         this._ctx.resume().catch(() => {});
       }
+
+      this._activateSinkBridge();
+      this._syncBgmPlayback();
       return this._ctx;
+    }
+
+    async _activateSinkBridge() {
+      if (!this._ctx || !this._masterGain) return;
+      if (
+        !this._sinkAudioEl ||
+        typeof this._sinkAudioEl.setSinkId !== 'function' ||
+        typeof this._ctx.createMediaStreamDestination !== 'function'
+      ) {
+        return;
+      }
+
+      if (this._usingStreamBridge) {
+        if (this._sinkAudioEl.paused) {
+          this._sinkAudioEl.play().catch(() => {});
+        }
+        return;
+      }
+
+      if (this._bridgeStarting) return;
+      this._bridgeStarting = true;
+
+      try {
+        if (!this._streamDest) {
+          this._streamDest = this._ctx.createMediaStreamDestination();
+        }
+        if (this._sinkAudioEl.srcObject !== this._streamDest.stream) {
+          this._sinkAudioEl.srcObject = this._streamDest.stream;
+        }
+        if (this._sinkId) {
+          try {
+            await this._sinkAudioEl.setSinkId(this._sinkId);
+          } catch (_) {
+            this._sinkId = '';
+          }
+        }
+        await this._sinkAudioEl.play();
+
+        if (!this._usingStreamBridge) {
+          try {
+            this._masterGain.disconnect(this._ctx.destination);
+          } catch (_) {
+            // Ignore if already disconnected
+          }
+          this._masterGain.connect(this._streamDest);
+          this._usingStreamBridge = true;
+        }
+      } catch (_) {
+        // Autoplay not yet unlocked; stays connected to ctx.destination until next user gesture
+      } finally {
+        this._bridgeStarting = false;
+      }
+    }
+
+    _startBgmDrone() {
+      if (this._bgmDroneStarted || !this._ctx || !this._bgmGain) return;
+      this._bgmDroneStarted = true;
+
+      const ctx = this._ctx;
+      const now = ctx.currentTime;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(220, now);
+      filter.Q.setValueAtTime(1.4, now);
+
+      const droneGain = ctx.createGain();
+      droneGain.gain.setValueAtTime(0.052, now);
+
+      const oscSub = ctx.createOscillator();
+      oscSub.type = 'triangle';
+      oscSub.frequency.setValueAtTime(55.0, now); // A1
+
+      const oscFifth = ctx.createOscillator();
+      oscFifth.type = 'sine';
+      oscFifth.frequency.setValueAtTime(82.41, now); // E2
+      oscFifth.detune.setValueAtTime(4, now);
+
+      // Slow breathing LFO on filter cutoff
+      const lfo = ctx.createOscillator();
+      const lfoGain = ctx.createGain();
+      lfo.type = 'sine';
+      lfo.frequency.setValueAtTime(0.11, now);
+      lfoGain.gain.setValueAtTime(75, now);
+
+      lfo.connect(lfoGain);
+      lfoGain.connect(filter.frequency);
+
+      oscSub.connect(filter);
+      oscFifth.connect(filter);
+      filter.connect(droneGain);
+      droneGain.connect(this._bgmGain);
+
+      oscSub.start(now);
+      oscFifth.start(now);
+      lfo.start(now);
+    }
+
+    _triggerBgmChordPulse() {
+      if (!this._ctx || !this._bgmGain || !this._bgmEnabled || this._masterVolume <= 0.001) return;
+      if (this._ctx.state !== 'running') return;
+
+      const chords = [
+        [220.0, 261.63, 329.63],   // Am
+        [174.61, 220.0, 261.63],   // Fmaj7
+        [146.83, 220.0, 329.63],   // Dm9
+        [164.81, 246.94, 293.66]   // Em7
+      ];
+      const chord = chords[this._bgmStep % chords.length];
+      this._bgmStep += 1;
+
+      const now = this._ctx.currentTime;
+      const filter = this._ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(640, now);
+      filter.connect(this._bgmGain);
+
+      chord.forEach((freq, idx) => {
+        const osc = this._ctx.createOscillator();
+        const gain = this._ctx.createGain();
+        const t0 = now + idx * 0.14;
+
+        osc.type = idx === 0 ? 'triangle' : 'sine';
+        osc.frequency.setValueAtTime(freq, t0);
+
+        gain.gain.setValueAtTime(0.0001, t0);
+        gain.gain.linearRampToValueAtTime(0.022, t0 + 0.85);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 3.0);
+
+        osc.connect(gain);
+        gain.connect(filter);
+        osc.start(t0);
+        osc.stop(t0 + 3.1);
+      });
+    }
+
+    _syncBgmPlayback() {
+      if (!this._ctx || !this._bgmGain) return;
+      const now = this._ctx.currentTime;
+      const shouldPlay = this._bgmEnabled && this._masterVolume > 0.001;
+
+      this._bgmGain.gain.cancelScheduledValues(now);
+      this._bgmGain.gain.setTargetAtTime(this._bgmEnabled ? 1.0 : 0.0, now, 0.08);
+
+      if (shouldPlay) {
+        this._startBgmDrone();
+        if (this._bgmInterval === null) {
+          this._triggerBgmChordPulse();
+          this._bgmInterval = global.setInterval(() => {
+            this._triggerBgmChordPulse();
+          }, 3400);
+        }
+      } else if (this._bgmInterval !== null) {
+        global.clearInterval(this._bgmInterval);
+        this._bgmInterval = null;
+      }
     }
 
     /**
      * Synthesized terminal blip during typewriter reveal
      */
     playTypeBlip(charIndex = 0) {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
 
       const now = ctx.currentTime;
       if (now - this._lastBlipTime < 0.036) return;
@@ -254,7 +544,7 @@
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.032);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(this._sfxGain);
       osc.start(now);
       osc.stop(now + 0.035);
     }
@@ -263,8 +553,9 @@
      * Subtle cursor tick when navigating verdict plates via Arrows
      */
     playHoverTick() {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
       const now = ctx.currentTime;
 
       const osc = ctx.createOscillator();
@@ -277,7 +568,7 @@
       gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.028);
 
       osc.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(this._sfxGain);
       osc.start(now);
       osc.stop(now + 0.03);
     }
@@ -286,8 +577,9 @@
      * Tactile electromagnetic relay click on choice selection
      */
     playRelayClick() {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
       const now = ctx.currentTime;
 
       // Transient noise burst for mechanical latch feel
@@ -312,7 +604,7 @@
 
       noise.connect(filter);
       filter.connect(nGain);
-      nGain.connect(ctx.destination);
+      nGain.connect(this._sfxGain);
       noise.start(now);
 
       // Solenoid body thump
@@ -326,7 +618,7 @@
       oGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.048);
 
       osc.connect(oGain);
-      oGain.connect(ctx.destination);
+      oGain.connect(this._sfxGain);
       osc.start(now);
       osc.stop(now + 0.05);
     }
@@ -335,8 +627,9 @@
      * Low ominous Crisis Timer pulse (intensifies in last 5 seconds)
      */
     playTimerPulse(isCritical = false) {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
       const now = ctx.currentTime;
 
       const triggerBeat = (offset, startHz, peakGain) => {
@@ -357,7 +650,7 @@
 
         osc.connect(filter);
         filter.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this._sfxGain);
         osc.start(now + offset);
         osc.stop(now + offset + 0.22);
       };
@@ -372,8 +665,9 @@
      * Breakthrough harmonic chord sweep on accurate profiling
      */
     playBreakthrough() {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
       const now = ctx.currentTime;
       const notes = [523.25, 659.25, 783.99, 1046.5];
 
@@ -391,7 +685,7 @@
         gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.48);
 
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this._sfxGain);
         osc.start(t0);
         osc.stop(t0 + 0.5);
       });
@@ -401,8 +695,9 @@
      * Dissonant shock sound on wrong answer or Will Stupor timeout
      */
     playErrorShock() {
+      if (!this._sfxEnabled || this._masterVolume <= 0.001) return;
       const ctx = this._ensureContext();
-      if (!ctx) return;
+      if (!ctx || !this._sfxGain) return;
       const now = ctx.currentTime;
 
       [98, 138.59].forEach((freq) => {
@@ -422,7 +717,7 @@
 
         osc.connect(filter);
         filter.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this._sfxGain);
         osc.start(now);
         osc.stop(now + 0.38);
       });
@@ -447,7 +742,12 @@
       this._profile = {
         lang: 'ru',
         difficulty: 'scout', // 'scout' | 'mindhunter'
-        audioEnabled: true,
+        masterVolume: 0.8,
+        bgmEnabled: true,
+        sfxEnabled: true,
+        audioSinkId: '',
+        screenShakeEnabled: true,
+        crtEnabled: true,
         scoutUnlimitedTimer: false,
         solvedScenarioIds: [],
         highScore: 0
@@ -466,8 +766,8 @@
       this._correctAttempts = 0;
 
       // Crisis Timer Runtime
-      this._timerDurationSec = 15;
-      this._timerRemainingSec = 15;
+      this._timerDurationSec = 60;
+      this._timerRemainingSec = 60;
       this._timerActive = false;
       this._timerUnlimited = false;
       this._rafId = null;
@@ -476,9 +776,6 @@
 
       // Last Verdict Payload for VERDICT_ANIM & SUMMARY_READ
       this._lastVerdictResult = null;
-
-      // Backlog Archive across Current & Past Cases
-      this._backlogCases = [];
     }
 
     get STATES() {
@@ -532,10 +829,20 @@
             if (parsed.difficulty === 'scout' || parsed.difficulty === 'mindhunter') {
               this._profile.difficulty = parsed.difficulty;
             }
-            if (typeof parsed.audioEnabled === 'boolean') this._profile.audioEnabled = parsed.audioEnabled;
-            if (typeof parsed.scoutUnlimitedTimer === 'boolean') {
-              this._profile.scoutUnlimitedTimer = parsed.scoutUnlimitedTimer;
+            if (typeof parsed.audioEnabled === 'boolean' && parsed.bgmEnabled === undefined) {
+              this._profile.bgmEnabled = parsed.audioEnabled;
+              this._profile.sfxEnabled = parsed.audioEnabled;
             }
+            if (typeof parsed.masterVolume === 'number' && Number.isFinite(parsed.masterVolume)) {
+              this._profile.masterVolume = Math.max(0, Math.min(1, parsed.masterVolume));
+            }
+            if (typeof parsed.bgmEnabled === 'boolean') this._profile.bgmEnabled = parsed.bgmEnabled;
+            if (typeof parsed.sfxEnabled === 'boolean') this._profile.sfxEnabled = parsed.sfxEnabled;
+            if (typeof parsed.audioSinkId === 'string') this._profile.audioSinkId = parsed.audioSinkId;
+            if (typeof parsed.screenShakeEnabled === 'boolean') {
+              this._profile.screenShakeEnabled = parsed.screenShakeEnabled;
+            }
+            if (typeof parsed.crtEnabled === 'boolean') this._profile.crtEnabled = parsed.crtEnabled;
             if (Array.isArray(parsed.solvedScenarioIds)) {
               this._profile.solvedScenarioIds = parsed.solvedScenarioIds;
             }
@@ -547,7 +854,14 @@
       }
 
       this.i18n.setLang(this._profile.lang);
-      this.audio.setEnabled(this._profile.audioEnabled);
+      this.audio.setMasterVolume(this._profile.masterVolume);
+      this.audio.setBgmEnabled(this._profile.bgmEnabled);
+      this.audio.setSfxEnabled(this._profile.sfxEnabled);
+      if (this._profile.audioSinkId) {
+        this.audio.setSinkId(this._profile.audioSinkId).catch(() => {});
+      }
+      this._emit('languageChanged', { lang: this.i18n.getLang() });
+      this._emit('profileUpdated', this.getProfile());
     }
 
     _saveProfile() {
@@ -576,7 +890,7 @@
         return false;
       }
 
-      if (prevState === FSM_STATES.CHOICE_IDLE) {
+      if (nextState !== FSM_STATES.DIALOGUE_TYPE && nextState !== FSM_STATES.CHOICE_IDLE) {
         this._stopCrisisTimer();
       }
 
@@ -630,9 +944,53 @@
       }
     }
 
+    setMasterVolume(vol) {
+      const clamped = Math.max(0, Math.min(1, Number.isFinite(Number(vol)) ? Number(vol) : 0.8));
+      this._profile.masterVolume = clamped;
+      this.audio.setMasterVolume(clamped);
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+    }
+
+    setBgmEnabled(enabled) {
+      this._profile.bgmEnabled = Boolean(enabled);
+      this.audio.setBgmEnabled(this._profile.bgmEnabled);
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+    }
+
+    setSfxEnabled(enabled) {
+      this._profile.sfxEnabled = Boolean(enabled);
+      this.audio.setSfxEnabled(this._profile.sfxEnabled);
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+    }
+
+    async setAudioSinkId(sinkId) {
+      const applied = await this.audio.setSinkId(sinkId);
+      this._profile.audioSinkId = applied;
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+      return applied;
+    }
+
+    setScreenShakeEnabled(enabled) {
+      this._profile.screenShakeEnabled = Boolean(enabled);
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+    }
+
+    setCrtEnabled(enabled) {
+      this._profile.crtEnabled = Boolean(enabled);
+      this._saveProfile();
+      this._emit('profileUpdated', this.getProfile());
+    }
+
     setAudioEnabled(enabled) {
-      this._profile.audioEnabled = Boolean(enabled);
-      this.audio.setEnabled(this._profile.audioEnabled);
+      const val = Boolean(enabled);
+      this._profile.bgmEnabled = val;
+      this._profile.sfxEnabled = val;
+      this.audio.setEnabled(val);
       this._saveProfile();
       this._emit('profileUpdated', this.getProfile());
     }
@@ -680,6 +1038,7 @@
     startScenario(scenarioIndex = 0) {
       if (!this._db || !this._db.scenarios[scenarioIndex]) return false;
 
+      const sc = this._db.scenarios[scenarioIndex];
       this._currentScenarioIndex = scenarioIndex;
       this._currentDialogueIndex = 0;
       this._selectedOptionIndex = 0;
@@ -688,13 +1047,15 @@
       this._isPaused = false;
 
       this.audio.playRelayClick();
+      this._prepareCrisisTimer(sc);
+
       const ok = this._transitionTo(FSM_STATES.DIALOGUE_TYPE, {
-        scenario: this.getCurrentScenario(),
+        scenario: sc,
         dialogueIndex: 0
       });
 
       if (ok) {
-        this._recordCurrentLineToBacklog();
+        this._startCrisisTimerLoop();
         this._emitDialogueLine();
       }
       return ok;
@@ -738,7 +1099,7 @@
       const modes = (this._db && this._db.difficulty_modes) || {};
       return modes[mode] || {
         id: mode,
-        override_time_limit_sec: mode === 'scout' ? 30 : null,
+        override_time_limit_sec: mode === 'scout' ? 60 : 30,
         show_axes_on_options: mode === 'scout',
         allow_evidence_hint: mode === 'scout',
         score_multiplier: mode === 'mindhunter' ? 1.5 : 1.0
@@ -751,8 +1112,8 @@
         this._totalAttempts === 0 ? 100 : Math.round((this._correctAttempts / this._totalAttempts) * 100);
       return {
         caseTitle: sc ? this.i18n.localizeField(sc.case_title) : '—',
-        caseNumber: sc ? sc.case_number : '—',
-        phaseCode: sc ? sc.phase_code : '—',
+        caseNumber: sc ? this.i18n.localizeField(sc.case_number) : '—',
+        characterName: sc ? this.i18n.localizeField(sc.character_name) : '—',
         accuracy,
         score: this._sessionScore,
         difficulty: this._profile.difficulty,
@@ -761,49 +1122,6 @@
         timerUnlimited: this._timerUnlimited,
         timerActive: this._timerActive
       };
-    }
-
-    _recordCurrentLineToBacklog() {
-      const sc = this.getCurrentScenario();
-      const line = this.getCurrentDialogueLine();
-      if (!sc || !line) return;
-
-      let group = this._backlogCases.find((g) => g.scenarioInstanceKey === `${sc.id}_${this._totalAttempts}`);
-      if (!group) {
-        group = {
-          scenarioInstanceKey: `${sc.id}_${this._totalAttempts}`,
-          scenarioId: sc.id,
-          caseTitle: sc.case_title,
-          entries: []
-        };
-        this._backlogCases.push(group);
-      }
-
-      if (!group.entries.some((e) => e.lineId === line.id)) {
-        group.entries.push({
-          lineId: line.id,
-          speaker: line.speaker,
-          text: line.text,
-          climax: Boolean(line.climax)
-        });
-      }
-    }
-
-    getBacklogArchive() {
-      const currentSc = this.getCurrentScenario();
-      const activeKey = currentSc ? `${currentSc.id}_${this._totalAttempts}` : null;
-      return this._backlogCases
-        .slice()
-        .reverse()
-        .map((group) => ({
-          isCurrent: group.scenarioInstanceKey === activeKey,
-          caseTitle: this.i18n.localizeField(group.caseTitle),
-          entries: group.entries.map((entry) => ({
-            speaker: this.i18n.localizeField(entry.speaker),
-            text: this.i18n.localizeField(entry.text),
-            climax: entry.climax
-          }))
-        }));
     }
 
     _emitDialogueLine() {
@@ -822,6 +1140,7 @@
 
     /**
      * Advance to next dialogue line or transition `DIALOGUE_TYPE -> CHOICE_IDLE`
+     * without resetting the continuous case timer.
      */
     advanceDialogue() {
       if (this._state !== FSM_STATES.DIALOGUE_TYPE || this._isPaused) return false;
@@ -831,15 +1150,14 @@
       if (this._currentDialogueIndex + 1 < sc.dialogue.length) {
         this._currentDialogueIndex += 1;
         this.audio.playHoverTick();
-        this._recordCurrentLineToBacklog();
         this._emitDialogueLine();
         return true;
       }
 
-      // Final line completed -> Enter CHOICE_IDLE and activate Crisis Timer
+      // Final line completed -> Enter CHOICE_IDLE while keeping the continuous timer running
       this._selectedOptionIndex = 0;
       this._hintRevealed = false;
-      this._setupAndStartCrisisTimer(sc);
+      this.audio.playHoverTick();
       this._transitionTo(FSM_STATES.CHOICE_IDLE, {
         scenario: sc,
         selectedOptionIndex: this._selectedOptionIndex
@@ -847,14 +1165,14 @@
       return true;
     }
 
-    _setupAndStartCrisisTimer(scenario) {
+    _prepareCrisisTimer(scenario) {
       this._stopCrisisTimer();
       const diffCfg = this.getDifficultyConfig();
 
       if (this._profile.difficulty === 'scout' && this._profile.scoutUnlimitedTimer) {
         this._timerUnlimited = true;
-        this._timerDurationSec = 30;
-        this._timerRemainingSec = 30;
+        this._timerDurationSec = 60;
+        this._timerRemainingSec = 60;
         this._timerActive = false;
         return;
       }
@@ -867,13 +1185,33 @@
 
       this._timerDurationSec = limit;
       this._timerRemainingSec = limit;
+      this._lastPulseWholeSec = Math.ceil(limit);
+    }
+
+    _startCrisisTimerLoop() {
+      if (this._timerUnlimited) return;
+
+      this._stopCrisisTimer();
       this._timerActive = true;
       this._lastFrameTs = performance.now();
-      this._lastPulseWholeSec = Math.ceil(limit);
 
-      const tick = (now) => {
-        if (!this._timerActive || this._state !== FSM_STATES.CHOICE_IDLE) return;
+      this._emit('timerTick', {
+        remaining: this._timerRemainingSec,
+        duration: this._timerDurationSec,
+        ratio: this._timerDurationSec > 0 ? this._timerRemainingSec / this._timerDurationSec : 1,
+        isCritical: this._timerRemainingSec <= 5
+      });
 
+      const tick = () => {
+        if (
+          !this._timerActive ||
+          (this._state !== FSM_STATES.DIALOGUE_TYPE && this._state !== FSM_STATES.CHOICE_IDLE)
+        ) {
+          this._stopCrisisTimer();
+          return;
+        }
+
+        const now = performance.now();
         if (!this._isPaused) {
           const dt = Math.min(0.25, Math.max(0, (now - this._lastFrameTs) / 1000));
           this._timerRemainingSec = Math.max(0, this._timerRemainingSec - dt);
@@ -892,22 +1230,22 @@
           });
 
           if (this._timerRemainingSec <= 0) {
+            this._lastFrameTs = now;
             this._handleCrisisTimeout();
             return;
           }
         }
 
         this._lastFrameTs = now;
-        this._rafId = global.requestAnimationFrame(tick);
       };
 
-      this._rafId = global.requestAnimationFrame(tick);
+      this._rafId = global.setInterval(tick, 33);
     }
 
     _stopCrisisTimer() {
       this._timerActive = false;
       if (this._rafId !== null) {
-        global.cancelAnimationFrame(this._rafId);
+        global.clearInterval(this._rafId);
         this._rafId = null;
       }
     }

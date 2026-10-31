@@ -31,7 +31,6 @@
       this._simSelectedCode = null;
 
       // Overlay flags
-      this._backlogOpen = false;
       this._settingsOpen = false;
 
       this.els = {};
@@ -40,14 +39,19 @@
     init() {
       this._bindOverlayProtection();
       this._cacheElements();
+      this.engine.audio.attachSinkElement(this.els.audioSinkBridge);
+      this._bindAudioUnlockAndDeviceWatcher();
       this._initViewportScaler();
       this._bindUIEvents();
-      this._bindKeyboardAndWheelControls();
+      this._bindKeyboardControls();
       this._bindEngineEvents();
       this._bindAchievementToast();
 
       this.applyStaticTranslations();
       this.renderLanguageSelectors();
+      this._applyVisualSettings();
+      this.renderSettingsState();
+      this._refreshAudioOutputDevices();
 
       this.engine.boot('assets/data/scenarios.json').catch((err) => {
         console.error('[Boot Error]:', err);
@@ -56,6 +60,30 @@
           this.els.bootStatus.style.color = '#ff1744';
         }
       });
+    }
+
+    /**
+     * Unlock Web Audio + HTMLAudioElement sink bridge on first user interaction,
+     * and watch hardware audio device & fullscreen transitions.
+     */
+    _bindAudioUnlockAndDeviceWatcher() {
+      const unlockHandler = () => {
+        this.engine.audio.unlockAndSync();
+      };
+      global.addEventListener('pointerdown', unlockHandler, { passive: true });
+      global.addEventListener('keydown', unlockHandler, { passive: true });
+
+      const syncFullscreenUI = () => {
+        this.renderSettingsState();
+      };
+      document.addEventListener('fullscreenchange', syncFullscreenUI);
+      document.addEventListener('webkitfullscreenchange', syncFullscreenUI);
+
+      if (navigator.mediaDevices && typeof navigator.mediaDevices.addEventListener === 'function') {
+        navigator.mediaDevices.addEventListener('devicechange', () => {
+          this._refreshAudioOutputDevices();
+        });
+      }
     }
 
     /**
@@ -81,15 +109,14 @@
         charSprite: byId('char-sprite'),
 
         hud: byId('layer-hud'),
+        hudCaseLabel: byId('hud-case-label'),
         hudCaseVal: byId('hud-case-val'),
-        hudPhaseVal: byId('hud-phase-val'),
         hudModeBadge: byId('hud-mode-badge'),
         hudTimerModule: byId('hud-timer-module'),
         hudTimerDigits: byId('hud-timer-digits'),
         hudTimerFill: byId('hud-timer-fill'),
         hudAccuracyVal: byId('hud-accuracy-val'),
         hudScoreVal: byId('hud-score-val'),
-        btnHudBacklog: byId('btn-hud-backlog'),
         btnHudMenu: byId('btn-hud-menu'),
 
         dialogueLayer: byId('layer-dialogue'),
@@ -116,7 +143,6 @@
         menuBgImage: byId('menu-bg-image'),
         cardModeScout: byId('card-mode-scout'),
         cardModePro: byId('card-mode-mindhunter'),
-        menuLangStrip: byId('menu-lang-strip'),
         btnMenuStart: byId('btn-menu-start'),
         btnMenuTutorial: byId('btn-menu-tutorial'),
         btnMenuSettings: byId('btn-menu-settings'),
@@ -142,10 +168,6 @@
         btnSumRetry: byId('btn-sum-retry'),
         btnSumMenu: byId('btn-sum-menu'),
 
-        modalBacklog: byId('modal-backlog'),
-        btnCloseBacklog: byId('btn-close-backlog'),
-        backlogBody: byId('backlog-scroll-body'),
-
         modalVerdict: byId('modal-verdict'),
         verdictRibbon: byId('verdict-outcome-ribbon'),
         verdictChosenVal: byId('verdict-chosen-val'),
@@ -157,11 +179,19 @@
         modalSettings: byId('modal-settings'),
         btnCloseSettings: byId('btn-close-settings'),
         settingsLangButtons: byId('settings-lang-buttons'),
-        btnAudioToggle: byId('btn-audio-toggle'),
-        btnScoutTimerToggle: byId('btn-scout-timer-toggle'),
+        settingsMasterVol: byId('settings-master-volume'),
+        settingsMasterVolVal: byId('settings-master-volume-val'),
+        btnBgmToggle: byId('btn-bgm-toggle'),
+        btnSfxToggle: byId('btn-sfx-toggle'),
+        settingsAudioDevice: byId('settings-audio-device'),
+        btnShakeToggle: byId('btn-shake-toggle'),
+        btnCrtToggle: byId('btn-crt-toggle'),
+        btnFullscreenToggle: byId('btn-fullscreen-toggle'),
         btnSettingsResume: byId('btn-settings-resume'),
         btnSettingsQuitMenu: byId('btn-settings-quit-menu'),
 
+        stageCrtOverlay: byId('stage-crt-overlay'),
+        audioSinkBridge: byId('audio-sink-bridge'),
         breakthroughFlash: byId('breakthrough-flash'),
         toastRack: byId('achievement-toast-rack')
       };
@@ -234,7 +264,7 @@
      */
     _buildDefaultProceduralSilhouette(scenario, emotionKey) {
       const stroke = emotionKey === 'resolve' ? '#00e5ff' : '#ff1744';
-      const badge = (scenario && scenario.case_number) || 'SUBJECT';
+      const badge = (scenario && this.i18n.localizeField(scenario.case_number)) || 'SUBJECT';
       const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='720' height='920' viewBox='0 0 720 920' shape-rendering='geometricPrecision'><defs><linearGradient id='defSil' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#152642'/><stop offset='100%' stop-color='#060b16'/></linearGradient><filter id='defGlow'><feDropShadow dx='0' dy='0' stdDeviation='12' flood-color='${stroke}' flood-opacity='0.65'/></filter></defs><g filter='url(#defGlow)'><path d='M145 900 L205 525 L300 470 L360 510 L420 470 L515 525 L575 900 Z' fill='url(#defSil)' stroke='${stroke}' stroke-width='3.5'/><path d='M268 205 L452 205 L438 362 L360 442 L282 362 Z' fill='#0e1a2f' stroke='${stroke}' stroke-width='3.5'/><line x1='292' y1='282' x2='342' y2='282' stroke='${stroke}' stroke-width='4'/><line x1='378' y1='282' x2='428' y2='282' stroke='${stroke}' stroke-width='4'/><text x='360' y='660' text-anchor='middle' fill='${stroke}' font-family='Consolas, monospace' font-size='22' font-weight='bold'>${badge}</text></g></svg>`;
       return this._resolveAssetSrc(svg);
     }
@@ -295,10 +325,7 @@
         }
       });
 
-      // HUD buttons
-      this.els.btnHudBacklog.addEventListener('click', () => {
-        this.toggleBacklogModal();
-      });
+      // HUD menu button
       this.els.btnHudMenu.addEventListener('click', () => {
         this.toggleSettingsModal();
       });
@@ -306,14 +333,6 @@
       // Scout Mode Evidence Hint toggle
       this.els.btnEvidenceHint.addEventListener('click', () => {
         this.engine.toggleEvidenceHint();
-      });
-
-      // Backlog close
-      this.els.btnCloseBacklog.addEventListener('click', () => {
-        this.closeBacklogModal();
-      });
-      this.els.modalBacklog.addEventListener('click', (e) => {
-        if (e.target === this.els.modalBacklog) this.closeBacklogModal();
       });
 
       // Verdict modal continue -> SUMMARY_READ
@@ -339,18 +358,50 @@
         if (e.target === this.els.modalSettings) this.closeSettingsModal();
       });
 
-      this.els.btnAudioToggle.addEventListener('click', () => {
-        const next = !this.engine.getProfile().audioEnabled;
-        this.engine.setAudioEnabled(next);
-        if (next) this.engine.audio.playRelayClick();
-        this.renderSettingsState();
+      this.els.settingsMasterVol.addEventListener('input', () => {
+        const pct = Math.max(0, Math.min(100, Number(this.els.settingsMasterVol.value) || 0));
+        this.engine.audio.unlockAndSync();
+        this.engine.setMasterVolume(pct / 100);
       });
 
-      this.els.btnScoutTimerToggle.addEventListener('click', () => {
-        const next = !this.engine.getProfile().scoutUnlimitedTimer;
-        this.engine.setScoutUnlimitedTimer(next);
+      this.els.btnBgmToggle.addEventListener('click', () => {
+        this.engine.audio.unlockAndSync();
+        const next = !this.engine.getProfile().bgmEnabled;
+        this.engine.setBgmEnabled(next);
         this.engine.audio.playRelayClick();
-        this.renderSettingsState();
+      });
+
+      this.els.btnSfxToggle.addEventListener('click', () => {
+        this.engine.audio.unlockAndSync();
+        const next = !this.engine.getProfile().sfxEnabled;
+        this.engine.setSfxEnabled(next);
+        if (next) this.engine.audio.playRelayClick();
+      });
+
+      this.els.settingsAudioDevice.addEventListener('change', async () => {
+        this.engine.audio.unlockAndSync();
+        await this.engine.setAudioSinkId(this.els.settingsAudioDevice.value);
+        this.engine.audio.playRelayClick();
+      });
+
+      this.els.btnShakeToggle.addEventListener('click', () => {
+        const next = !this.engine.getProfile().screenShakeEnabled;
+        this.engine.setScreenShakeEnabled(next);
+        this.engine.audio.playRelayClick();
+        if (next) {
+          this.triggerScreenShake();
+        }
+      });
+
+      this.els.btnCrtToggle.addEventListener('click', () => {
+        const next = !this.engine.getProfile().crtEnabled;
+        this.engine.setCrtEnabled(next);
+        this.engine.audio.playRelayClick();
+      });
+
+      this.els.btnFullscreenToggle.addEventListener('click', () => {
+        this.engine.audio.playRelayClick();
+        this.toggleFullscreen();
       });
 
       this.els.btnSettingsQuitMenu.addEventListener('click', () => {
@@ -361,21 +412,17 @@
 
     /**
      * Hybrid Controls for Steam Desktop & Steam Deck:
-     * Space/Enter, ArrowUp/ArrowDown, Digits 1-4, KeyL / WheelUp Backlog, KeyH Hint, ESC Pause
+     * Space/Enter, ArrowUp/ArrowDown, Digits 1-4, KeyH Hint, ESC Pause
      */
-    _bindKeyboardAndWheelControls() {
+    _bindKeyboardControls() {
       global.addEventListener('keydown', (event) => {
         const code = event.code;
         const state = this.engine.getState();
         const S = this.engine.STATES;
 
-        // ESC: close modals, leave tutorial, or toggle pause/settings
+        // ESC: close settings, leave tutorial, or toggle pause/settings
         if (code === 'Escape') {
           event.preventDefault();
-          if (this._backlogOpen) {
-            this.closeBacklogModal();
-            return;
-          }
           if (this._settingsOpen) {
             this.closeSettingsModal();
             return;
@@ -390,20 +437,8 @@
           return;
         }
 
-        // L key (physical KeyL works across RU/EN/DE/ZH/JA layouts) -> Toggle Backlog
-        if (code === 'KeyL') {
-          if (
-            !this._settingsOpen &&
-            (state === S.DIALOGUE_TYPE || state === S.CHOICE_IDLE || state === S.VERDICT_ANIM || state === S.SUMMARY_READ)
-          ) {
-            event.preventDefault();
-            this.toggleBacklogModal();
-          }
-          return;
-        }
-
         // Block gameplay hotkeys while modal overlays are open
-        if (this._backlogOpen || this._settingsOpen) {
+        if (this._settingsOpen) {
           return;
         }
 
@@ -456,20 +491,6 @@
           }
         }
       });
-
-      // Mouse Wheel Up -> Open Backlog during active scene
-      global.addEventListener(
-        'wheel',
-        (event) => {
-          if (this._backlogOpen || this._settingsOpen) return;
-          const state = this.engine.getState();
-          const S = this.engine.STATES;
-          if ((state === S.DIALOGUE_TYPE || state === S.CHOICE_IDLE) && event.deltaY < -12) {
-            this.openBacklogModal();
-          }
-        },
-        { passive: true }
-      );
     }
 
     _bindEngineEvents() {
@@ -494,6 +515,7 @@
       });
 
       this.engine.on('profileUpdated', () => {
+        this._applyVisualSettings();
         this._syncDifficultyCards();
         this.renderSettingsState();
         if (this.engine.getState() === this.engine.STATES.CHOICE_IDLE) {
@@ -505,6 +527,7 @@
         document.documentElement.lang = lang;
         this.applyStaticTranslations();
         this.renderLanguageSelectors();
+        this._refreshAudioOutputDevices();
         this.renderSettingsState();
         this._refreshActiveScreenForLanguage();
       });
@@ -574,28 +597,25 @@
     }
 
     renderLanguageSelectors() {
+      const container = this.els.settingsLangButtons;
+      if (!container) return;
+
       const langs = this.i18n.getSupportedLanguages();
       const names = this.i18n.getLanguageNames();
       const activeLang = this.i18n.getLang();
 
-      const buildButtons = (container, className) => {
-        if (!container) return;
-        container.innerHTML = '';
-        langs.forEach((code) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = `${className}${code === activeLang ? ' active' : ''}`;
-          btn.textContent = names[code] || code.toUpperCase();
-          btn.addEventListener('click', () => {
-            this.engine.audio.playRelayClick();
-            this.engine.setLanguage(code);
-          });
-          container.appendChild(btn);
+      container.innerHTML = '';
+      langs.forEach((code) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `settings-pill-btn${code === activeLang ? ' active' : ''}`;
+        btn.textContent = names[code] || code.toUpperCase();
+        btn.addEventListener('click', () => {
+          this.engine.audio.playRelayClick();
+          this.engine.setLanguage(code);
         });
-      };
-
-      buildButtons(this.els.menuLangStrip, 'lang-chip-btn');
-      buildButtons(this.els.settingsLangButtons, 'settings-pill-btn');
+        container.appendChild(btn);
+      });
     }
 
     _syncDifficultyCards() {
@@ -623,13 +643,17 @@
       this.els.verdictLayer.classList.toggle('hidden', state !== S.CHOICE_IDLE);
       this.els.stage.classList.toggle('choice-mode-layout', state === S.CHOICE_IDLE);
 
-      if (state !== S.CHOICE_IDLE) {
+      const inTimerStage = state === S.DIALOGUE_TYPE || state === S.CHOICE_IDLE;
+      if (!inTimerStage) {
         this.els.dangerOverlay.classList.remove('critical-active');
         this.els.hudTimerModule.classList.remove('timer-critical');
       }
 
-      if (state === S.MENU_IDLE) {
+      if (state !== S.DIALOGUE_TYPE) {
         this._stopTypewriter();
+      }
+
+      if (state === S.MENU_IDLE) {
         this._currentScenarioId = null;
         this._currentEmotionKey = null;
         this._currentBgPath = null;
@@ -655,6 +679,11 @@
       }
     }
 
+    _formatSeconds(sec) {
+      const safe = Math.max(0, Number(sec) || 0);
+      return `${safe.toFixed(1)} ${this.i18n.t('timer_sec_unit')}`;
+    }
+
     _applyMenuBackground() {
       if (!this.els.menuBgImage) return;
       const menuBgPath = this.engine.getMenuBackground();
@@ -672,22 +701,26 @@
 
     _updateHudTelemetry() {
       const tel = this.engine.getTelemetry();
-      this.els.hudCaseVal.textContent = tel.caseTitle;
-      this.els.hudPhaseVal.textContent = tel.phaseCode;
+      if (this.els.hudCaseLabel) {
+        this.els.hudCaseLabel.textContent = tel.caseNumber;
+      }
+      this.els.hudCaseVal.textContent = tel.characterName;
       this.els.hudAccuracyVal.textContent = `${tel.accuracy}%`;
       this.els.hudScoreVal.textContent = String(tel.score);
 
       const isPro = tel.difficulty === 'mindhunter';
-      this.els.hudModeBadge.textContent = isPro ? 'MINDHUNTER // PRO' : 'SCOUT // CADET';
+      this.els.hudModeBadge.textContent = this.i18n.t(isPro ? 'mode_mindhunter_name' : 'mode_scout_name');
       this.els.hudModeBadge.classList.toggle('mode-pro', isPro);
       this.els.hudTimerModule.classList.toggle('timer-pro', isPro);
 
-      if (this.engine.getState() === this.engine.STATES.DIALOGUE_TYPE) {
-        this.els.hudTimerDigits.textContent = tel.timerUnlimited ? '∞' : '--.-s';
-        this.els.hudTimerFill.style.width = '100%';
-      } else if (tel.timerUnlimited) {
+      if (tel.timerUnlimited) {
         this.els.hudTimerDigits.textContent = '∞';
         this.els.hudTimerFill.style.width = '100%';
+      } else {
+        const ratio = tel.timerDurationSec > 0 ? tel.timerRemainingSec / tel.timerDurationSec : 1;
+        const pct = `${Math.max(0, Math.min(100, ratio * 100)).toFixed(2)}%`;
+        this.els.hudTimerDigits.textContent = this._formatSeconds(tel.timerRemainingSec);
+        this.els.hudTimerFill.style.width = pct;
       }
     }
 
@@ -814,10 +847,10 @@
       this.els.dlgText.textContent = '';
 
       this._twTimer = setInterval(() => {
-        if (this.engine.isPaused() || this._backlogOpen || this._settingsOpen) {
+        if (this.engine.isPaused() || this._settingsOpen) {
           return;
         }
-        this._twIndex += 1;
+        this._twIndex = Math.min(this._twFullText.length, this._twIndex + 12);
         this.els.dlgText.textContent = this._twFullText.slice(0, this._twIndex);
 
         const ch = this._twFullText[this._twIndex - 1];
@@ -828,7 +861,7 @@
         if (this._twIndex >= this._twFullText.length) {
           this._stopTypewriter();
         }
-      }, 22);
+      }, 10);
     }
 
     _stopTypewriter() {
@@ -868,12 +901,16 @@
         : this.i18n.t('verdict_subheader_pro');
 
       const timerUnlimited = isScout && profile.scoutUnlimitedTimer;
+      const tel = this.engine.getTelemetry();
       this.els.verdictCrisisWrap.classList.toggle('hidden', timerUnlimited);
-      this.els.verdictCrisisFill.style.width = '100%';
 
       if (!timerUnlimited) {
-        const startSec = this.engine.getTelemetry().timerRemainingSec;
-        this.els.hudTimerDigits.textContent = `${startSec.toFixed(1)}s`;
+        const ratio = tel.timerDurationSec > 0 ? tel.timerRemainingSec / tel.timerDurationSec : 0;
+        const pct = `${Math.max(0, Math.min(100, ratio * 100)).toFixed(2)}%`;
+        this.els.verdictCrisisFill.style.width = pct;
+        this.els.hudTimerDigits.textContent = this._formatSeconds(tel.timerRemainingSec);
+      } else {
+        this.els.verdictCrisisFill.style.width = '100%';
       }
 
       // Scout Evidence Clue button
@@ -975,7 +1012,7 @@
 
     _updateTimerUI({ remaining, ratio, isCritical }) {
       const pct = `${Math.max(0, Math.min(100, ratio * 100)).toFixed(2)}%`;
-      this.els.hudTimerDigits.textContent = `${remaining.toFixed(1)}s`;
+      this.els.hudTimerDigits.textContent = this._formatSeconds(remaining);
       this.els.hudTimerFill.style.width = pct;
       this.els.verdictCrisisFill.style.width = pct;
 
@@ -1049,6 +1086,7 @@
     }
 
     triggerScreenShake() {
+      if (!this.engine.getProfile().screenShakeEnabled) return;
       this.els.stage.classList.remove('fx-screen-shake');
       void this.els.stage.offsetWidth;
       this.els.stage.classList.add('fx-screen-shake');
@@ -1074,11 +1112,23 @@
       this.els.sumValScore.textContent = `${tel.score} (+${verdict.pointsEarned})`;
       this.els.sumValAccuracy.textContent = `${tel.accuracy}%`;
       this.els.sumValTime.textContent =
-        verdict.remainingTimeSec === null ? '∞' : `${verdict.remainingTimeSec.toFixed(1)}s`;
+        verdict.remainingTimeSec === null ? '∞' : this._formatSeconds(verdict.remainingTimeSec);
 
-      this.els.sumExplanation.textContent = verdict.correctOption
-        ? this.i18n.localizeField(verdict.correctOption.explanation)
-        : '';
+      // Bottom explanation badge: success (green) vs failure (red/amber)
+      this.els.sumExplanation.classList.remove('status-success', 'status-failed');
+      if (verdict.isCorrect) {
+        this.els.sumExplanation.classList.add('status-success');
+        this.els.sumExplanation.textContent = verdict.correctOption
+          ? this.i18n.localizeField(verdict.correctOption.explanation)
+          : '';
+      } else {
+        this.els.sumExplanation.classList.add('status-failed');
+        const prefix = this.i18n.t('summary_failed_explanation_prefix');
+        const correctInfo = verdict.correctOption
+          ? `[${verdict.correctOption.function_code}] ${this.i18n.localizeField(verdict.correctOption.text)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
+          : '—';
+        this.els.sumExplanation.textContent = `${prefix}${correctInfo}`;
+      }
 
       this.els.btnSumNext.classList.toggle('hidden', !this.engine.hasNextScenario());
     }
@@ -1259,77 +1309,6 @@
     }
 
     /**
-     * Backlog Modal (History of Current & Past Cases)
-     */
-    toggleBacklogModal() {
-      if (this._backlogOpen) {
-        this.closeBacklogModal();
-      } else {
-        this.openBacklogModal();
-      }
-    }
-
-    openBacklogModal() {
-      this._backlogOpen = true;
-      this.engine.setPaused(true);
-      this.engine.audio.playHoverTick();
-      this._renderBacklogContents();
-      this.els.modalBacklog.classList.remove('hidden');
-    }
-
-    closeBacklogModal() {
-      this._backlogOpen = false;
-      this.els.modalBacklog.classList.add('hidden');
-      this.engine.audio.playHoverTick();
-      if (!this._settingsOpen) {
-        this.engine.setPaused(false);
-      }
-    }
-
-    _renderBacklogContents() {
-      const archive = this.engine.getBacklogArchive();
-      this.els.backlogBody.innerHTML = '';
-
-      if (archive.length === 0) {
-        const empty = document.createElement('p');
-        empty.className = 'tut-lead-text';
-        empty.textContent = this.i18n.t('backlog_empty');
-        this.els.backlogBody.appendChild(empty);
-        return;
-      }
-
-      archive.forEach((group) => {
-        const section = document.createElement('div');
-        section.className = 'backlog-case-group';
-
-        const header = document.createElement('div');
-        header.className = 'backlog-case-header';
-        const tag = group.isCurrent ? this.i18n.t('backlog_current_tag') : this.i18n.t('backlog_past_tag');
-        header.textContent = `[${tag}] // ${group.caseTitle}`;
-        section.appendChild(header);
-
-        group.entries.forEach((item) => {
-          const row = document.createElement('div');
-          row.className = `backlog-entry${item.climax ? ' entry-climax' : ''}`;
-
-          const sp = document.createElement('div');
-          sp.className = 'backlog-speaker';
-          sp.textContent = item.speaker;
-
-          const tx = document.createElement('div');
-          tx.className = 'backlog-line-text';
-          tx.textContent = item.text;
-
-          row.appendChild(sp);
-          row.appendChild(tx);
-          section.appendChild(row);
-        });
-
-        this.els.backlogBody.appendChild(section);
-      });
-    }
-
-    /**
      * Settings & Pause Modal
      */
     toggleSettingsModal() {
@@ -1343,6 +1322,7 @@
     openSettingsModal() {
       this._settingsOpen = true;
       this.engine.setPaused(true);
+      this._refreshAudioOutputDevices();
       this.renderSettingsState();
       this.els.modalSettings.classList.remove('hidden');
     }
@@ -1351,8 +1331,101 @@
       this._settingsOpen = false;
       this.els.modalSettings.classList.add('hidden');
       this.engine.audio.playHoverTick();
-      if (!this._backlogOpen) {
-        this.engine.setPaused(false);
+      this.engine.setPaused(false);
+    }
+
+    _applyVisualSettings() {
+      if (!this.els.stage) return;
+      const profile = this.engine.getProfile();
+      this.els.stage.classList.toggle('crt-disabled', !profile.crtEnabled);
+      if (!profile.screenShakeEnabled) {
+        this.els.stage.classList.remove('fx-screen-shake');
+      }
+    }
+
+    async _refreshAudioOutputDevices() {
+      const select = this.els.settingsAudioDevice;
+      if (!select) return;
+
+      const sinkSupported = Boolean(
+        this.els.audioSinkBridge && typeof this.els.audioSinkBridge.setSinkId === 'function'
+      );
+
+      if (!sinkSupported || !navigator.mediaDevices || typeof navigator.mediaDevices.enumerateDevices !== 'function') {
+        select.innerHTML = '';
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = this.i18n.t('settings_sink_unsupported');
+        select.appendChild(opt);
+        select.disabled = true;
+        return;
+      }
+
+      select.disabled = false;
+      let outputs = [];
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        outputs = devices.filter((d) => d && d.kind === 'audiooutput');
+      } catch (_) {
+        outputs = [];
+      }
+
+      const savedSinkId = this.engine.getProfile().audioSinkId || '';
+      const seenIds = new Set();
+      select.innerHTML = '';
+
+      // Always include canonical system default output option
+      const defaultOpt = document.createElement('option');
+      defaultOpt.value = '';
+      const explicitDefault = outputs.find((d) => d.deviceId === 'default' || d.deviceId === '');
+      defaultOpt.textContent =
+        explicitDefault && explicitDefault.label && explicitDefault.label.trim()
+          ? explicitDefault.label.trim()
+          : this.i18n.t('settings_sink_default');
+      select.appendChild(defaultOpt);
+      seenIds.add('');
+      seenIds.add('default');
+
+      let customIdx = 1;
+      outputs.forEach((dev) => {
+        const id = dev.deviceId || '';
+        if (seenIds.has(id)) return;
+        seenIds.add(id);
+
+        const opt = document.createElement('option');
+        opt.value = id;
+        opt.textContent =
+          dev.label && dev.label.trim()
+            ? dev.label.trim()
+            : `${this.i18n.t('settings_sink_fallback_prefix')} #${customIdx}`;
+        customIdx += 1;
+        select.appendChild(opt);
+      });
+
+      const hasSaved = Array.from(select.options).some((o) => o.value === savedSinkId);
+      select.value = hasSaved ? savedSinkId : '';
+    }
+
+    isFullscreenActive() {
+      return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    }
+
+    toggleFullscreen() {
+      const docEl = document.documentElement;
+      if (!this.isFullscreenActive()) {
+        const req = docEl.requestFullscreen || docEl.webkitRequestFullscreen;
+        if (typeof req === 'function') {
+          Promise.resolve(req.call(docEl))
+            .catch(() => {})
+            .finally(() => this.renderSettingsState());
+        }
+      } else {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (typeof exit === 'function') {
+          Promise.resolve(exit.call(document))
+            .catch(() => {})
+            .finally(() => this.renderSettingsState());
+        }
       }
     }
 
@@ -1361,15 +1434,53 @@
       const state = this.engine.getState();
       const S = this.engine.STATES;
 
-      this.els.btnAudioToggle.textContent = profile.audioEnabled
-        ? this.i18n.t('settings_audio_on')
-        : this.i18n.t('settings_audio_off');
-      this.els.btnAudioToggle.classList.toggle('active', profile.audioEnabled);
+      const onLabel = this.i18n.t('toggle_on');
+      const offLabel = this.i18n.t('toggle_off');
 
-      this.els.btnScoutTimerToggle.textContent = profile.scoutUnlimitedTimer
-        ? this.i18n.t('settings_scout_off')
-        : this.i18n.t('settings_scout_30s');
-      this.els.btnScoutTimerToggle.classList.toggle('active', !profile.scoutUnlimitedTimer);
+      // Master Volume
+      const volPct = Math.round(Math.max(0, Math.min(1, profile.masterVolume)) * 100);
+      if (this.els.settingsMasterVol) {
+        this.els.settingsMasterVol.value = String(volPct);
+        this.els.settingsMasterVol.style.setProperty('--slider-fill', `${volPct}%`);
+      }
+      if (this.els.settingsMasterVolVal) {
+        this.els.settingsMasterVolVal.textContent = `${volPct}%`;
+      }
+
+      // BGM & SFX toggles
+      if (this.els.btnBgmToggle) {
+        this.els.btnBgmToggle.textContent = profile.bgmEnabled ? onLabel : offLabel;
+        this.els.btnBgmToggle.classList.toggle('active', profile.bgmEnabled);
+      }
+      if (this.els.btnSfxToggle) {
+        this.els.btnSfxToggle.textContent = profile.sfxEnabled ? onLabel : offLabel;
+        this.els.btnSfxToggle.classList.toggle('active', profile.sfxEnabled);
+      }
+
+      // Audio Output Sink Selector
+      if (this.els.settingsAudioDevice && !this.els.settingsAudioDevice.disabled) {
+        const wanted = profile.audioSinkId || '';
+        if (Array.from(this.els.settingsAudioDevice.options).some((o) => o.value === wanted)) {
+          this.els.settingsAudioDevice.value = wanted;
+        }
+      }
+
+      // Visual toggles: Screen Shake, CRT Scanlines & Fullscreen
+      if (this.els.btnShakeToggle) {
+        this.els.btnShakeToggle.textContent = profile.screenShakeEnabled ? onLabel : offLabel;
+        this.els.btnShakeToggle.classList.toggle('active', profile.screenShakeEnabled);
+      }
+      if (this.els.btnCrtToggle) {
+        this.els.btnCrtToggle.textContent = profile.crtEnabled ? onLabel : offLabel;
+        this.els.btnCrtToggle.classList.toggle('active', profile.crtEnabled);
+      }
+      if (this.els.btnFullscreenToggle) {
+        const fsActive = this.isFullscreenActive();
+        this.els.btnFullscreenToggle.textContent = fsActive
+          ? this.i18n.t('settings_fullscreen_exit')
+          : this.i18n.t('settings_fullscreen_enter');
+        this.els.btnFullscreenToggle.classList.toggle('active', fsActive);
+      }
 
       const canReturnMenu = state !== S.MENU_IDLE && state !== S.LOADING;
       this.els.btnSettingsQuitMenu.classList.toggle('hidden', !canReturnMenu);
@@ -1407,10 +1518,6 @@
         this._playVerdictPresentation(this.engine.getLastVerdictResult());
       } else if (state === S.SUMMARY_READ) {
         this._renderSummaryScreen();
-      }
-
-      if (this._backlogOpen) {
-        this._renderBacklogContents();
       }
     }
   }
