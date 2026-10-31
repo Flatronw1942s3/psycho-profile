@@ -157,7 +157,24 @@
             <button type="button" id="btn-menu-start" class="menu-skew-btn menu-btn-primary" data-i18n="menu_start_btn"></button>
             <button type="button" id="btn-menu-tutorial" class="menu-skew-btn menu-btn-accent" data-i18n="menu_tutorial_btn"></button>
             <button type="button" id="btn-menu-settings" class="menu-skew-btn" data-i18n="menu_settings_btn"></button>
+            <button type="button" id="btn-menu-terminate" class="menu-skew-btn menu-btn-danger" data-i18n="menu_terminate_btn" style="white-space: nowrap;"></button>
           </nav>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           SCREEN: TERMINAL SHUTDOWN OVERLAY (SESSION TERMINATED)
+           ========================================================= -->
+      <section id="screen-shutdown" class="fullscreen-overlay shutdown-screen hidden">
+        <div class="shutdown-crt-overlay"></div>
+        <div class="shutdown-box">
+          <div class="shutdown-glitch-line"></div>
+          <div class="shutdown-code">// TERMINAL STATUS: OFFLINE</div>
+          <h2 class="shutdown-title" data-i18n="shutdown_title">ТЕРМИНАЛ ОТКЛЮЧЕН — СЕАНС ЗАВЕРШЕН</h2>
+          <p class="shutdown-desc" data-i18n="shutdown_desc">Все процессы криминалистического анализа остановлены. Доступ к защищенному контуру заблокирован.</p>
+          <button type="button" id="btn-shutdown-restart" class="menu-skew-btn menu-btn-primary" data-i18n="shutdown_restart_btn" style="white-space: nowrap;">
+            [ ПЕРЕЗАПУСТИТЬ СИСТЕМУ ]
+          </button>
         </div>
       </section>
 

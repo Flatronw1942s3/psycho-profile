@@ -146,6 +146,9 @@
         btnMenuStart: byId('btn-menu-start'),
         btnMenuTutorial: byId('btn-menu-tutorial'),
         btnMenuSettings: byId('btn-menu-settings'),
+        btnMenuTerminate: byId('btn-menu-terminate'),
+        screenShutdown: byId('screen-shutdown'),
+        btnShutdownRestart: byId('btn-shutdown-restart'),
 
         screenTutorial: byId('screen-tutorial'),
         tutHeaderTitle: byId('tut-header-title'),
@@ -301,6 +304,30 @@
         this.engine.audio.playRelayClick();
         this.openSettingsModal();
       });
+      if (this.els.btnMenuTerminate) {
+        this.els.btnMenuTerminate.addEventListener('click', () => {
+          this.engine.audio.playRelayClick();
+          try {
+            window.close();
+          } catch (e) {
+            // direct tab closure prevented by browser security policy
+          }
+          setTimeout(() => {
+            this._showShutdownScreen();
+          }, 80);
+        });
+      }
+      if (this.els.btnShutdownRestart) {
+        this.els.btnShutdownRestart.addEventListener('click', () => {
+          this.engine.audio.playRelayClick();
+          if (this.els.screenShutdown) {
+            this.els.screenShutdown.classList.add('hidden');
+          }
+          if (this.els.screenMenu) {
+            this.els.screenMenu.classList.remove('hidden');
+          }
+        });
+      }
 
       // Tutorial actions & tabs
       this.els.btnTutBack.addEventListener('click', () => {
@@ -639,6 +666,9 @@
       // Reset transient overlays
       this.els.screenLoading.classList.toggle('hidden', state !== S.LOADING);
       this.els.screenMenu.classList.toggle('hidden', state !== S.MENU_IDLE);
+      if (this.els.screenShutdown && state === S.MENU_IDLE) {
+        this.els.screenShutdown.classList.add('hidden');
+      }
       this.els.screenTutorial.classList.toggle('hidden', state !== S.TUTORIAL_READ);
       this.els.screenSummary.classList.toggle('hidden', state !== S.SUMMARY_READ);
       this.els.modalVerdict.classList.toggle('hidden', state !== S.VERDICT_ANIM);
@@ -703,6 +733,16 @@
           this.els.menuBgImage.classList.add('hidden');
         }
       });
+    }
+
+    _showShutdownScreen() {
+      if (this.els.screenMenu) {
+        this.els.screenMenu.classList.add('hidden');
+      }
+      if (this.els.screenShutdown) {
+        this.els.screenShutdown.classList.remove('hidden');
+      }
+      this.engine.audio.playPanicPulse();
     }
 
     _updateHudTelemetry() {
