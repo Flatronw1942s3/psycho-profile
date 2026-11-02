@@ -134,11 +134,11 @@
           "ja": "弱 / プロセス / ドミナント"
         },
         "breakdown": {
-          "ru": "Окно принятия решения упущено! Вы застряли в бесконечном взвешивании рисков вместо фиксации вердикта. Истинный профиль Кайдзи — [ III ] ВОЛЯ (Слабая • Процессионная • Доминантная).",
-          "en": "Decision window lost! You froze in endless risk-weighing instead of locking the verdict. Kaiji's true function is [ III ] WILL (Weak • Processional • Dominant).",
-          "zh": "错过决断窗口！您陷入了无休止的风险权衡，而非迅速锁定裁决。开司的真实功能为 [ III ] 意志（弱势 • 过程型 • 主导型）。",
-          "de": "Zeit abgelaufen! Sie verharrten im Risiko-Abwägen statt ein Urteil zu fällen. Kaijis wahres Profil ist [ III ] WILLE (Schwach • Prozesshaft • Dominant).",
-          "ja": "決断の機会を逃しました。リスクを測りかねて判断が遅れました。開司の真の機能は [ III ] 意志（弱 • プロセス • ドミナント）でした。"
+          "ru": "Окно принятия решения упущено! Вы застряли в бесконечном взвешивании рисков вместо фиксации вердикта. Истинный профиль Кайдзи — III ВОЛЯ (Слабая • Процессионная • Доминантная).",
+          "en": "Decision window lost! You froze in endless risk-weighing instead of locking the verdict. Kaiji's true function is III WILL (Weak • Processional • Dominant).",
+          "zh": "错过决断窗口！您陷入了无休止的风险权衡，而非迅速锁定裁决。开司的真实功能为 III 意志（弱势 • 过程型 • 主导型）。",
+          "de": "Zeit abgelaufen! Sie verharrten im Risiko-Abwägen statt ein Urteil zu fällen. Kaijis wahres Profil ist III WILLE (Schwach • Prozesshaft • Dominant).",
+          "ja": "決断の機会を逃しました。リスクを測りかねて判断が遅れました。開司の真の機能は III 意志（弱 • プロセス • ドミナント）でした。"
         }
       },
       "options": [
@@ -147,11 +147,11 @@
           "function_code": "1В",
           "is_correct": false,
           "text": {
-            "ru": "[ I ] ВОЛЯ — ДИКТАТ",
-            "en": "[ I ] WILL — DICTATE",
-            "zh": "[ I ] 意志 — 独断",
-            "de": "[ I ] WILLE — DIKTAT",
-            "ja": "[ I ] 意志 — 独断"
+            "ru": "I ВОЛЯ — ДИКТАТ",
+            "en": "I WILL — DICTATE",
+            "zh": "I 意志 — 独断",
+            "de": "I WILLE — DIKTAT",
+            "ja": "I 意志 — 独断"
           },
           "axes": {
             "ru": "Сильная / Результативная / Доминантная",
@@ -187,11 +187,11 @@
           "function_code": "3В",
           "is_correct": true,
           "text": {
-            "ru": "[ III ] ВОЛЯ — УЯЗВИМОСТЬ",
-            "en": "[ III ] WILL — VULNERABILITY",
-            "zh": "[ III ] 意志 — 脆弱",
-            "de": "[ III ] WILLE — VERLETZLICHKEIT",
-            "ja": "[ III ] 意志 — 脆弱"
+            "ru": "III ВОЛЯ — УЯЗВИМОСТЬ",
+            "en": "III WILL — VULNERABILITY",
+            "zh": "III 意志 — 脆弱",
+            "de": "III WILLE — VERLETZLICHKEIT",
+            "ja": "III 意志 — 脆弱"
           },
           "axes": {
             "ru": "Слабая / Процессионная / Доминантная",
@@ -227,11 +227,11 @@
           "function_code": "2Ф",
           "is_correct": false,
           "text": {
-            "ru": "[ II ] ФИЗИКА — ТОНУС",
-            "en": "[ II ] PHYSICS — VIGOR",
-            "zh": "[ II ] 物理 — 协调",
-            "de": "[ II ] PHYSIK — TONUS",
-            "ja": "[ II ] 物理 — 調和"
+            "ru": "II ФИЗИКА — ТОНУС",
+            "en": "II PHYSICS — VIGOR",
+            "zh": "II 物理 — 协调",
+            "de": "II PHYSIK — TONUS",
+            "ja": "II 物理 — 調和"
           },
           "axes": {
             "ru": "Сильная / Процессионная / Подстраивающаяся",
@@ -267,11 +267,11 @@
           "function_code": "4Э",
           "is_correct": false,
           "text": {
-            "ru": "[ IV ] ЭМОЦИЯ — ПОКОЙ",
-            "en": "[ IV ] EMOTION — TRANQUILITY",
-            "zh": "[ IV ] 情感 — 沉寂",
-            "de": "[ IV ] EMOTION — RUHE",
-            "ja": "[ IV ] 感情 — 静謐"
+            "ru": "IV ЭМОЦИЯ — ПОКОЙ",
+            "en": "IV EMOTION — TRANQUILITY",
+            "zh": "IV 情感 — 沉寂",
+            "de": "IV EMOTION — RUHE",
+            "ja": "IV 感情 — 静謐"
           },
           "axes": {
             "ru": "Слабая / Результативная / Подстраивающаяся",
@@ -288,11 +288,11 @@
             "ja": "危機で感情が消えているか、それとも怒りの涙が溢れているか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. IV Эмоция (Покой) гасит аффект в кризисе до полного штиля. Кайдзи же захлебывается слезами и криком вокруг ядра раненого достоинства — [ III ] ВОЛИ (Уязвимость).",
-            "en": "FALSE LEAD. [ IV ] EMOTION (Tranquility) mutes affect into calm stillness under stress. Kaiji roars through burning tears around a core of wounded dignity—[ III ] WILL (Vulnerability).",
-            "zh": "判断错误。[ IV ] 情感在危机中切断情绪；开司泪水决堤、嘶吼抗争，核心为 [ III ] 意志。",
-            "de": "FALSCH. [ IV ] EMOTION schaltet Emotionen im Stress ab; Kaiji kämpft unter Tränen um seine Würde — [ III ] WILLE.",
-            "ja": "不正解。[ IV ] 感情は危機で感情を遮断するが、開司は涙と絶叫の中で尊厳（[ III ] 意志）を懸けて戦っている。"
+            "ru": "ЛОЖНЫЙ СЛЕД. IV Эмоция (Покой) гасит аффект в кризисе до полного штиля. Кайдзи же захлебывается слезами и криком вокруг ядра раненого достоинства.",
+            "en": "FALSE LEAD. [ IV ] EMOTION (Tranquility) mutes affect into calm stillness under stress. Kaiji roars through burning tears around a core of wounded dignity.",
+            "zh": "判断错误。[ IV ] 情感在危机中切断情绪；开司泪水决堤、嘶吼抗争，核心在于被践踏的尊严。",
+            "de": "FALSCH. [ IV ] EMOTION schaltet Emotionen im Stress ab; Kaiji kämpft unter Tränen um seine Würde.",
+            "ja": "不正解。[ IV ] 感情は危機で感情を遮断するが、開司は涙と絶叫の中で尊厳を懸けて戦っている。"
           },
           "explanation": {
             "ru": "Наблюдается аффективный взрыв вокруг ядра [ III ] ВОЛИ, а не эмоциональный штиль [ IV ] ЭМОЦИИ.",
@@ -416,11 +416,11 @@
           "ja": "強 / リザルト / ドミナント"
         },
         "breakdown": {
-          "ru": "Время вышло! Пока вы колебались, Токучи уже просчитал стол на три хода вперед. Истинный профиль Токучи — [ I ] ЛОГИКА (Сильная • Результативная • Доминантная).",
-          "en": "Time expired! While you hesitated, Tokuchi already solved the table three moves ahead. Tokuchi's true function is [ I ] LOGIC (Strong • Resultative • Dominant).",
-          "zh": "时间耗尽！在您犹豫时，渡久地东亚已经算清了后三步死局。他的真实功能为 [ I ] 逻辑（强势 • 结果型 • 主导型）。",
-          "de": "Zeit abgelaufen! Während Sie zögerten, hatte Tokuchi den Tisch bereits drei Züge vorausberechnet. Seine wahre Funktion ist [ I ] LOGIK (Stark • Resultativ • Dominant).",
-          "ja": "時間切れです。逡巡している間に、渡久地はすでに3手先まで読み切っていました。彼の真の機能は [ I ] 論理（強 • リザルト • ドミナント）です。"
+          "ru": "Время вышло! Пока вы колебались, Токучи уже просчитал стол на три хода вперед. Истинный профиль Токучи — I ЛОГИКА (Сильная • Результативная • Доминантная).",
+          "en": "Time expired! While you hesitated, Tokuchi already solved the table three moves ahead. Tokuchi's true function is I LOGIC (Strong • Resultative • Dominant).",
+          "zh": "时间耗尽！在您犹豫时，渡久地东亚已经算清了后三步死局。他的真实功能为 I 逻辑（强势 • 结果型 • 主导型）。",
+          "de": "Zeit abgelaufen! Während Sie zögerten, hatte Tokuchi den Tisch bereits drei Züge vorausberechnet. Seine wahre Funktion ist I LOGIK (Stark • Resultativ • Dominant).",
+          "ja": "時間切れです。逡巡している間に、渡久地はすでに3手先まで読み切っていました。彼の真の機能は I 論理（強 • リザルト • ドミナント）です。"
         }
       },
       "options": [
@@ -429,11 +429,11 @@
           "function_code": "1Л",
           "is_correct": true,
           "text": {
-            "ru": "[ I ] ЛОГИКА — ДОГМА",
-            "en": "[ I ] LOGIC — DOGMA",
-            "zh": "[ I ] 逻辑 — 教条",
-            "de": "[ I ] LOGIK — DOGMA",
-            "ja": "[ I ] 論理 — 独断"
+            "ru": "I ЛОГИКА — ДОГМА",
+            "en": "I LOGIC — DOGMA",
+            "zh": "I 逻辑 — 教条",
+            "de": "I LOGIK — DOGMA",
+            "ja": "I 論理 — 独断"
           },
           "axes": {
             "ru": "Сильная / Результативная / Доминантная",
@@ -469,11 +469,11 @@
           "function_code": "2Л",
           "is_correct": false,
           "text": {
-            "ru": "[ II ] ЛОГИКА — ДИАЛОГ",
-            "en": "[ II ] LOGIC — DIALOGUE",
-            "zh": "[ II ] 逻辑 — 对话",
-            "de": "[ II ] LOGIK — DIALOG",
-            "ja": "[ II ] 論理 — 対話"
+            "ru": "II ЛОГИКА — ДИАЛОГ",
+            "en": "II LOGIC — DIALOGUE",
+            "zh": "II 逻辑 — 对话",
+            "de": "II LOGIK — DIALOG",
+            "ja": "II 論理 — 対話"
           },
           "axes": {
             "ru": "Сильная / Процессионная / Подстраивающаяся",
@@ -490,11 +490,11 @@
             "ja": "彼は相手と柔軟に議論を交わしているか、それとも議論自体を即座に切り捨てているか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. II Логика (Диалог) процессионна и подстраивающаяся: она получает удовольствие от развертывания цепочки доказательств в диалоге с собеседником. Токучи же прямо отрезает: «дискуссии нужны неуверенным» — и кладет на стол закрытую аксиому — [ I ] ЛОГИКУ (Догма).",
-            "en": "FALSE LEAD. [ II ] LOGIC (Dialogue) is processional and adapting: it enjoys unpacking reasoning collaboratively in dialogue. Tokuchi explicitly cuts debate dead and drops a closed axiom on the table—[ I ] LOGIC (Dogma).",
-            "zh": "判断错误。[ II ] 逻辑享受对话推演过程，而渡久地直接切断讨论、下达封闭公理，属于 [ I ] 逻辑。",
-            "de": "FALSCH. [ II ] LOGIK liebt den offenen Diskurs; Tokuchi diktiert ein geschlossenes Axiom — [ I ] LOGIK.",
-            "ja": "不正解。[ II ] 論理は対話プロセスを楽しむが、渡久地は議論を切り捨てて完成された公理（[ I ] 論理）を突きつけている。"
+            "ru": "ЛОЖНЫЙ СЛЕД. II Логика (Диалог) процессионна и подстраивающаяся: она получает удовольствие от развертывания цепочки доказательств в диалоге с собеседником. Токучи же прямо отрезает: «дискуссии нужны неуверенным» — и кладет на стол закрытую аксиому.",
+            "en": "FALSE LEAD. [ II ] LOGIC (Dialogue) is processional and adapting: it enjoys unpacking reasoning collaboratively in dialogue. Tokuchi explicitly cuts debate dead and drops a closed axiom on the table.",
+            "zh": "判断错误。[ II ] 逻辑享受对话推演过程，而渡久地直接切断讨论、下达封闭公理。",
+            "de": "FALSCH. [ II ] LOGIK liebt den offenen Diskurs; Tokuchi diktiert ein geschlossenes Axiom.",
+            "ja": "不正解。[ II ] 論理は対話プロセスを楽しむが、渡久地は議論を切り捨てて完成された公理を突きつけている。"
           },
           "explanation": {
             "ru": "Отказ от диалога и выдача готовой формулы исключают процессионную II Логику (Диалог).",
@@ -509,11 +509,11 @@
           "function_code": "3Л",
           "is_correct": false,
           "text": {
-            "ru": "[ III ] ЛОГИКА — СКЕПСИС",
-            "en": "[ III ] LOGIC — SKEPTICISM",
-            "zh": "[ III ] 逻辑 — 怀疑",
-            "de": "[ III ] LOGIK — SKEPSIS",
-            "ja": "[ III ] 論理 — 懐疑"
+            "ru": "III ЛОГИКА — СКЕПСИС",
+            "en": "III LOGIC — SKEPTICISM",
+            "zh": "III 逻辑 — 怀疑",
+            "de": "III LOGIK — SKEPSIS",
+            "ja": "III 論理 — 懐疑"
           },
           "axes": {
             "ru": "Слабая / Процессионная / Доминантная",
@@ -530,11 +530,11 @@
             "ja": "計算ミスを恐れる不安や、再検証への執着が少しでも見られるか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. III Логика (Скепсис) болезненно ищет изъяны в доказательствах и остро реагирует на обвинения в некомпетентности. Токучи абсолютно неуязвим к насмешкам Сайкавы над скоростью его подачи — его уверенность в своем расчете монолитна — [ I ] ЛОГИКА (Догма).",
-            "en": "FALSE LEAD. [ III ] LOGIC (Skepticism) anxiously hunts for flaws and bristles at intellectual mockery. Tokuchi is completely impervious to Saikawa's ridicule—his certainty in his equation is absolute—[ I ] LOGIC (Dogma).",
-            "zh": "判断错误。[ III ] 逻辑对质疑高度敏感且不断自我验算；渡久地对嘲笑完全免疫，算力自信如磐石（[ I ] 逻辑）。",
-            "de": "FALSCH. [ III ] LOGIK reagiert empfindlich auf Zweifel; Tokuchis analytische Gewissheit ist unerschütterlich — [ I ] LOGIK.",
-            "ja": "不正解。[ III ] 論理は知的な嘲笑に過敏に反応するが、渡久地の確信は微塵も揺るがない（[ I ] 論理）。"
+            "ru": "ЛОЖНЫЙ СЛЕД. III Логика (Скепсис) болезненно ищет изъяны в доказательствах и остро реагирует на обвинения в некомпетентности. Токучи абсолютно неуязвим к насмешкам Сайкавы над скоростью его подачи — его уверенность в своем расчете монолитна.",
+            "en": "FALSE LEAD. [ III ] LOGIC (Skepticism) anxiously hunts for flaws and bristles at intellectual mockery. Tokuchi is completely impervious to Saikawa's ridicule—his certainty in his equation is absolute.",
+            "zh": "判断错误。[ III ] 逻辑对质疑高度敏感且不断自我验算；渡久地对嘲笑完全免疫，算力自信如磐石。",
+            "de": "FALSCH. [ III ] LOGIK reagiert empfindlich auf Zweifel; Tokuchis analytische Gewissheit ist unerschütterlich.",
+            "ja": "不正解。[ III ] 論理は知的な嘲笑に過敏に反応するが、渡久地の確信は微塵も揺るがない。"
           },
           "explanation": {
             "ru": "Абсолютный иммунитет к скепсису оппонента подтверждает [ I ] ЛОГИКУ вместо [ III ] ЛОГИКИ.",
@@ -549,11 +549,11 @@
           "function_code": "1Э",
           "is_correct": false,
           "text": {
-            "ru": "[ I ] ЭМОЦИЯ — НАКАЛ",
-            "en": "[ I ] EMOTION — INTENSITY",
-            "zh": "[ I ] 情感 — 激昂",
-            "de": "[ I ] EMOTION — INTENSITÄT",
-            "ja": "[ I ] 感情 — 激情"
+            "ru": "I ЭМОЦИЯ — НАКАЛ",
+            "en": "I EMOTION — INTENSITY",
+            "zh": "I 情感 — 激昂",
+            "de": "I EMOTION — INTENSITÄT",
+            "ja": "I 感情 — 激情"
           },
           "axes": {
             "ru": "Сильная / Результативная / Доминантная",
@@ -570,11 +570,11 @@
             "ja": "相手を圧倒しているのは感情的な熱弁か、それとも冷徹な数理条件か？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. I Эмоция (Накал) выплескивает яркий аффективный напор. Пульс Токучи — 58 ударов в минуту, тон ровный и сухой; вся сокрушительная мощь его ультиматума сосредоточена в конструкции правил и вероятностей — [ I ] ЛОГИКЕ (Догма).",
-            "en": "FALSE LEAD. [ I ] EMOTION (Intensity) floods the room with dramatic affect. Tokuchi's pulse sits at 58 BPM with dry, level delivery; his dominance operates purely through rule architecture and probability—[ I ] LOGIC (Dogma).",
-            "zh": "判断错误。[ I ] 情感伴随强烈情绪宣泄；渡久地心率仅58且语调平淡，其压迫感完全来自规则与概率结构（[ I ] 逻辑）。",
-            "de": "FALSCH. [ I ] EMOTION flutet den Raum mit Affekt; Tokuchis Dominanz beruht rein auf mathematischer Logik — [ I ] LOGIK.",
-            "ja": "不正解。[ I ] 感情は激しい感情表現を伴うが、渡久地は心拍58の冷静さでルール構造（[ I ] 論理）のみによって支配している。"
+            "ru": "ЛОЖНЫЙ СЛЕД. I Эмоция (Накал) выплескивает яркий аффективный напор. Пульс Токучи — 58 ударов в минуту, тон ровный и сухой; вся сокрушительная мощь его ультиматума сосредоточена в конструкции правил и вероятностей.",
+            "en": "FALSE LEAD. [ I ] EMOTION (Intensity) floods the room with dramatic affect. Tokuchi's pulse sits at 58 BPM with dry, level delivery; his dominance operates purely through rule architecture and probability.",
+            "zh": "判断错误。[ I ] 情感伴随强烈情绪宣泄；渡久地心率仅58且语调平淡，其压迫感完全来自规则与概率结构。",
+            "de": "FALSCH. [ I ] EMOTION flutet den Raum mit Affekt; Tokuchis Dominanz beruht rein auf mathematischer Logik.",
+            "ja": "不正解。[ I ] 感情は激しい感情表現を伴うが、渡久地は心拍58の冷静さでルール構造のみによって支配している。"
           },
           "explanation": {
             "ru": "Инструмент доминирования — чистая структура правил (Логика), а не аффект (Эмоция).",
@@ -698,11 +698,11 @@
           "ja": "弱 / リザルト / アジャスト"
         },
         "breakdown": {
-          "ru": "Окно закрыто! Вы не успели зафиксировать вердикт. Истинный профиль Аянокоджи — [ IV ] ЭМОЦИЯ (Слабая • Результативная • Подстраивающаяся).",
-          "en": "Window closed! You failed to lock your verdict in time. Ayanokoji's true function is [ IV ] EMOTION (Weak • Resultative • Adapting).",
-          "zh": "窗口关闭！未能及时锁定裁决。绫小路清隆的真实功能为 [ IV ] 情感（弱势 • 结果型 • 适应型）。",
-          "de": "Zeit abgelaufen! Sie konnten das Urteil nicht rechtzeitig fixieren. Ayanokojis wahre Funktion ist [ IV ] EMOTION (Schwach • Resultativ • Anpassend).",
-          "ja": "時間切れです。時間内に判定を確定できませんでした。綾小路の真の機能は [ IV ] 感情（弱 • リザルト • アジャスト）です。"
+          "ru": "Окно закрыто! Вы не успели зафиксировать вердикт. Истинный профиль Аянокоджи — IV ЭМОЦИЯ (Слабая • Результативная • Подстраивающаяся).",
+          "en": "Window closed! You failed to lock your verdict in time. Ayanokoji's true function is IV EMOTION (Weak • Resultative • Adapting).",
+          "zh": "窗口关闭！未能及时锁定裁决。绫小路清隆的真实功能为 IV 情感（弱势 • 结果型 • 适应型）。",
+          "de": "Zeit abgelaufen! Sie konnten das Urteil nicht rechtzeitig fixieren. Ayanokojis wahre Funktion ist IV EMOTION (Schwach • Resultativ • Anpassend).",
+          "ja": "時間切れです。時間内に判定を確定できませんでした。綾小路の真の機能は IV 感情（弱 • リザルト • アジャスト）です。"
         }
       },
       "options": [
@@ -711,11 +711,11 @@
           "function_code": "3Э",
           "is_correct": false,
           "text": {
-            "ru": "[ III ] ЭМОЦИЯ — ЗАЖИМ",
-            "en": "[ III ] EMOTION — SUPPRESSION",
-            "zh": "[ III ] 情感 — 紧绷",
-            "de": "[ III ] EMOTION — HEMMUNG",
-            "ja": "[ III ] 感情 — 抑圧"
+            "ru": "III ЭМОЦИЯ — ЗАЖИМ",
+            "en": "III EMOTION — SUPPRESSION",
+            "zh": "III 情感 — 紧绷",
+            "de": "III EMOTION — HEMMUNG",
+            "ja": "III 感情 — 抑圧"
           },
           "axes": {
             "ru": "Слабая / Процессионная / Доминантная",
@@ -732,11 +732,11 @@
             "ja": "仮面の裏で傷つきやすい感情を必死に抑えているのか、それとも内面が本当に凪いでいるのか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. III Эмоция (Зажим) внешне сдержанна, но внутри мучительно процессионна: она боится сорваться, стыдится слез и остро переживает чужую фальшь. У Аянокоджи нет внутреннего зажима или защитной маски — его аффективный контур попросту отключен за ненадобностью — [ IV ] ЭМОЦИЯ (Покой).",
-            "en": "FALSE LEAD. [ III ] EMOTION (Suppression) looks dry outside yet churns anxiously inside, fearing emotional exposure. Ayanokoji exhibits zero inner tension or defensive masking—his affective circuit simply powers down when unneeded—[ IV ] EMOTION (Tranquility).",
-            "zh": "判断错误。[ III ] 情感外冷内热、害怕情绪失控；绫小路毫无内部紧绷或防御伪装，纯粹是情绪断电节能——[ IV ] 情感（沉寂）。",
-            "de": "FALSCH. [ III ] EMOTION ist innerlich angespannt und verletzlich; bei Ayanokoji liegt echte affektive Abschaltung vor — [ IV ] EMOTION (Ruhe).",
-            "ja": "不正解。[ III ] 感情は内面に繊細な葛藤を抱えるが、綾小路には抑圧の緊張すらなく、純粋な省エネの凪――[ IV ] 感情（静謐）がある。"
+            "ru": "ЛОЖНЫЙ СЛЕД. III Эмоция (Зажим) внешне сдержанна, но внутри мучительно процессионна: она боится сорваться, стыдится слез и остро переживает чужую фальшь. У Аянокоджи нет внутреннего зажима или защитной маски — его аффективный контур попросту отключен за ненадобностью.",
+            "en": "FALSE LEAD. [ III ] EMOTION (Suppression) looks dry outside yet churns anxiously inside, fearing emotional exposure. Ayanokoji exhibits zero inner tension or defensive masking—his affective circuit simply powers down when unneeded.",
+            "zh": "判断错误。[ III ] 情感外冷内热、害怕情绪失控；绫小路毫无内部紧绷或防御伪装，纯粹是情绪断电节能。",
+            "de": "FALSCH. [ III ] EMOTION ist innerlich angespannt und verletzlich; bei Ayanokoji liegt echte affektive Abschaltung vor.",
+            "ja": "不正解。[ III ] 感情は内面に繊細な葛藤を抱えるが、綾小路には抑圧の緊張すらなく、純粋な省エネの凪がある。"
           },
           "explanation": {
             "ru": "Отсутствие внутреннего надрыва разделяет естественный покой [ IV ] ЭМОЦИИ и зажим [ III ] ЭМОЦИИ.",
@@ -751,11 +751,11 @@
           "function_code": "4Э",
           "is_correct": true,
           "text": {
-            "ru": "[ IV ] ЭМОЦИЯ — ПОКОЙ",
-            "en": "[ IV ] EMOTION — TRANQUILITY",
-            "zh": "[ IV ] 情感 — 沉寂",
-            "de": "[ IV ] EMOTION — RUHE",
-            "ja": "[ IV ] 感情 — 静謐"
+            "ru": "IV ЭМОЦИЯ — ПОКОЙ",
+            "en": "IV EMOTION — TRANQUILITY",
+            "zh": "IV 情感 — 沉寂",
+            "de": "IV EMOTION — RUHE",
+            "ja": "IV 感情 — 静謐"
           },
           "axes": {
             "ru": "Слабая / Результативная / Подстраивающаяся",
@@ -791,11 +791,11 @@
           "function_code": "2Э",
           "is_correct": false,
           "text": {
-            "ru": "[ II ] ЭМОЦИЯ — РЕЗОНАНС",
-            "en": "[ II ] EMOTION — RESONANCE",
-            "zh": "[ II ] 情感 — 共鸣",
-            "de": "[ II ] EMOTION — RESONANZ",
-            "ja": "[ II ] 感情 — 共鳴"
+            "ru": "II ЭМОЦИЯ — РЕЗОНАНС",
+            "en": "II EMOTION — RESONANCE",
+            "zh": "II 情感 — 共鸣",
+            "de": "II EMOTION — RESONANZ",
+            "ja": "II 感情 — 共鳴"
           },
           "axes": {
             "ru": "Сильная / Процессионная / Подстраивающаяся",
@@ -812,11 +812,11 @@
             "ja": "豊かな声色と情動で場を導いているか、それとも感情出力がゼロに張り付いているか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. II Эмоция (Резонанс) сильна и процессионна: она мастерски играет оттенками чувств и согревает или разряжает обстановку. У Аянокоджи же эмоциональный регистр плоский и энергосберегающий — [ IV ] ЭМОЦИЯ (Покой).",
-            "en": "FALSE LEAD. [ II ] EMOTION (Resonance) is strong and processional, actively modulating emotional nuance to move others. Ayanokoji's affective register is flat and energy-saving—[ IV ] EMOTION (Tranquility).",
-            "zh": "判断错误。[ II ] 情感充沛且善于调节气氛；绫小路声调平直、彻底节能，属于 [ IV ] 情感（沉寂）。",
-            "de": "FALSCH. [ II ] EMOTION gestaltet Gefühle aktiv und nuancenreich; Ayanokoji spart jede emotionale Energie ein — [ IV ] EMOTION (Ruhe).",
-            "ja": "不正解。[ II ] 感情は豊かな感情表現で他者に働きかけるが、綾小路は感情出力を最小化する [ IV ] 感情である。"
+            "ru": "ЛОЖНЫЙ СЛЕД. II Эмоция (Резонанс) сильна и процессионна: она мастерски играет оттенками чувств и согревает или разряжает обстановку. У Аянокоджи же эмоциональный регистр плоский и энергосберегающий.",
+            "en": "FALSE LEAD. [ II ] EMOTION (Resonance) is strong and processional, actively modulating emotional nuance to move others. Ayanokoji's affective register is flat and energy-saving.",
+            "zh": "判断错误。[ II ] 情感充沛且善于调节气氛；绫小路声调平直、彻底节能。",
+            "de": "FALSCH. [ II ] EMOTION gestaltet Gefühle aktiv und nuancenreich; Ayanokoji spart jede emotionale Energie ein.",
+            "ja": "不正解。[ II ] 感情は豊かな感情表現で他者に働きかけるが、綾小路は感情出力を最小化している。"
           },
           "explanation": {
             "ru": "Нулевая экспрессия указывает на слабую [ IV ] ЭМОЦИЮ, а не на сильную [ II ] ЭМОЦИЮ.",
@@ -831,11 +831,11 @@
           "function_code": "1В",
           "is_correct": false,
           "text": {
-            "ru": "[ I ] ВОЛЯ — ДИКТАТ",
-            "en": "[ I ] WILL — DICTATE",
-            "zh": "[ I ] 意志 — 独断",
-            "de": "[ I ] WILLE — DIKTAT",
-            "ja": "[ I ] 意志 — 独断"
+            "ru": "I ВОЛЯ — ДИКТАТ",
+            "en": "I WILL — DICTATE",
+            "zh": "I 意志 — 独断",
+            "de": "I WILLE — DIKTAT",
+            "ja": "I 意志 — 独断"
           },
           "axes": {
             "ru": "Сильная / Результативная / Доминантная",
@@ -852,11 +852,11 @@
             "ja": "この場面の焦点は王権の誇示か、それとも感情反応が完全に欠落している現象そのものか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. Хотя Аянокоджи полностью контролирует ситуацию, ключевая улика допроса под дождем — именно устройство его эмоционального контура: бытовая мимикрия в покое и мгновенный покой в кризисе — [ IV ] ЭМОЦИЯ (Покой).",
-            "en": "FALSE LEAD. While Ayanokoji controls the outcome, the decisive forensic clue in this rain scene is the architecture of his emotional circuit: casual social mirroring in peace and instant stillness in crisis—[ IV ] EMOTION (Tranquility).",
-            "zh": "判断错误。本案的关键法医特征在于其情绪回路结构：日常顺应环境，危机瞬间归于冷寂静默——[ IV ] 情感（沉寂）。",
-            "de": "FALSCH. Der entscheidende Befund dieser Szene ist die Architektur seines Emotionskreislaufs: soziale Anpassung im Alltag und eiskalte Stille im Sturm — [ IV ] EMOTION (Ruhe).",
-            "ja": "不正解。本シーンの決定的なプロファイル証拠は感情回路の構造――日常の同調と危機における完全な氷凪（[ IV ] 感情）にある。"
+            "ru": "ЛОЖНЫЙ СЛЕД. Хотя Аянокоджи полностью контролирует ситуацию, ключевая улика допроса под дождем — именно устройство его эмоционального контура: бытовая мимикрия в покое и мгновенный покой в кризисе.",
+            "en": "FALSE LEAD. While Ayanokoji controls the outcome, the decisive forensic clue in this rain scene is the architecture of his emotional circuit: casual social mirroring in peace and instant stillness in crisis.",
+            "zh": "判断错误。本案的关键法医特征在于其情绪回路结构：日常顺应环境，危机瞬间归于冷寂静默。",
+            "de": "FALSCH. Der entscheidende Befund dieser Szene ist die Architektur seines Emotionskreislaufs: soziale Anpassung im Alltag und eiskalte Stille im Sturm.",
+            "ja": "不正解。本シーンの決定的なプロファイル証拠は感情回路の構造――日常の同調と危機における完全な氷凪にある。"
           },
           "explanation": {
             "ru": "Центральный феномен сцены — энергосберегающий покой IV Эмоции (Покой).",
@@ -980,11 +980,11 @@
           "ja": "強 / プロセス / アジャスト"
         },
         "breakdown": {
-          "ru": "Доля секунды упущена! На скоростях УПМ промедление фатально. Истинный профиль Леви Аккермана — [ II ] ФИЗИКА (Сильная • Процессионная • Подстраивающаяся).",
-          "en": "Split-second window missed! At ODM speeds hesitation is fatal. Levi Ackerman's true function is [ II ] PHYSICS (Strong • Processional • Adapting).",
-          "zh": "错失刹那！在立体机动的高速战斗中，迟疑是致命的。利威尔·阿克曼的真实功能为 [ II ] 物理（强势 • 过程型 • 适应型）。",
-          "de": "Der entscheidende Sekundenbruchteil ist verstrichen! Bei Manöver-Geschwindigkeit ist Zögern fatal. Levis wahre Funktion ist [ II ] PHYSIK (Stark • Prozesshaft • Anpassend).",
-          "ja": "一瞬の隙を逃しました。立体機動の速度において躊躇は命取りです。リヴァイの真の機能は [ II ] 物理（強 • プロセス • アジャスト）です。"
+          "ru": "Доля секунды упущена! На скоростях УПМ промедление фатально. Истинный профиль Леви Аккермана — II ФИЗИКА (Сильная • Процессионная • Подстраивающаяся).",
+          "en": "Split-second window missed! At ODM speeds hesitation is fatal. Levi Ackerman's true function is II PHYSICS (Strong • Processional • Adapting).",
+          "zh": "错失刹那！在立体机动的高速战斗中，迟疑是致命的。利威尔·阿克曼的真实功能为 II 物理（强势 • 过程型 • 适应型）。",
+          "de": "Der entscheidende Sekundenbruchteil ist verstrichen! Bei Manöver-Geschwindigkeit ist Zögern fatal. Levis wahre Funktion ist II PHYSIK (Stark • Prozesshaft • Anpassend).",
+          "ja": "一瞬の隙を逃しました。立体機動の速度において躊躇は命取りです。リヴァイの真の機能は II 物理（強 • プロセス • アジャスト）です。"
         }
       },
       "options": [
@@ -993,11 +993,11 @@
           "function_code": "1Ф",
           "is_correct": false,
           "text": {
-            "ru": "[ I ] ФИЗИКА — ЗАХВАТ",
-            "en": "[ I ] PHYSICS — GRASP",
-            "zh": "[ I ] 物理 — 占有",
-            "de": "[ I ] PHYSIK — ZUGRIFF",
-            "ja": "[ I ] 物理 — 独占"
+            "ru": "I ФИЗИКА — ЗАХВАТ",
+            "en": "I PHYSICS — GRASP",
+            "zh": "I 物理 — 占有",
+            "de": "I PHYSIK — ZUGRIFF",
+            "ja": "I 物理 — 独占"
           },
           "axes": {
             "ru": "Сильная / Результативная / Доминантная",
@@ -1014,11 +1014,11 @@
             "ja": "鈍重な剛力と快楽主義か、それとも絶え間ない身体調整と実践的な手入れか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. I Физика (Захват) результативна и монологова: она тяготеет к грубой статичной силе, накоплению и бытовому комфорту «под себя». Сила Леви — в непрерывном процессе движения, мгновенной подстройке тела под вектор троса и деятельной заботе о гигиене и выживании отряда — [ II ] ФИЗИКА (Тонус).",
-            "en": "FALSE LEAD. [ I ] PHYSICS (Grasp) is resultative and self-centered, leaning toward static brute force and personal comfort. Levi's mastery shines in continuous kinetic flow, instant mid-air adaptation, and hands-on physical care for his squad—[ II ] PHYSICS (Vigor).",
-            "zh": "判断错误。[ I ] 物理偏向静态蛮力与个人享乐；利威尔的精髓在于持续的动态操控、空中瞬时适应以及对战友伤势的利落照料——[ II ] 物理（协调）。",
-            "de": "FALSCH. [ I ] PHYSIK neigt zu statischer Wucht; Levis Stärke liegt im dynamischen Bewegungsfluss und der Anpassung — [ II ] PHYSIK (Tonus).",
-            "ja": "不正解。[ I ] 物理は静的な剛力や自己完結した快楽に傾くが、リヴァイの真髄は絶え間ない運動プロセスと環境への即応――[ II ] 物理（調和）にある。"
+            "ru": "ЛОЖНЫЙ СЛЕД. I Физика (Захват) результативна и монологова: она тяготеет к грубой статичной силе, накоплению и бытовому комфорту «под себя». Сила Леви — в непрерывном процессе движения, мгновенной подстройке тела под вектор троса и деятельной заботе о гигиене и выживании отряда.",
+            "en": "FALSE LEAD. [ I ] PHYSICS (Grasp) is resultative and self-centered, leaning toward static brute force and personal comfort. Levi's mastery shines in continuous kinetic flow, instant mid-air adaptation, and hands-on physical care for his squad.",
+            "zh": "判断错误。[ I ] 物理偏向静态蛮力与个人享乐；利威尔的精髓在于持续的动态操控、空中瞬时适应以及对战友伤势的利落照料。",
+            "de": "FALSCH. [ I ] PHYSIK neigt zu statischer Wucht; Levis Stärke liegt im dynamischen Bewegungsfluss und der Anpassung.",
+            "ja": "不正解。[ I ] 物理は静的な剛力や自己完結した快楽に傾くが、リヴァイの真髄は絶え間ない運動プロセスと環境への即応にある。"
           },
           "explanation": {
             "ru": "Пластичная адаптация в полете и функциональная чистота указывают на процессионную [ II ] ФИЗИКУ (Тонус), а не [ I ] ФИЗИКУ.",
@@ -1033,11 +1033,11 @@
           "function_code": "2Ф",
           "is_correct": true,
           "text": {
-            "ru": "[ II ] ФИЗИКА — ТОНУС",
-            "en": "[ II ] PHYSICS — VIGOR",
-            "zh": "[ II ] 物理 — 协调",
-            "de": "[ II ] PHYSIK — TONUS",
-            "ja": "[ II ] 物理 — 調和"
+            "ru": "II ФИЗИКА — ТОНУС",
+            "en": "II PHYSICS — VIGOR",
+            "zh": "II 物理 — 协调",
+            "de": "II PHYSIK — TONUS",
+            "ja": "II 物理 — 調和"
           },
           "axes": {
             "ru": "Сильная / Процессионная / Подстраивающаяся",
@@ -1073,11 +1073,11 @@
           "function_code": "3Ф",
           "is_correct": false,
           "text": {
-            "ru": "[ III ] ФИЗИКА — ТРЕВОГА",
-            "en": "[ III ] PHYSICS — ANXIETY",
-            "zh": "[ III ] 物理 — 焦虑",
-            "de": "[ III ] PHYSIK — SORGE",
-            "ja": "[ III ] 物理 — 不安"
+            "ru": "III ФИЗИКА — ТРЕВОГА",
+            "en": "III PHYSICS — ANXIETY",
+            "zh": "III 物理 — 焦虑",
+            "de": "III PHYSIK — SORGE",
+            "ja": "III 物理 — 不安"
           },
           "axes": {
             "ru": "Слабая / Процессионная / Доминантная",
@@ -1113,11 +1113,11 @@
           "function_code": "4Ф",
           "is_correct": false,
           "text": {
-            "ru": "[ IV ] ФИЗИКА — АСКЕЗА",
-            "en": "[ IV ] PHYSICS — ASCETICISM",
-            "zh": "[ IV ] 物理 — 简朴",
-            "de": "[ IV ] PHYSIK — ASKESE",
-            "ja": "[ IV ] 物理 — 禁欲"
+            "ru": "IV ФИЗИКА — АСКЕЗА",
+            "en": "IV PHYSICS — ASCETICISM",
+            "zh": "IV 物理 — 简朴",
+            "de": "IV PHYSIK — ASKESE",
+            "ja": "IV 物理 — 禁欲"
           },
           "axes": {
             "ru": "Слабая / Результативная / Подстраивающаяся",
@@ -1134,11 +1134,11 @@
             "ja": "彼は刃の手入れや生活規律、身体技術の細部に無頓着だろうか？"
           },
           "breakdown": {
-            "ru": "ЛОЖНЫЙ СЛЕД. IV Физика (Аскеза) небрежна к быту, инвентарю и тонкостям физической формы, экономя телесный ресурс. Леви же неустанно вовлечен в материальный порядок, уход за экипировкой и филигранную технику движения — [ II ] ФИЗИКА (Тонус).",
-            "en": "FALSE LEAD. [ IV ] PHYSICS (Asceticism) neglects surroundings, gear upkeep, and physical nuance to conserve energy. Levi is tirelessly engaged in material order, blade care, and precision movement—[ II ] PHYSICS (Vigor).",
-            "zh": "判断错误。[ IV ] 物理忽视环境与器械保养；利威尔对装备整洁与动作精度的持续投入属于强势过程型的 [ II ] 物理。",
-            "de": "FALSCH. [ IV ] PHYSIK vernachlässigt Umfeld und Ausrüstung; Levi lebt präzise körperliche Meisterschaft — [ II ] PHYSIK (Tonus).",
-            "ja": "不正解。[ IV ] 物理は環境や装備の手入れに無頓着だが、リヴァイは物質的規律と身体技術に絶えず関与する [ II ] 物理である。"
+            "ru": "ЛОЖНЫЙ СЛЕД. IV Физика (Аскеза) небрежна к быту, инвентарю и тонкостям физической формы, экономя телесный ресурс. Леви же неустанно вовлечен в материальный порядок, уход за экипировкой и филигранную технику движения.",
+            "en": "FALSE LEAD. [ IV ] PHYSICS (Asceticism) neglects surroundings, gear upkeep, and physical nuance to conserve energy. Levi is tirelessly engaged in material order, blade care, and precision movement.",
+            "zh": "判断错误。[ IV ] 物理忽视环境与器械保养；利威尔对装备整洁与动作精度的持续投入属于功能性的身体关注。",
+            "de": "FALSCH. [ IV ] PHYSIK vernachlässigt Umfeld und Ausrüstung; Levi lebt präzise körperliche Meisterschaft.",
+            "ja": "不正解。[ IV ] 物理は環境や装備の手入れに无顿着だが、リヴァイは物質的規律と身体技術に絶えず関与している。"
           },
           "explanation": {
             "ru": "Высочайшая требовательность к экипировке и технике исключает безразличную [ IV ] ФИЗИКУ.",

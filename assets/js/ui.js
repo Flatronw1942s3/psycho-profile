@@ -983,11 +983,11 @@
         const mainLabel = document.createElement('span');
         mainLabel.className = 'plate-main-label';
 
-        if (diffCfg.show_axes_on_options) {
-          mainLabel.textContent = `[${opt.function_code}] ${this.i18n.localizeField(opt.text)}`;
-        } else {
+        if (diffCfg.id === 'mindhunter') {
           // Mindhunter Mode: bare function code/label only
           mainLabel.textContent = this.i18n.getBareFunctionLabel(opt.function_code);
+        } else {
+          mainLabel.textContent = this.i18n.localizeField(opt.text);
         }
 
         topLine.appendChild(hotkey);
@@ -997,7 +997,7 @@
         if (diffCfg.show_axes_on_options) {
           const axesLine = document.createElement('div');
           axesLine.className = 'plate-axes-sub';
-          axesLine.textContent = `[${opt.function_code}: ${this.i18n.localizeField(opt.axes)}]`;
+          axesLine.textContent = this.i18n.localizeField(opt.axes);
           btn.appendChild(axesLine);
         }
 
@@ -1099,7 +1099,7 @@
         title = fullText.split('-').slice(1).join('-').trim();
       }
 
-      return `[ ${roman} ] ${aspectName} — ${title}`;
+      return `${roman} ${aspectName} — ${title}`;
     }
 
     /**
@@ -1189,7 +1189,7 @@
 
       this.els.sumValCase.textContent = this.i18n.localizeField(verdict.scenario.case_title);
       this.els.sumValProfile.textContent = verdict.correctOption
-        ? `${this._formatFunctionSlot(verdict.correctOption)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
+        ? this._formatFunctionSlot(verdict.correctOption)
         : '—';
       this.els.sumValScore.textContent = `${tel.score} (+${verdict.pointsEarned})`;
       this.els.sumValAccuracy.textContent = `${tel.accuracy}%`;
@@ -1207,9 +1207,9 @@
         this.els.sumExplanation.classList.add('status-failed');
         const prefix = this.i18n.t('summary_failed_explanation_prefix');
         const correctInfo = verdict.correctOption
-          ? `${this._formatFunctionSlot(verdict.correctOption)} (${this.i18n.localizeField(verdict.correctOption.axes)})`
+          ? this._formatFunctionSlot(verdict.correctOption)
           : '—';
-        this.els.sumExplanation.textContent = `${prefix}${correctInfo}`;
+        this.els.sumExplanation.textContent = `${prefix}${correctInfo}.`;
       }
 
       this.els.btnSumNext.classList.toggle('hidden', !this.engine.hasNextScenario());
@@ -1249,12 +1249,10 @@
           const card = document.createElement('article');
           card.className = 'tut-info-card';
           card.innerHTML = `
-            <div class="tut-card-kicker"></div>
             <h3 class="tut-card-title"></h3>
             <p class="tut-card-desc"></p>
             <div class="tut-card-markers"></div>
           `;
-          card.querySelector('.tut-card-kicker').textContent = item.code;
           card.querySelector('.tut-card-title').textContent = item.title;
           card.querySelector('.tut-card-desc').textContent = item.desc;
           card.querySelector('.tut-card-markers').textContent = item.markers;
@@ -1355,7 +1353,7 @@
           const lbl = document.createElement('span');
           lbl.className = 'plate-main-label';
           lbl.style.fontSize = '20px';
-          lbl.textContent = simOpt.label.startsWith('[') ? simOpt.label : `[ ${simOpt.code} ] ${simOpt.label}`;
+          lbl.textContent = simOpt.label;
 
           top.appendChild(hk);
           top.appendChild(lbl);

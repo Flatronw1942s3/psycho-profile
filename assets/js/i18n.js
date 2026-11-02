@@ -17,22 +17,22 @@
   };
 
   const BARE_FUNCTION_LABELS = {
-    '1В': { ru: '1-я Воля', en: '1st Will [1W]', zh: '第一意志 [1W]', de: '1. Wille [1W]', ja: '第1意志 [1W]' },
-    '2В': { ru: '2-я Воля', en: '2nd Will [2W]', zh: '第二意志 [2W]', de: '2. Wille [2W]', ja: '第2意志 [2W]' },
-    '3В': { ru: '3-я Воля', en: '3rd Will [3W]', zh: '第三意志 [3W]', de: '3. Wille [3W]', ja: '第3意志 [3W]' },
-    '4В': { ru: '4-я Воля', en: '4th Will [4W]', zh: '第四意志 [4W]', de: '4. Wille [4W]', ja: '第4意志 [4W]' },
-    '1Л': { ru: '1-я Логика', en: '1st Logic [1L]', zh: '第一逻辑 [1L]', de: '1. Logik [1L]', ja: '第1論理 [1L]' },
-    '2Л': { ru: '2-я Логика', en: '2nd Logic [2L]', zh: '第二逻辑 [2L]', de: '2. Logik [2L]', ja: '第2論理 [2L]' },
-    '3Л': { ru: '3-я Логика', en: '3rd Logic [3L]', zh: '第三逻辑 [3L]', de: '3. Logik [3L]', ja: '第3論理 [3L]' },
-    '4Л': { ru: '4-я Логика', en: '4th Logic [4L]', zh: '第四逻辑 [4L]', de: '4. Logik [4L]', ja: '第4論理 [4L]' },
-    '1Ф': { ru: '1-я Физика', en: '1st Physics [1P]', zh: '第一物理 [1P]', de: '1. Physik [1P]', ja: '第1物理 [1P]' },
-    '2Ф': { ru: '2-я Физика', en: '2nd Physics [2P]', zh: '第二物理 [2P]', de: '2. Physik [2P]', ja: '第2物理 [2P]' },
-    '3Ф': { ru: '3-я Физика', en: '3rd Physics [3P]', zh: '第三物理 [3P]', de: '3. Physik [3P]', ja: '第3物理 [3P]' },
-    '4Ф': { ru: '4-я Физика', en: '4th Physics [4P]', zh: '第四物理 [4P]', de: '4. Physik [4P]', ja: '第4物理 [4P]' },
-    '1Э': { ru: '1-я Эмоция', en: '1st Emotion [1E]', zh: '第一情感 [1E]', de: '1. Emotion [1E]', ja: '第1感情 [1E]' },
-    '2Э': { ru: '2-я Эмоция', en: '2nd Emotion [2E]', zh: '第二情感 [2E]', de: '2. Emotion [2E]', ja: '第2感情 [2E]' },
-    '3Э': { ru: '3-я Эмоция', en: '3rd Emotion [3E]', zh: '第三情感 [3E]', de: '3. Emotion [3E]', ja: '第3感情 [3E]' },
-    '4Э': { ru: '4-я Эмоция', en: '4th Emotion [4E]', zh: '第四情感 [4E]', de: '4. Emotion [4E]', ja: '第4感情 [4E]' }
+    '1В': { ru: 'I ВОЛЯ', en: 'I WILL', zh: 'I 意志', de: 'I WILLE', ja: 'I 意志' },
+    '2В': { ru: 'II ВОЛЯ', en: 'II WILL', zh: 'II 意志', de: 'II WILLE', ja: 'II 意志' },
+    '3В': { ru: 'III ВОЛЯ', en: 'III WILL', zh: 'III 意志', de: 'III WILLE', ja: 'III 意志' },
+    '4В': { ru: 'IV ВОЛЯ', en: 'IV WILL', zh: 'IV 意志', de: 'IV WILLE', ja: 'IV 意志' },
+    '1Л': { ru: 'I ЛОГИКА', en: 'I LOGIC', zh: 'I 逻辑', de: 'I LOGIK', ja: 'I 論理' },
+    '2Л': { ru: 'II ЛОГИКА', en: 'II LOGIC', zh: 'II 逻辑', de: 'II LOGIK', ja: 'II 論理' },
+    '3Л': { ru: 'III ЛОГИКА', en: 'III LOGIC', zh: 'III 逻辑', de: 'III LOGIK', ja: 'III 論理' },
+    '4Л': { ru: 'IV ЛОГИКА', en: 'IV LOGIC', zh: 'IV 逻辑', de: 'IV LOGIK', ja: 'IV 論理' },
+    '1Ф': { ru: 'I ФИЗИКА', en: 'I PHYSICS', zh: 'I 物理', de: 'I PHYSIK', ja: 'I 物理' },
+    '2Ф': { ru: 'II ФИЗИКА', en: 'II PHYSICS', zh: 'II 物理', de: 'II PHYSIK', ja: 'II 物理' },
+    '3Ф': { ru: 'III ФИЗИКА', en: 'III PHYSICS', zh: 'III 物理', de: 'III PHYSIK', ja: 'III 物理' },
+    '4Ф': { ru: 'IV ФИЗИКА', en: 'IV PHYSICS', zh: 'IV 物理', de: 'IV PHYSIK', ja: 'IV 物理' },
+    '1Э': { ru: 'I ЭМОЦИЯ', en: 'I EMOTION', zh: 'I 情感', de: 'I EMOTION', ja: 'I 感情' },
+    '2Э': { ru: 'II ЭМОЦИЯ', en: 'II EMOTION', zh: 'II 情感', de: 'II EMOTION', ja: 'II 感情' },
+    '3Э': { ru: 'III ЭМОЦИЯ', en: 'III EMOTION', zh: 'III 情感', de: 'III EMOTION', ja: 'III 感情' },
+    '4Э': { ru: 'IV ЭМОЦИЯ', en: 'IV EMOTION', zh: 'IV 情感', de: 'IV EMOTION', ja: 'IV 感情' }
   };
 
   const DICTIONARIES = {
@@ -76,7 +76,7 @@
       summary_header: 'ИТОГОВОЕ ДОСЬЕ СЛЕДСТВИЯ',
       summary_status_solved: 'СТАТУС: СУБЪЕКТ РАСКОЛОТ (ПРОРЫВ)',
       summary_status_failed: 'СТАТУС: ОШИБКА ПРОФИЛИРОВАНИЯ',
-      summary_failed_explanation_prefix: 'Профилирование провалено. Эталонная функция объекта: ',
+      summary_failed_explanation_prefix: 'Профилирование провалено. Истинная функция объекта: ',
       summary_metric_case: 'ОБЪЕКТ АНАЛИЗА',
       summary_metric_profile: 'КЛЮЧЕВАЯ ФУНКЦИЯ',
       summary_metric_score: 'НАБРАННЫЕ ОЧКИ СЕССИИ',
@@ -179,19 +179,19 @@
         sim_options: [
           {
             code: 'I',
-            label: '[ I ] ВОЛЯ — ДИКТАТ (Сильная • Результативная • Доминантная)',
+            label: 'I ВОЛЯ — ДИКТАТ (Сильная • Результативная • Доминантная)',
             correct: false,
             feedback: 'Мимо: 1-я Воля не фиксируется на перешептываниях за спиной и не оправдывается за дрожащие руки.'
           },
           {
             code: 'III',
-            label: '[ III ] ВОЛЯ — УЯЗВИМОСТЬ (Слабая • Процессионная • Доминантная)',
+            label: 'III ВОЛЯ — УЯЗВИМОСТЬ (Слабая • Процессионная • Доминантная)',
             correct: true,
             feedback: 'ПРОРЫВ АКТИВИРОВАН! Когда вы точно определяете все три оси ядра подозреваемого ([СЛАБАЯ] дрожь и боль самооценки + [ПРОЦЕССИОННАЯ] фиксация на чужом шепоте + [ДОМИНАНТНАЯ] «не позволю решать за меня»), защита субъекта рушится, фиксируя психологический прорыв!'
           },
           {
             code: 'IV',
-            label: '[ IV ] ВОЛЯ — ШТИЛЬ (Слабая • Результативная • Подстраивающаяся)',
+            label: 'IV ВОЛЯ — ШТИЛЬ (Слабая • Результативная • Подстраивающаяся)',
             correct: false,
             feedback: 'Мимо: 4-я Воля спокойно уступает инициативу в кризисе и не идет на яростный бунт ради самоутверждения.'
           }
@@ -239,7 +239,7 @@
       summary_header: 'FINAL INVESTIGATION DOSSIER',
       summary_status_solved: 'STATUS: SUBJECT PROFILED (BREAKTHROUGH)',
       summary_status_failed: 'STATUS: PROFILING FAILURE',
-      summary_failed_explanation_prefix: 'Profiling failed. Benchmark object function: ',
+      summary_failed_explanation_prefix: 'Profiling failed. True object function: ',
       summary_metric_case: 'ANALYZED CASE',
       summary_metric_profile: 'KEY FUNCTION',
       summary_metric_score: 'SESSION SCORE',
@@ -342,19 +342,19 @@
         sim_options: [
           {
             code: 'I',
-            label: '[ I ] WILL — DICTATE (Strong • Resultative • Dominant)',
+            label: 'I WILL — DICTATE (Strong • Resultative • Dominant)',
             correct: false,
             feedback: 'Miss: 1st Will does not obsess over whispers behind its back or apologize for trembling hands.'
           },
           {
             code: 'III',
-            label: '[ III ] WILL — VULNERABILITY (Weak • Processional • Dominant)',
+            label: 'III WILL — VULNERABILITY (Weak • Processional • Dominant)',
             correct: true,
             feedback: 'BREAKTHROUGH TRIGGERED! Locking onto all three axes ([WEAK] trembling self-doubt + [PROCESSIONAL] fixation on observers + [DOMINANT] fierce claim to autonomy) shatters the psychological barrier!'
           },
           {
             code: 'IV',
-            label: '[ IV ] WILL — CALM (Weak • Resultative • Adapting)',
+            label: 'IV WILL — CALM (Weak • Resultative • Adapting)',
             correct: false,
             feedback: 'Miss: 4th Will yields initiative calmly rather than erupting in defiant pride.'
           }
@@ -402,7 +402,7 @@
       summary_header: '调查结案档案',
       summary_status_solved: '状态：目标防线已击破',
       summary_status_failed: '状态：侧写判定失败',
-      summary_failed_explanation_prefix: '侧写失败。对象基准机能：',
+      summary_failed_explanation_prefix: '侧写失败。对象真实功能：',
       summary_metric_case: '分析对象',
       summary_metric_profile: '核心机能',
       summary_metric_score: '本局累计得分',
@@ -505,19 +505,19 @@
         sim_options: [
           {
             code: 'I',
-            label: '[ I ] 意志 — 主导（强势 • 结果型 • 主导型）',
+            label: 'I 意志 — 主导（强势 • 结果型 • 主导型）',
             correct: false,
             feedback: '偏差：第一意志不会在意背后的议论，更不会为双手发抖而产生屈辱感。'
           },
           {
             code: 'III',
-            label: '[ III ] 意志 — 弱点（弱势 • 过程型 • 主导型）',
+            label: 'III 意志 — 弱点（弱势 • 过程型 • 主导型）',
             correct: true,
             feedback: '心理击破成功！当你同时锁定【弱势】自我怀疑、【过程型】对旁人目光的敏感拉锯与【主导型】夺回自主权的执念时，即可瞬间瓦解目标心理防线！'
           },
           {
             code: 'IV',
-            label: '[ IV ] 意志 — 忽视（弱势 • 结果型 • 适应型）',
+            label: 'IV 意志 — 忽视（弱势 • 结果型 • 适应型）',
             correct: false,
             feedback: '偏差：第四意志在危机中倾向于平静让渡决定权，而非激烈反抗。'
           }
@@ -565,7 +565,7 @@
       summary_header: 'ABSCHLUSSBERICHT DER ERMITTLUNG',
       summary_status_solved: 'STATUS: SUBJEKT ENTSCHLÜSSELT (DURCHBRUCH)',
       summary_status_failed: 'STATUS: PROFILING FEHLGESCHLAGEN',
-      summary_failed_explanation_prefix: 'Profilierung fehlgeschlagen. Referenzfunktion des Objekts: ',
+      summary_failed_explanation_prefix: 'Profilierung fehlgeschlagen. Wahre Funktion des Objekts: ',
       summary_metric_case: 'UNTERSUCHTER FALL',
       summary_metric_profile: 'SCHLÜSSELFUNKTION',
       summary_metric_score: 'SITZUNGSPUNKTE',
@@ -668,19 +668,19 @@
         sim_options: [
           {
             code: 'I',
-            label: '[ I ] WILLE — DIKTAT (Stark • Resultativ • Dominant)',
+            label: 'I WILLE — DIKTAT (Stark • Resultativ • Dominant)',
             correct: false,
             feedback: 'Verfehlt: Der 1. Wille kümmert sich nicht um Geflüster hinter seinem Rücken.'
           },
           {
             code: 'III',
-            label: '[ III ] WILLE — VERLETZLICHKEIT (Schwach • Prozesshaft • Dominant)',
+            label: 'III WILLE — VERLETZLICHKEIT (Schwach • Prozesshaft • Dominant)',
             correct: true,
             feedback: 'DURCHBRUCH AKTIVIERT! Die Kombination aus [SCHWACH] Zittern & Scham, [PROZESSHAFT] Fokus auf fremde Blicke und [DOMINANT] unbeugsamem Selbstbestimmungsdrang sprengt die Schutzmauer!'
           },
           {
             code: 'IV',
-            label: '[ IV ] WILLE — STILLE (Schwach • Resultativ • Anpassend)',
+            label: 'IV WILLE — STILLE (Schwach • Resultativ • Anpassend)',
             correct: false,
             feedback: 'Verfehlt: Der 4. Wille gibt in Krisen ruhig nach, statt stolz zu rebellieren.'
           }
@@ -728,7 +728,7 @@
       summary_header: '捜査最終プロファイル調書',
       summary_status_solved: 'ステータス：被験者の核心を撃破',
       summary_status_failed: 'ステータス：プロファイリング失敗',
-      summary_failed_explanation_prefix: 'プロファイリング失敗。対象の基準機能：',
+      summary_failed_explanation_prefix: 'プロファイリング失敗。対象の真の機能：',
       summary_metric_case: '分析対象ケース',
       summary_metric_profile: '主要機能',
       summary_metric_score: 'セッションスコア',
@@ -831,19 +831,19 @@
         sim_options: [
           {
             code: 'I',
-            label: '[ I ] 意志 — 独断（強 • リザルト • ドミナント）',
+            label: 'I 意志 — 独断（強 • リザルト • ドミナント）',
             correct: false,
             feedback: '不一致：第1意志は陰口に過敏に反応したり、手の震えに引け目を感じたりしない。'
           },
           {
             code: 'III',
-            label: '[ III ] 意志 — 脆弱（弱 • プロセス • ドミナント）',
+            label: 'III 意志 — 脆弱（弱 • プロセス • ドミナント）',
             correct: true,
             feedback: '心理撃破発動！【弱】震えと自己疑念＋【プロセス】周囲の視線への過敏な反応＋【ドミナント】決定権を譲らない意地の3軸が一致し、心理防壁が撃破された！'
           },
           {
             code: 'IV',
-            label: '[ IV ] 意志 — 静寂（弱 • リザルト • アジャスト）',
+            label: 'IV 意志 — 静寂（弱 • リザルト • アジャスト）',
             correct: false,
             feedback: '不一致：第4意志は危機において穏やかに主導権を委ねるため、激しい反発は起こさない。'
           }
@@ -908,15 +908,14 @@
     }
 
     /**
-     * Return bare function name for Mindhunter Mode (e.g. "[3В] 3-я Воля")
+     * Return bare function name for Mindhunter Mode (e.g. "III ВОЛЯ")
      * @param {string} functionCode
      * @returns {string}
      */
     getBareFunctionLabel(functionCode) {
       const entry = BARE_FUNCTION_LABELS[functionCode];
-      if (!entry) return `[${functionCode}]`;
-      const name = entry[this._lang] || entry.ru;
-      return `[${functionCode}] ${name}`;
+      if (!entry) return functionCode;
+      return entry[this._lang] || entry.ru;
     }
 
     getAchievementTitle(id) {
