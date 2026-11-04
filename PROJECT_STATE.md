@@ -1,8 +1,10 @@
 # ТЕХНИЧЕСКИЙ ПАСПОРТ ПРОЕКТА: PSYCHO-PROFILE
 
-**Версия:** 2.8 (Clean Roman Numerals without Brackets, Stripped Technical Tags & Minimalist Aspects Tab)  
+**Версия:** 2.9 (GitHub Pages Deployment Ready & Relative Path Audit Verified)  
 **Локализация:** RU (базовая), EN, ZH, DE, JA  
-**Целевое разрешение:** 1920x1080 (Pixel-Perfect Responsive)
+**Целевое разрешение:** 1920x1080 (Pixel-Perfect Responsive)  
+**GitHub Pages URL:** https://flatronw1942s3.github.io/psycho-profile/  
+**Репозиторий:** https://github.com/Flatronw1942s3/psycho-profile
 
 ---
 
