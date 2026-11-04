@@ -185,7 +185,7 @@ button {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease-in-out;
   transform-origin: 50% 46%;
 }
 
@@ -322,7 +322,7 @@ button {
   justify-content: center;
   width: 820px;
   height: 100%;
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease, opacity 0.2s ease-in-out;
   transform-origin: 50% 100%;
 }
 

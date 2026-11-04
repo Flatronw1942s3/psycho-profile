@@ -183,6 +183,7 @@
         modalSettings: byId('modal-settings'),
         btnCloseSettings: byId('btn-close-settings'),
         settingsLangButtons: byId('settings-lang-buttons'),
+        settingsSpeedButtons: byId('settings-speed-buttons'),
         settingsMasterVol: byId('settings-master-volume'),
         settingsMasterVolVal: byId('settings-master-volume-val'),
         btnBgmToggle: byId('btn-bgm-toggle'),
@@ -264,6 +265,62 @@
     }
 
     /**
+     * Asynchronously preload and GPU-decode all image assets for a given scenario
+     * to eliminate micro-stutters during dialogue progression.
+     */
+    async preloadCaseAssets(scenario) {
+      if (!scenario) return;
+      const paths = typeof this.engine.collectScenarioAssetPaths === 'function'
+        ? this.engine.collectScenarioAssetPaths(scenario)
+        : [];
+
+      const preloadTasks = paths.map(async (rawPath) => {
+        if (!rawPath || typeof rawPath !== 'string') return;
+        const resolved = this._resolveAssetSrc(rawPath);
+        if (resolved.startsWith('data:') || resolved.startsWith('<svg')) return;
+
+        try {
+          const img = new Image();
+          img.src = resolved;
+          if (typeof img.decode === 'function') {
+            await img.decode();
+          } else {
+            await new Promise((resolve) => {
+              img.onload = resolve;
+              img.onerror = resolve;
+            });
+          }
+          this._mediaAvailabilityCache.set(rawPath.trim(), true);
+          this._mediaAvailabilityCache.set(resolved, true);
+        } catch (_) {
+          // Graceful fallback to regular probing
+        }
+      });
+
+      await Promise.allSettled(preloadTasks);
+    }
+
+    _getTextSpeed() {
+      try {
+        const stored = global.localStorage ? global.localStorage.getItem('psycho_text_speed') : null;
+        if (stored !== null && !isNaN(Number(stored))) {
+          const num = Number(stored);
+          if ([0, 10, 25, 50].includes(num)) return num;
+        }
+      } catch (_) {}
+      return 25; // default 25ms/char
+    }
+
+    _setTextSpeed(speed) {
+      try {
+        if (global.localStorage) {
+          global.localStorage.setItem('psycho_text_speed', String(speed));
+        }
+      } catch (_) {}
+      this.renderSettingsState();
+    }
+
+    /**
      * Universal procedural vector SVG silhouette fallback if neither physical PNG nor `scenario.sprites` exists
      */
     _buildDefaultProceduralSilhouette(scenario, emotionKey) {
@@ -296,6 +353,8 @@
 
       // Main menu primary actions
       this.els.btnMenuStart.addEventListener('click', () => {
+        const sc = this.engine.getCurrentScenario();
+        this.preloadCaseAssets(sc);
         this.engine.startScenario(0);
       });
       this.els.btnMenuTutorial.addEventListener('click', () => {
@@ -371,8 +430,10 @@
       // Summary screen buttons
       this.els.btnSumNext.addEventListener('click', () => {
         this.engine.startNextScenario();
+        this.preloadCaseAssets(this.engine.getCurrentScenario());
       });
       this.els.btnSumRetry.addEventListener('click', () => {
+        this.preloadCaseAssets(this.engine.getCurrentScenario());
         this.engine.retryCurrentScenario();
       });
       this.els.btnSumMenu.addEventListener('click', () => {
@@ -385,6 +446,16 @@
       this.els.modalSettings.addEventListener('click', (e) => {
         if (e.target === this.els.modalSettings) this.closeSettingsModal();
       });
+
+      if (this.els.settingsSpeedButtons) {
+        this.els.settingsSpeedButtons.addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-speed]');
+          if (!btn) return;
+          const speed = Number(btn.getAttribute('data-speed'));
+          this.engine.audio.playRelayClick();
+          this._setTextSpeed(speed);
+        });
+      }
 
       this.els.settingsMasterVol.addEventListener('input', () => {
         const pct = Math.max(0, Math.min(100, Number(this.els.settingsMasterVol.value) || 0));
@@ -704,6 +775,7 @@
       } else if (state === S.DIALOGUE_TYPE) {
         this.els.btnDlgAdvance.classList.remove('hidden');
         this.els.dlgHintDrawer.classList.add('hidden');
+        this.preloadCaseAssets(this.engine.getCurrentScenario());
         this._updateHudTelemetry();
       } else if (state === S.CHOICE_IDLE) {
         this.els.btnDlgAdvance.classList.add('hidden');
@@ -761,7 +833,12 @@
       this.els.hudModeBadge.classList.toggle('mode-pro', isPro);
       this.els.hudTimerModule.classList.toggle('timer-pro', isPro);
 
-      if (tel.timerUnlimited) {
+      if (tel.isCadetFrozen) {
+        this.els.hudTimerDigits.textContent = this._formatSeconds(tel.timerDurationSec || 60);
+        this.els.hudTimerFill.style.width = '100%';
+        this.els.hudTimerModule.classList.remove('timer-critical');
+        this.els.dangerOverlay.classList.remove('critical-active');
+      } else if (tel.timerUnlimited) {
         this.els.hudTimerDigits.textContent = '∞';
         this.els.hudTimerFill.style.width = '100%';
       } else {
@@ -937,25 +1014,32 @@
       this._stopTypewriter();
       this._twFullText = text;
       this._twIndex = 0;
-      this._twIsTyping = true;
       this.els.dlgText.textContent = '';
 
+      const speed = this._getTextSpeed();
+      if (speed <= 0) {
+        this.els.dlgText.textContent = text;
+        this._twIsTyping = false;
+        return;
+      }
+
+      this._twIsTyping = true;
       this._twTimer = setInterval(() => {
         if (this.engine.isPaused() || this._settingsOpen) {
           return;
         }
-        this._twIndex = Math.min(this._twFullText.length, this._twIndex + 12);
+        this._twIndex = Math.min(this._twFullText.length, this._twIndex + 1);
         this.els.dlgText.textContent = this._twFullText.slice(0, this._twIndex);
 
         const ch = this._twFullText[this._twIndex - 1];
-        if (ch && ch.trim().length > 0) {
+        if (ch && ch.trim().length > 0 && this._twIndex % 2 === 0) {
           this.engine.audio.playTypeBlip(this._twIndex);
         }
 
         if (this._twIndex >= this._twFullText.length) {
           this._stopTypewriter();
         }
-      }, 10);
+      }, speed);
     }
 
     _stopTypewriter() {
@@ -1104,7 +1188,21 @@
       });
     }
 
-    _updateTimerUI({ remaining, ratio, isCritical }) {
+    _updateTimerUI({ remaining, ratio, isCritical, isFrozen }) {
+      const isScoutDialogue =
+        this.engine.getState() === this.engine.STATES.DIALOGUE_TYPE &&
+        this.engine.getProfile().difficulty === 'scout';
+
+      if (isScoutDialogue || isFrozen) {
+        const dur = this.engine.getTelemetry().timerDurationSec || 60;
+        this.els.hudTimerDigits.textContent = this._formatSeconds(dur);
+        this.els.hudTimerFill.style.width = '100%';
+        this.els.verdictCrisisFill.style.width = '100%';
+        this.els.hudTimerModule.classList.remove('timer-critical');
+        this.els.dangerOverlay.classList.remove('critical-active');
+        return;
+      }
+
       const pct = `${Math.max(0, Math.min(100, ratio * 100)).toFixed(2)}%`;
       this.els.hudTimerDigits.textContent = this._formatSeconds(remaining);
       this.els.hudTimerFill.style.width = pct;
@@ -1618,6 +1716,16 @@
           ? this.i18n.t('settings_fullscreen_exit')
           : this.i18n.t('settings_fullscreen_enter');
         this.els.btnFullscreenToggle.classList.toggle('active', fsActive);
+      }
+
+      // Terminal Text Speed Pills
+      const curSpeed = this._getTextSpeed();
+      if (this.els.settingsSpeedButtons) {
+        const speedBtns = this.els.settingsSpeedButtons.querySelectorAll('[data-speed]');
+        speedBtns.forEach((btn) => {
+          const sp = Number(btn.getAttribute('data-speed'));
+          btn.classList.toggle('active', sp === curSpeed);
+        });
       }
 
       const canReturnMenu = state !== S.MENU_IDLE && state !== S.LOADING;

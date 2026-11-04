@@ -895,6 +895,14 @@
       }
 
       this._state = nextState;
+
+      // In Scout (Cadet) mode, trigger timer loop countdown ONLY upon reaching CHOICE_IDLE
+      if (nextState === FSM_STATES.CHOICE_IDLE) {
+        if (this._profile.difficulty === 'scout' && !this._timerActive && !this._timerUnlimited) {
+          this._startCrisisTimerLoop();
+        }
+      }
+
       this._emit('stateChange', { prevState, state: nextState, payload });
       return true;
     }
@@ -1055,7 +1063,19 @@
       });
 
       if (ok) {
-        this._startCrisisTimerLoop();
+        if (this._profile.difficulty === 'mindhunter') {
+          this._startCrisisTimerLoop();
+        } else {
+          // Scout (Cadet) Mode: Freeze timer at 60.0s during dialogue cards (01, 02, 03)
+          this._stopCrisisTimer();
+          this._emit('timerTick', {
+            remaining: this._timerRemainingSec,
+            duration: this._timerDurationSec,
+            ratio: 1,
+            isCritical: false,
+            isFrozen: true
+          });
+        }
         this._emitDialogueLine();
       }
       return ok;
@@ -1110,6 +1130,7 @@
       const sc = this.getCurrentScenario();
       const accuracy =
         this._totalAttempts === 0 ? 100 : Math.round((this._correctAttempts / this._totalAttempts) * 100);
+      const isCadetFrozen = this._profile.difficulty === 'scout' && this._state === FSM_STATES.DIALOGUE_TYPE;
       return {
         caseTitle: sc ? this.i18n.localizeField(sc.case_title) : '—',
         caseNumber: sc ? this.i18n.localizeField(sc.case_number) : '—',
@@ -1117,11 +1138,41 @@
         accuracy,
         score: this._sessionScore,
         difficulty: this._profile.difficulty,
+        isCadetFrozen,
         timerRemainingSec: this._timerRemainingSec,
         timerDurationSec: this._timerDurationSec,
         timerUnlimited: this._timerUnlimited,
         timerActive: this._timerActive
       };
+    }
+
+    /**
+     * Collect all asset paths (backgrounds, sprites, cards) for preloading
+     */
+    collectScenarioAssetPaths(scenario) {
+      if (!scenario) return [];
+      const paths = new Set();
+      if (scenario.background) paths.add(scenario.background);
+      if (scenario.background_image) paths.add(scenario.background_image);
+      if (scenario.sprite) paths.add(scenario.sprite);
+      if (scenario.sprite_image) paths.add(scenario.sprite_image);
+      if (Array.isArray(scenario.dialogue_cards)) {
+        scenario.dialogue_cards.forEach((c) => {
+          if (c.background) paths.add(c.background);
+          if (c.background_image) paths.add(c.background_image);
+          if (c.sprite) paths.add(c.sprite);
+          if (c.sprite_image) paths.add(c.sprite_image);
+        });
+      }
+      if (Array.isArray(scenario.dialogue)) {
+        scenario.dialogue.forEach((d) => {
+          if (d.background) paths.add(d.background);
+          if (d.background_image) paths.add(d.background_image);
+          if (d.sprite) paths.add(d.sprite);
+          if (d.sprite_image) paths.add(d.sprite_image);
+        });
+      }
+      return Array.from(paths).filter(Boolean);
     }
 
     _emitDialogueLine() {
