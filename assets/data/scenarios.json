@@ -1,4 +1,4 @@
-{
+﻿{
     "schema_version":  "1.1.0",
     "project_code":  "PSYCHO-PROFILE",
     "supported_locales":  [
@@ -1823,6 +1823,350 @@
                                                               }
                                           }
                                       ]
+                      },
+                      {
+                          "id":  "case_07_kenta_ally",
+                          "title":  "ДЕЛО #07: РАВНЫЙ СОЮЗНИК",
+                          "case_number":  {
+                                              "ru":  "ДЕЛО #07",
+                                              "en":  "CASE #07",
+                                              "zh":  "案件 #07",
+                                              "de":  "FALL #07",
+                                              "ja":  "事件 #07"
+                                          },
+                          "time_limit_sec":  30,
+                          "sprite":  "assets/media/sprites/case_07_company.png",
+                          "sprite_image":  "assets/media/sprites/case_07_company.png",
+                          "background":  "assets/media/backgrounds/case_07_1.png",
+                          "background_image":  "assets/media/backgrounds/case_07_1.png",
+                          "scene_name":  "У входа в клуб // Защита достоинства",
+                          "case_title":  {
+                                             "ru":  "РАВНЫЙ СОЮЗНИК",
+                                             "en":  "EQUAL ALLY",
+                                             "zh":  "平等的盟友",
+                                             "de":  "GLEICHBERECHTIGTER VERBÜNDETER",
+                                             "ja":  "対等な同盟者"
+                                         },
+                          "character_name":  {
+                                                 "ru":  "ВЕРНЫЙ ТОВАРИЩ",
+                                                 "en":  "LOYAL COMRADE",
+                                                 "zh":  "忠诚的挚友",
+                                                 "de":  "TREUER GEFÄHRTE",
+                                                 "ja":  "忠実な同志"
+                                             },
+                          "evidence_summary":  {
+                                                   "ru":  "ДОСЬЕ УЛИК: У входа в клуб. Кэнта сталкивается с жестокой травлей и насмешками со стороны бывшей компании. В критический момент союзник пресекает издевательства ради защиты достоинства товарища, утверждая дружбу на равных и взаимное уважение.",
+                                                   "en":  "EVIDENCE DOSSIER: Outside the club. Kenta faces cruel bullying and ridicule from former peers. In a critical moment, an ally halts the mockery to protect his comrade\u0027s dignity, affirming equal friendship and mutual respect.",
+                                                   "zh":  "证据档案：俱乐部入口处。健太遭受昔日同伴残酷的霸凌与嘲弄。危急关头，盟友挺身而出制止欺凌，维护朋友尊严，确立对等尊重与同伴友谊。",
+                                                   "de":  "BEWEISAKTE: Vor dem Club. Kenta wird von ehemaligen Bekannten grausam gemobbt und verspottet. Im entscheidenden Moment schreitet ein Verbündeter ein, um Kentas Würde zu schützen und Freundschaft auf Augenhöhe einzufordern.",
+                                                   "ja":  "証拠ファイル：クラブ入口。健太はかつての仲間から残酷ないじめと嘲笑を受ける。危急の瞬間、同志が割って入り尊厳を守り、対等な友情と相互尊重を確立する。"
+                                               },
+                          "psycho_type":  "2В",
+                          "dialogue_cards":  [
+                                                 {
+                                                     "card_index":  "01 / 03",
+                                                     "sprite_image":  "assets/media/sprites/case_07_company.png",
+                                                     "background_image":  "assets/media/backgrounds/case_07_1.png",
+                                                     "text":  "Отказ Мики меня подкосил, вот и решил податься в нормисы... Но бывшая компания лишь высмеивает мой вид и открыто заявляет, что без меня им стало куда проще."
+                                                 },
+                                                 {
+                                                     "card_index":  "02 / 03",
+                                                     "sprite_image":  "assets/media/sprites/case_07_bully.png",
+                                                     "background_image":  "assets/media/backgrounds/case_07_2.png",
+                                                     "text":  "«Все сообщения за Мики писал я — ты в меня втюхался, братан!» Выходит, всё было издевкой... Мне нигде нет места. Вернусь в комнату, запрусь на ключ и останусь один."
+                                                 },
+                                                 {
+                                                     "card_index":  "03 / 03",
+                                                     "is_climax":  true,
+                                                     "sprite_image":  "assets/media/sprites/case_07_ally.png",
+                                                     "background_image":  "assets/media/backgrounds/case_07_3.png",
+                                                     "text":  "Кажется, ты забыл главное: если кто-то начнет травить тебя ради самоутверждения — я, как и обещал, приду на помощь. Ты ведь не против считать меня другом, Кэнта?"
+                                                 }
+                                             ],
+                          "dialogue":  [
+                                           {
+                                               "id":  "c7_d1",
+                                               "card_index":  "01 / 03",
+                                               "sprite_image":  "assets/media/sprites/case_07_company.png",
+                                               "background_image":  "assets/media/backgrounds/case_07_1.png",
+                                               "emotion":  "panic",
+                                               "climax":  false,
+                                               "speaker":  {
+                                                               "ru":  "КЭНТА",
+                                                               "en":  "KENTA",
+                                                               "zh":  "健太",
+                                                               "de":  "KENTA",
+                                                               "ja":  "健太"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "Отказ Мики меня подкосил, вот и решил податься в нормисы... Но бывшая компания лишь высмеивает мой вид и открыто заявляет, что без меня им стало куда проще.",
+                                                            "en":  "Miki\u0027s rejection broke me, so I tried blending into the normie crowd... But my old crew just mocks how I look and openly brags they\u0027re way better off without me.",
+                                                            "zh":  "美纪的拒绝让我心碎，我便试着融入普通人的圈子……可以前那帮人只是嘲笑我的打扮，还公然说没有我他们轻松多了。",
+                                                            "de":  "Mikis Abfuhr hat mich gebrochen, also wollte ich mich den Normies anpassen... Doch meine alte Clique verspottet mich nur und sagt, ohne mich gehe es ihnen viel besser.",
+                                                            "ja":  "ミキに振られて心が折れて、普通の人たちの輪に入ろうとしたのに……前の仲間は俺の見た目を嘲笑い、俺がいない方がずっとマシだと公言するんだ。"
+                                                        }
+                                           },
+                                           {
+                                               "id":  "c7_d2",
+                                               "card_index":  "02 / 03",
+                                               "sprite_image":  "assets/media/sprites/case_07_bully.png",
+                                               "background_image":  "assets/media/backgrounds/case_07_2.png",
+                                               "emotion":  "panic",
+                                               "climax":  false,
+                                               "speaker":  {
+                                                               "ru":  "КЭНТА",
+                                                               "en":  "KENTA",
+                                                               "zh":  "健太",
+                                                               "de":  "KENTA",
+                                                               "ja":  "健太"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "«Все сообщения за Мики писал я — ты в меня втюхался, братан!» Выходит, всё было издевкой... Мне нигде нет места. Вернусь в комнату, запрусь на ключ и останусь один.",
+                                                            "en":  "\u0027I was the one texting you from Miki\u0027s phone — you fell for me, bro!\u0027 Turns out the whole thing was a cruel joke... There\u0027s no place for me. I\u0027ll lock myself in my room and stay alone.",
+                                                            "zh":  "“那些消息全是我替美纪回的——兄弟，你爱上的其实是我啊！”原来一切都是场残酷的戏弄……哪里都没有我的容身之处。我要回房间把门锁死，彻底与世隔绝。",
+                                                            "de":  "„Die Nachrichten von Miki habe alle ich geschrieben — du hast dich in mich verknallt, Bro!“ Es war alles nur Schikane... Ich gehöre nirgendwo hin. Ich schließe mich ein und bleibe allein.",
+                                                            "ja":  "「ミキのメッセージは全部俺が打ってたんだよ——お前が惚れたのは俺だぜ、兄弟！」全部ただの残酷なからかいだったのか……俺の居場所なんてどこにもない。部屋に鍵をかけて一生引きこもるよ。"
+                                                        }
+                                           },
+                                           {
+                                               "id":  "c7_d3",
+                                               "card_index":  "03 / 03",
+                                               "sprite_image":  "assets/media/sprites/case_07_ally.png",
+                                               "background_image":  "assets/media/backgrounds/case_07_3.png",
+                                               "emotion":  "resolve",
+                                               "climax":  true,
+                                               "speaker":  {
+                                                               "ru":  "ВЕРНЫЙ ТОВАРИЩ",
+                                                               "en":  "LOYAL COMRADE",
+                                                               "zh":  "忠诚的挚友",
+                                                               "de":  "TREUER GEFÄHRTE",
+                                                               "ja":  "忠実な同志"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "Кажется, ты забыл главное: если кто-то начнет травить тебя ради самоутверждения — я, как и обещал, приду на помощь. Ты ведь не против считать меня другом, Кэнта?",
+                                                            "en":  "Seems you forgot the most important thing: if anyone bullies you to stroke their ego — I promised I\u0027d stand by you. You don\u0027t mind considering me a friend, do you, Kenta?",
+                                                            "zh":  "看来你忘了最重要的一点：如果有人为了寻找优越感而霸凌你——正如我所承诺的，我定会挺身相助。健太，你介意认我这个朋友吗？",
+                                                            "de":  "Du hast wohl das Wichtigste vergessen: Wenn dich jemand mobbt, um sich groß zu fühlen — ich habe versprochen, dir beizustehen. Hast du etwas dagegen, mich deinen Freund zu nennen, Kenta?",
+                                                            "ja":  "大事なことを忘れてるんじゃないか。誰かが自己満足のために君をいじめるなら、約束通り俺が助けに来る。……俺を友達と思ってくれて構わないかい、健太？"
+                                                        }
+                                           }
+                                       ],
+                          "timeout_verdict":  {
+                                                  "title":  {
+                                                                "ru":  "ВРЕМЯ ИСТЕКЛО: СТУПОР АНАЛИЗА ПРИ ТРАВЛЕ",
+                                                                "en":  "TIME EXPIRED: ANALYSIS STUPOR DURING BULLYING",
+                                                                "zh":  "时间耗尽：霸凌危机分析停滞",
+                                                                "de":  "ZEIT ABGELAUFEN: ANALYSESTUPOR BEI MOBBING",
+                                                                "ja":  "時間切れ：いじめ現場での分析停止"
+                                                            },
+                                                  "axes":  {
+                                                               "ru":  "Сильная • Процессионная • Подстраивающаяся",
+                                                               "en":  "Strong • Processional • Adapting",
+                                                               "zh":  "强势 • 过程型 • 适应型",
+                                                               "de":  "Stark • Prozesshaft • Anpassend",
+                                                               "ja":  "強 • プロセス • アジャスト"
+                                                           },
+                                                  "breakdown":  {
+                                                                    "ru":  "Нерешительность парализовала протокол: пока профайлер медлил, союзник уже пресек травлю. Истинная функция: II ВОЛЯ — МАСТЕРСТВО (диалог на равных, защита чужого достоинства без диктата).",
+                                                                    "en":  "Hesitation paralyzed protocol: while the profiler delayed, the ally already quelled the bullying. True function: [ II ] WILL — MASTERY (equal dialogue, protecting dignity without dictate).",
+                                                                    "zh":  "犹豫阻断了分析：在分析师迟疑之际，盟友已制止霸凌。真实功能：[ II ] 意志 — 掌控/协调（对等对话，捍卫尊严而不施强权）。",
+                                                                    "de":  "Zögern lähmte das Protokoll: Der Verbündete griff bereits ein. Wahre Funktion: [ II ] WILLE — MEISTERSCHAFT (Dialog auf Augenhöhe, Würdeschutz).",
+                                                                    "ja":  "躊躇によりプロトコルが停止：同志が既にいじめを制止した。真の機能：[ II ] 意志 — 調和（独断なき尊厳の保護と対等な対話）。"
+                                                                }
+                                              },
+                          "choices":  [
+                                          {
+                                              "id":  "choice_1",
+                                              "label":  "II ВОЛЯ — МАСТЕРСТВО",
+                                              "axes":  "Сильная • Процессионная • Подстраивающаяся",
+                                              "is_correct":  true
+                                          },
+                                          {
+                                              "id":  "choice_2",
+                                              "label":  "I ВОЛЯ — ДИКТАТ",
+                                              "axes":  "Сильная • Результативная • Доминантная",
+                                              "is_correct":  false
+                                          },
+                                          {
+                                              "id":  "choice_3",
+                                              "label":  "III ВОЛЯ — УЯЗВИМОСТЬ",
+                                              "axes":  "Слабая • Процессионная • Доминантная",
+                                              "is_correct":  false
+                                          },
+                                          {
+                                              "id":  "choice_4",
+                                              "label":  "II ЭМОЦИЯ — ДИАЛОГ",
+                                              "axes":  "Сильная • Процессионная • Подстраивающаяся",
+                                              "is_correct":  false
+                                          }
+                                      ],
+                          "options":  [
+                                          {
+                                              "id":  "c7_opt_2v",
+                                              "function_code":  "2В",
+                                              "label":  "II ВОЛЯ — МАСТЕРСТВО",
+                                              "is_correct":  true,
+                                              "text":  {
+                                                           "ru":  "II ВОЛЯ — МАСТЕРСТВО",
+                                                           "en":  "II WILL — MASTERY",
+                                                           "zh":  "II 意志 — 掌控",
+                                                           "de":  "II WILLE — MEISTERSCHAFT",
+                                                           "ja":  "II 意志 — 調和"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Сильная • Процессионная • Подстраивающаяся",
+                                                           "en":  "Strong • Processional • Adapting",
+                                                           "zh":  "强势 • 过程型 • 适应型",
+                                                           "de":  "Stark • Prozesshaft • Anpassend",
+                                                           "ja":  "強 • プロセス • アジャスト"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Обратите внимание: субъект пресекает травлю не ради доминирования, а ради защиты чужого достоинства. Вопрос о согласии на дружбу фиксирует диалог на равных и уважение чужих границ.",
+                                                           "en":  "Notice: the subject halts bullying not to dominate, but to safeguard another\u0027s dignity. Asking for friendship consent confirms dialogue on equal terms.",
+                                                           "zh":  "注意：主体制止霸凌并非出于霸权，而是为了维护他人尊严，征求友谊同意体现了平等的界限尊重。",
+                                                           "de":  "Beachten: Das Einschreiten dient dem Schutz der Würde des Gefährten auf Augenhöhe, nicht der Herrschaft.",
+                                                           "ja":  "支配のためではなく尊厳を守るために対等な立場で介入し、境界線を尊重して同意を求めている点に注目せよ。"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ТОЧНОЕ ПОПАДАНИЕ! Объект пресекает травлю не ради доминирования, а ради защиты чужого достоинства. Вопрос о согласии на дружбу фиксирует диалог на равных и уважение чужих границ, что является эталоном II Воли (Мастерство).",
+                                                                "en":  "EXACT MATCH! The subject halts bullying not to dominate, but to protect another\u0027s dignity. Asking for mutual consent to be friends confirms dialogue on equal terms and respect for boundaries — the textbook hallmark of [ II ] WILL (Mastery).",
+                                                                "zh":  "精准击破！主体制止霸凌并非出于霸权，而是为了维护他人尊严。主动征求建立友谊的同意，体现了平等的对话与界限尊重，是典型的 [ II ] 意志（掌控/协调）。",
+                                                                "de":  "VOLLTREFFER! Das Einschreiten dient nicht der Herrschaft, sondern dem Schutz der Würde des Gefährten. Das Erfragen von Einverständnis bestätigt Dialog auf Augenhöhe — Kennzeichen des [ II ] WILLENS.",
+                                                                "ja":  "完全一致！支配欲からではなく他者の尊厳を守るために介入。友情の同意を問いかける態度は、対等な対話と境界の尊重を示す [ II ] 意志（調和・熟達）の象徴である。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Объект пресекает травлю не ради доминирования, а ради защиты чужого достоинства. Вопрос о согласии на дружбу фиксирует диалог на равных и уважение чужих границ, что является эталоном II Воли (Мастерство).",
+                                                                  "en":  "Subject halts bullying to protect dignity and establish equal dialogue with boundary respect, confirming II Will.",
+                                                                  "zh":  "制止霸凌并非为了支配，而是捍卫尊严与对等协商，锁定 [ II ] 意志。",
+                                                                  "de":  "Einschreiten auf Augenhöhe ohne Herrschaftsanspruch bestätigt [ II ] WILLE.",
+                                                                  "ja":  "支配ではなく尊厳の守護と対等な対話を確認し、[ II ] 意志を特定する。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "c7_opt_1v",
+                                              "function_code":  "1В",
+                                              "label":  "I ВОЛЯ — ДИКТАТ",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "I ВОЛЯ — ДИКТАТ",
+                                                           "en":  "I WILL — DICTATE",
+                                                           "zh":  "I 意志 — 独断",
+                                                           "de":  "I WILLE — DIKTAT",
+                                                           "ja":  "I 意志 — 独断"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Сильная • Результативная • Доминантная",
+                                                           "en":  "Strong • Resultative • Dominant",
+                                                           "zh":  "强势 • 结果型 • 主导型",
+                                                           "de":  "Stark • Ergebnisorientiert • Dominant",
+                                                           "ja":  "強 • 結果 • ドミナント"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Требует ли субъект подчинения и единоличного повиновения, или предлагает партнерство и диалог?",
+                                                           "en":  "Does the subject demand sole obedience, or offer partnership and dialogue?",
+                                                           "zh":  "主体是在要求单方面服从，还是在提出平等的伙伴关系与对话？",
+                                                           "de":  "Fordert das Subjekt blinden Gehorsam oder bietet es Partnerschaft und Dialog an?",
+                                                           "ja":  "独断的な服従を強要しているか、それとも対等なパートナーシップを提示しているか？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. I Воля (Диктат) доминантна и монологична: она диктует решения единолично и не нуждается в чужом согласии («Будешь делать, как я сказал»). Здесь же звучит уважительный вопрос: «Ты ведь не против считать меня другом?», что указывает на процессионную и подстраивающуюся II Волю.",
+                                                                "en":  "FALSE LEAD. [ I ] WILL (Dictate) is dominant and monologic: it dictates terms without seeking approval. Here, the respectful question \u0027You don\u0027t mind considering me a friend?\u0027 indicates processional and adapting [ II ] WILL.",
+                                                                "zh":  "判断失误。[ I ] 意志具有主导性和专断性，从不寻求他人同意；而此处\u0027你介意认我这个朋友吗？\u0027体现了协商与尊重的过程型适应。",
+                                                                "de":  "FALSCH. [ I ] WILLE entscheidet monologisch über andere hinweg. Das respektvolle Fragen nach Zustimmung beweist den [ II ] WILLEN.",
+                                                                "ja":  "不正解。[ I ] 意志は一方的で合意を求めない。同意を尋ねる態度は [ II ] 意志のプロセス性を示している。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Вместо авторитарного монолога [ I ] ВОЛИ зафиксирован деликатный диалог на равных.",
+                                                                  "en":  "Instead of authoritarian [ I ] WILL monologue, telemetry confirms sensitive equal dialogue.",
+                                                                  "zh":  "并非 [ I ] 意志的专断独白，而是平等的协商对话。",
+                                                                  "de":  "Kein autoritärer [ I ] WILLE, sondern Dialog auf Augenhöhe.",
+                                                                  "ja":  "[ I ] 意志の独断ではなく、対等な対話が記録されている。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "c7_opt_3v",
+                                              "function_code":  "3В",
+                                              "label":  "III ВОЛЯ — УЯЗВИМОСТЬ",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "III ВОЛЯ — УЯЗВИМОСТЬ",
+                                                           "en":  "III WILL — VULNERABILITY",
+                                                           "zh":  "III 意志 — 脆弱",
+                                                           "de":  "III WILLE — VERLETZLICHKEIT",
+                                                           "ja":  "III 意志 — 脆弱"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Слабая • Процессионная • Доминантная",
+                                                           "en":  "Weak • Processional • Dominant",
+                                                           "zh":  "弱势 • 过程型 • 主导型",
+                                                           "de":  "Schwach • Prozesshaft • Dominant",
+                                                           "ja":  "弱 • プロセス • ドミナント"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Исходит ли действие из чувства неполноценности и болезненного самолюбия, или из спокойной внутренней силы и уверенности?",
+                                                           "en":  "Does the action stem from insecurity and wounded pride, or calm inner strength and certainty?",
+                                                           "zh":  "行动是源于自卑和敏感受创的自尊，还是源于从容的内在力量与从容自信？",
+                                                           "de":  "Entspringt die Handlung verletztem Stolz oder ruhiger innerer Stärke?",
+                                                           "ja":  "劣等感や傷ついた自尊心からか、それとも揺るぎない内なる強さからか？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. III Воля (Уязвимость) слаба и эгоцентрична в своей боли: она зациклена на сомнениях в собственном статусе (как сам Кэнта в карточках 1-2). Союзник же действует из сильной, устойчивой позиции, спокойно защищая слабого без истерики и самоутверждения.",
+                                                                "en":  "FALSE LEAD. [ III ] WILL (Vulnerability) is weak and self-conscious, consumed by anxiety over its own status (like Kenta himself in cards 1-2). The ally acts from a strong, stable position, calmly protecting the vulnerable without vanity.",
+                                                                "zh":  "判断失误。[ III ] 意志处于弱势且困于自我怀疑（正如前两张卡片中的健太）；而盟友处于强势稳固的立场，从容庇护同伴。",
+                                                                "de":  "FALSCH. [ III ] WILLE ist von eigenen Minderwertigkeitsgefühlen absorbiert (wie Kenta). Der Gefährte handelt aus starker, souveräner Position.",
+                                                                "ja":  "不正解。[ III ] 意志は自己疑念に囚われる（カード1-2の健太のように）。同志は強固な安定感から冷静に行動している。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Субъект демонстрирует устойчивую сильную позицию защитника, а не комплекс уязвимости [ III ] ВОЛИ.",
+                                                                  "en":  "Subject demonstrates a robust, strong protector stance, not the vulnerability complex of [ III ] WILL.",
+                                                                  "zh":  "主体展现出稳健强势的保护者姿态，而非 [ III ] 意志的自卑敏感。",
+                                                                  "de":  "Das Subjekt zeigt Stärke und Souveränität, keinen [ III ] WILLE-Komplex.",
+                                                                  "ja":  "[ III ] 意志の劣等感ではなく、強固な守護者としての姿勢が確認された。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "c7_opt_2e",
+                                              "function_code":  "2Э",
+                                              "label":  "II ЭМОЦИЯ — ДИАЛОГ",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "II ЭМОЦИЯ — ДИАЛОГ",
+                                                           "en":  "II EMOTION — DIALOGUE",
+                                                           "zh":  "II 情绪 — 沟通",
+                                                           "de":  "II EMOTION — DIALOG",
+                                                           "ja":  "II 感情 — 対話"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Сильная • Процессионная • Подстраивающаяся",
+                                                           "en":  "Strong • Processional • Adapting",
+                                                           "zh":  "强势 • 过程型 • 适应型",
+                                                           "de":  "Stark • Prozesshaft • Anpassend",
+                                                           "ja":  "強 • プロセス • アジャスト"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "В какой сфере решается конфликт — в эмоциональном заражении или в установлении равных субъектных границ и воли к защите?",
+                                                           "en":  "In which sphere is the conflict resolved — emotional contagion or setting equal boundaries and agency to protect?",
+                                                           "zh":  "冲突解决在哪个领域——是情绪感染还是确立平等的界限与守护意志？",
+                                                           "de":  "In welcher Sphäre wird der Konflikt gelöst — emotionale Resonanz oder willentliche Grenzziehung auf Augenhöhe?",
+                                                           "ja":  "感情の共鳴か、それとも対等な意志と境界線の設定か？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. Хотя в реплике есть поддержка, решающее действие лежит в плоскости Воли (социальное позиционирование, защита достоинства, противостояние травле, договор о равном партнерстве), а не артистической эмоциональной игры.",
+                                                                "en":  "FALSE LEAD. While supportive, the decisive intervention lies strictly in the realm of Will (social positioning, defending dignity, countering bullying, pact of equal partnership), not emotional performance.",
+                                                                "zh":  "判断失误。虽然话语带来安慰，但核心决定性行动在于意志层面（捍卫尊严、对抗霸凌、确立对等伙伴协议），而非情绪调控。",
+                                                                "de":  "FALSCH. Die Intervention ist kein emotionales Spiel, sondern eine Willenshandlung (Würdeschutz, Stoppen von Mobbing, Partnerschaft).",
+                                                                "ja":  "不正解。慰めはあるが、本質は意志の領域（尊厳の守護、いじめの制止、対等な盟約の締結）にある。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Суть поступка — волевая защита достоинства и договор о партнерстве, а не эмоциональная сонастройка.",
+                                                                  "en":  "The essence of the act is willful defense of dignity and partnership, not emotional mirroring.",
+                                                                  "zh":  "行为核心是意志层面的尊严守护与同盟约定，而非情绪共鸣。",
+                                                                  "de":  "Kern des Handelns ist Willensschutz und Bündnis, kein emotionales Mitschwingen.",
+                                                                  "ja":  "行動の本質は感情の共鳴ではなく、尊厳の守護と対等な盟約にある。"
+                                                              }
+                                          }
+                                      ],
+                          "explanation":  "Объект пресекает травлю не ради доминирования, а ради защиты чужого достоинства. Вопрос о согласии на дружбу фиксирует диалог на равных и уважение чужих границ, что является эталоном II Воли (Мастерство)."
                       }
                   ]
 }
