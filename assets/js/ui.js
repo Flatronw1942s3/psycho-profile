@@ -23,6 +23,7 @@
       this._currentScenarioId = null;
       this._currentEmotionKey = null;
       this._currentBgPath = null;
+      this._currentSpritePath = null;
       this._sceneRenderToken = 0;
       this._mediaAvailabilityCache = new Map();
 
@@ -693,6 +694,7 @@
         this._currentScenarioId = null;
         this._currentEmotionKey = null;
         this._currentBgPath = null;
+        this._currentSpritePath = null;
         this.els.bgImage.classList.add('hidden');
         this.els.cameraRig.classList.remove('climax-zoom');
         this.els.charRig.classList.remove('climax-zoom');
@@ -773,10 +775,17 @@
     /**
      * Load location background (`assets/media/backgrounds/*.png`) if present on disk;
      * otherwise preserve procedural CSS terminal background (grid, vignette & neon frames).
+     * Supports both dynamic per-card background string and legacy scenario object.
      */
-    _applyScenarioBackground(scenario, token) {
-      const bgPath = scenario && scenario.background ? scenario.background.trim() : '';
-      if (bgPath === this._currentBgPath) return;
+    _applyScenarioBackground(targetOrScenario, token) {
+      let bgPath = '';
+      if (typeof targetOrScenario === 'string') {
+        bgPath = targetOrScenario.trim();
+      } else if (targetOrScenario && typeof targetOrScenario === 'object') {
+        bgPath = (targetOrScenario.background_image || targetOrScenario.background || '').trim();
+      }
+
+      if (bgPath === this._currentBgPath && !this.els.bgImage.classList.contains('hidden')) return;
       this._currentBgPath = bgPath;
 
       if (!bgPath) {
@@ -785,8 +794,15 @@
         return;
       }
 
-      // Keep procedural CSS terminal background visible unless/until raster file is verified
-      this.els.bgImage.classList.add('hidden');
+      // If already cached, switch immediately with smooth CSS transition
+      if (this._mediaAvailabilityCache.get(bgPath) === true) {
+        const resolved = this._resolveAssetSrc(bgPath);
+        if (this.els.bgImage.getAttribute('src') !== resolved && this.els.bgImage.getAttribute('src') !== bgPath) {
+          this.els.bgImage.src = resolved;
+        }
+        this.els.bgImage.classList.remove('hidden');
+        return;
+      }
 
       this._probeImageAsset(bgPath).then((exists) => {
         if (token !== this._sceneRenderToken) return;
@@ -803,9 +819,26 @@
     /**
      * Load transparent raster character sprite (`assets/media/sprites/*.png`) if present on disk;
      * otherwise seamlessly display procedural vector SVG silhouette fallback.
+     * Supports both per-card dynamic sprite switching and legacy scenario defaults.
      */
-    _applyCharacterSprite(scenario, emotionKey, emotionChanged, token) {
-      const spritePath = scenario && scenario.sprite ? scenario.sprite.trim() : '';
+    _applyCharacterSprite(scenario, spritePathOrEmotion, emotionKeyOrChanged, emotionChangedOrToken, maybeToken) {
+      let spritePath = '';
+      let emotionKey = 'panic';
+      let emotionChanged = false;
+      let token = this._sceneRenderToken;
+
+      if (typeof spritePathOrEmotion === 'string' && (spritePathOrEmotion.includes('/') || spritePathOrEmotion.includes('.'))) {
+        spritePath = spritePathOrEmotion.trim();
+        emotionKey = emotionKeyOrChanged || 'panic';
+        emotionChanged = Boolean(emotionChangedOrToken);
+        token = maybeToken || this._sceneRenderToken;
+      } else {
+        spritePath = (scenario && (scenario.sprite_image || scenario.sprite) ? (scenario.sprite_image || scenario.sprite) : '').trim();
+        emotionKey = spritePathOrEmotion || 'panic';
+        emotionChanged = Boolean(emotionKeyOrChanged);
+        token = emotionChangedOrToken || this._sceneRenderToken;
+      }
+
       const fallbackSvgSrc = this._getFallbackSilhouetteSrc(scenario, emotionKey);
 
       this.els.charSprite.classList.toggle('emotion-resolve', emotionKey === 'resolve');
@@ -822,27 +855,34 @@
       // If already known cached true, render raster immediately without flicker
       if (spritePath && this._mediaAvailabilityCache.get(spritePath) === true) {
         this.els.charSprite.setAttribute('data-render-mode', 'raster');
-        if (this.els.charSprite.getAttribute('src') !== spritePath) {
-          this.els.charSprite.src = spritePath;
+        const resolved = this._resolveAssetSrc(spritePath);
+        if (this.els.charSprite.getAttribute('src') !== resolved && this.els.charSprite.getAttribute('src') !== spritePath) {
+          this.els.charSprite.src = resolved;
         }
         triggerSwapAnim();
         return;
       }
 
       // Immediately guarantee visible silhouette while probing physical file
-      this.els.charSprite.setAttribute('data-render-mode', 'svg-fallback');
-      this.els.charSprite.src = fallbackSvgSrc;
-      triggerSwapAnim();
-
-      if (spritePath && !this._mediaAvailabilityCache.has(spritePath)) {
-        this._probeImageAsset(spritePath).then((exists) => {
-          if (token !== this._sceneRenderToken) return;
-          if (exists) {
-            this.els.charSprite.setAttribute('data-render-mode', 'raster');
-            this.els.charSprite.src = spritePath;
-          }
-        });
+      if (!spritePath) {
+        this.els.charSprite.setAttribute('data-render-mode', 'svg-fallback');
+        this.els.charSprite.src = fallbackSvgSrc;
+        triggerSwapAnim();
+        return;
       }
+
+      this._probeImageAsset(spritePath).then((exists) => {
+        if (token !== this._sceneRenderToken) return;
+        if (exists) {
+          this.els.charSprite.setAttribute('data-render-mode', 'raster');
+          this.els.charSprite.src = this._resolveAssetSrc(spritePath);
+          triggerSwapAnim();
+        } else {
+          this.els.charSprite.setAttribute('data-render-mode', 'svg-fallback');
+          this.els.charSprite.src = fallbackSvgSrc;
+          triggerSwapAnim();
+        }
+      });
     }
 
     /**
@@ -856,22 +896,30 @@
         this._currentScenarioId = scenario.id;
         this._currentEmotionKey = null;
         this._currentBgPath = null;
+        this._currentSpritePath = null;
         this._sceneRenderToken += 1;
       }
 
       const token = this._sceneRenderToken;
 
-      // 1. Background layer (raster location or procedural CSS terminal fallback)
-      this._applyScenarioBackground(scenario, token);
+      // Dynamic per-card asset resolution (falling back to scenario defaults for 100% backward compatibility)
+      const card = (scenario && scenario.dialogue_cards && scenario.dialogue_cards[index]) || line || {};
 
-      // 2. Character layer (transparent raster PNG/WebP or procedural vector SVG silhouette)
-      const emotionKey = line.emotion || 'panic';
-      const emotionChanged = scenarioChanged || this._currentEmotionKey !== emotionKey;
+      // 1. Dynamic background: card.background_image -> card.background -> scenario.background_image -> scenario.background
+      const bgPath = (card.background_image || card.background || (line && (line.background_image || line.background)) || (scenario && (scenario.background_image || scenario.background)) || '').trim();
+      this._applyScenarioBackground(bgPath, token);
+
+      // 2. Dynamic character sprite: card.sprite_image -> card.sprite -> scenario.sprite_image -> scenario.sprite
+      const spritePath = (card.sprite_image || card.sprite || (line && (line.sprite_image || line.sprite)) || (scenario && (scenario.sprite_image || scenario.sprite)) || '').trim();
+      const emotionKey = (line && line.emotion) || 'panic';
+      const spriteChanged = this._currentSpritePath !== spritePath;
+      const emotionChanged = scenarioChanged || this._currentEmotionKey !== emotionKey || spriteChanged;
       this._currentEmotionKey = emotionKey;
-      this._applyCharacterSprite(scenario, emotionKey, emotionChanged, token);
+      this._currentSpritePath = spritePath;
+      this._applyCharacterSprite(scenario, spritePath, emotionKey, emotionChanged, token);
 
       // 3. Climax camera zoom-in
-      const isClimax = Boolean(line.climax);
+      const isClimax = Boolean(line && line.climax);
       this.els.cameraRig.classList.toggle('climax-zoom', isClimax);
       this.els.charRig.classList.toggle('climax-zoom', isClimax);
       this.els.dlgClimaxBadge.classList.toggle('hidden', !isClimax);

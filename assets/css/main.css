@@ -219,6 +219,7 @@ button {
   height: 1080px;
   object-fit: cover;
   object-position: center center;
+  transition: opacity 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
 .bg-radial-vignette {
@@ -347,7 +348,7 @@ button {
   object-fit: contain;
   object-position: center bottom;
   filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.78));
-  transition: opacity 0.22s ease, transform 0.28s ease, filter 0.28s ease;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
 
 .char-sprite[data-render-mode="raster"] {

@@ -1483,6 +1483,346 @@
                                                               }
                                           }
                                       ]
+                      },
+                      {
+                          "id":  "case_06_miwa",
+                          "title":  "ДЕЛО #06: ХИРОШИ МИВА",
+                          "case_number":  {
+                                              "ru":  "ДЕЛО #06",
+                                              "en":  "CASE #06",
+                                              "zh":  "案件 #06",
+                                              "de":  "FALL #06",
+                                              "ja":  "事件 #06"
+                                          },
+                          "time_limit_sec":  30,
+                          "sprite":  "assets/media/sprites/miwa_down.png",
+                          "sprite_image":  "assets/media/sprites/miwa_down.png",
+                          "background":  "assets/media/backgrounds/case_06_1.png",
+                          "background_image":  "assets/media/backgrounds/case_06_1.png",
+                          "scene_name":  "Святилище Брейва // Пробуждение Героя",
+                          "case_title":  {
+                                             "ru":  "ХИРОШИ МИВА",
+                                             "en":  "HIROSHI MIWA",
+                                             "zh":  "三轮宽",
+                                             "de":  "HIROSHI MIWA",
+                                             "ja":  "三輪ヒロシ"
+                                         },
+                          "character_name":  {
+                                                 "ru":  "ХИРОШИ МИВА",
+                                                 "en":  "HIROSHI MIWA",
+                                                 "zh":  "三轮宽",
+                                                 "de":  "HIROSHI MIWA",
+                                                 "ja":  "三輪ヒロシ"
+                                             },
+                          "evidence_summary":  {
+                                                   "ru":  "ДОСЬЕ УЛИК: Святилище Брейва. Объект переживает тяжелое поражение, мучимый комплексом неполноценности и стыдом за прошлую трусость. В момент смертельного кризиса совершает внутренний перелом: отказывается от признания извне и утверждает свою волю вопреки провалу.",
+                                                   "en":  "EVIDENCE DOSSIER: Brave Sanctuary. Subject suffers bitter defeat, consumed by inferiority complex and shame. In mortal crisis, he makes a breakthrough: rejecting external validation, he claims agency despite failure.",
+                                                   "zh":  "证据档案：勇气圣域。对象经历惨烈败北，深受自卑感与昔日逃避的羞耻折磨。在生死关头他完成精神觉醒：拒绝外界评价，以绝对意志夺回对命运的主导权。",
+                                                   "de":  "BEWEISAKTE: Heiligtum von Brave. Das Subjekt erleidet eine schwere Niederlage, geplagt von Minderwertigkeitskomplexen. In der Todeskrise vollzieht es den inneren Durchbruch und beansprucht seinen eigenen Willen.",
+                                                   "ja":  "証拠ファイル：ブレイブの聖域。対象は手痛い敗北を喫し、劣等感と過去の臆病さへの羞恥に苛まれている。生死の狭間で精神的覚醒を遂げ、外部の評価を拒絶して自らの意志を勝ち取った。"
+                                               },
+                          "dialogue_cards":  [
+                                                 {
+                                                     "card_index":  "01 / 03",
+                                                     "sprite_image":  "assets/media/sprites/miwa_down.png",
+                                                     "background_image":  "assets/media/backgrounds/case_06_1.png",
+                                                     "text":  "Враг прав: я слаб, стерпел все удары и даже не посмел ненавидеть его в ответ. Я не смог стать сильнее только потому, что всю жизнь малодушно боялся и бежал."
+                                                 },
+                                                 {
+                                                     "card_index":  "02 / 03",
+                                                     "sprite_image":  "assets/media/sprites/miwa_struggle.png",
+                                                     "background_image":  "assets/media/backgrounds/case_06_2.png",
+                                                     "text":  "Выходит, я просто пойду ко дну и сдохну здесь? Нет. Если я прямо сейчас выплыву наверх — быть может, я ещё на что-то способен."
+                                                 },
+                                                 {
+                                                     "card_index":  "03 / 03",
+                                                     "is_climax":  true,
+                                                     "sprite_image":  "assets/media/sprites/miwa_brave.png",
+                                                     "background_image":  "assets/media/backgrounds/case_06_3.png",
+                                                     "text":  "Так и знал, не быть мне героем?.. Плевать! Я уже им стал! От этого меча ничего не зависит — я уже герой, а недостающую силу раздобуду сам!"
+                                                 }
+                                             ],
+                          "dialogue":  [
+                                           {
+                                               "id":  "w1",
+                                               "card_index":  "01 / 03",
+                                               "sprite_image":  "assets/media/sprites/miwa_down.png",
+                                               "background_image":  "assets/media/backgrounds/case_06_1.png",
+                                               "emotion":  "panic",
+                                               "climax":  false,
+                                               "speaker":  {
+                                                               "ru":  "ХИРОШИ МИВА",
+                                                               "en":  "HIROSHI MIWA",
+                                                               "zh":  "三轮宽",
+                                                               "de":  "HIROSHI MIWA",
+                                                               "ja":  "三輪ヒロシ"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "Враг прав: я слаб, стерпел все удары и даже не посмел ненавидеть его в ответ. Я не смог стать сильнее только потому, что всю жизнь малодушно боялся и бежал.",
+                                                            "en":  "The enemy was right: I am weak, endured every blow and didn\u0027t even dare hate him back. I failed to grow stronger only because I was cowardly and ran away my whole life.",
+                                                            "zh":  "敌人说得对：我很弱，默默承受了所有打击，甚至不敢去恨他。我之所以没能变强，只是因为我一辈子都在胆怯逃避。",
+                                                            "de":  "Der Feind hat recht: Ich bin schwach, ertrug jeden Schlag und wagte nicht, ihn zu hassen. Ich wurde nur deshalb nicht stärker, weil ich mein ganzes Leben lang feige geflohen bin.",
+                                                            "ja":  "敵の言う通りだ。俺は弱く、殴られっぱなしで憎むことすらできなかった。強くなれなかったのは、ずっと臆病に逃げ続けてきたからだ。"
+                                                        }
+                                           },
+                                           {
+                                               "id":  "w2",
+                                               "card_index":  "02 / 03",
+                                               "sprite_image":  "assets/media/sprites/miwa_struggle.png",
+                                               "background_image":  "assets/media/backgrounds/case_06_2.png",
+                                               "emotion":  "panic",
+                                               "climax":  false,
+                                               "speaker":  {
+                                                               "ru":  "ХИРОШИ МИВА",
+                                                               "en":  "HIROSHI MIWA",
+                                                               "zh":  "三轮宽",
+                                                               "de":  "HIROSHI MIWA",
+                                                               "ja":  "三輪ヒロシ"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "Выходит, я просто пойду ко дну и сдохну здесь? Нет. Если я прямо сейчас выплыву наверх — быть может, я ещё на что-то способен.",
+                                                            "en":  "So, will I just sink to the bottom and die here? No. If I swim back to the surface right now — maybe I\u0027m still capable of something.",
+                                                            "zh":  "难道我就这样沉入水底死在这里？不。如果我现在拼命游上去——也许我还能做成点什么。",
+                                                            "de":  "Gehe ich also einfach unter und krepiere hier? Nein. Wenn ich jetzt nach oben schwimme — vielleicht bin ich doch noch zu etwas fähig.",
+                                                            "ja":  "このまま底に沈んで野垂れ死ぬのか？違う。今ここで水面へと泳ぎ上がれば……俺だってまだ何かできるかもしれない。"
+                                                        }
+                                           },
+                                           {
+                                               "id":  "w3",
+                                               "card_index":  "03 / 03",
+                                               "sprite_image":  "assets/media/sprites/miwa_brave.png",
+                                               "background_image":  "assets/media/backgrounds/case_06_3.png",
+                                               "emotion":  "resolve",
+                                               "climax":  true,
+                                               "is_climax":  true,
+                                               "speaker":  {
+                                                               "ru":  "ХИРОШИ МИВА",
+                                                               "en":  "HIROSHI MIWA",
+                                                               "zh":  "三轮宽",
+                                                               "de":  "HIROSHI MIWA",
+                                                               "ja":  "三輪ヒロシ"
+                                                           },
+                                               "text":  {
+                                                            "ru":  "Так и знал, не быть мне героем?.. Плевать! Я уже им стал! От этого меча ничего не зависит — я уже герой, а недостающую силу раздобуду сам!",
+                                                            "en":  "Just as I thought, I wasn\u0027t meant to be a hero?.. Screw that! I already am one! Nothing depends on that sword — I\u0027m already a hero, and the strength I lack, I\u0027ll carve out myself!",
+                                                            "zh":  "果然如此，我成不了英雄么？……去他的！老子早就是英雄了！这把剑根本决定不了任何事——我已经成了英雄，不足的力量老子自己去夺回来！",
+                                                            "de":  "Wusste ich es doch, ich bin kein Held?.. Pfeif drauf! Ich bin es längst! Von diesem Schwert hängt nichts ab — ich bin bereits ein Held, und die fehlende Kraft hole ich mir selbst!",
+                                                            "ja":  "やっぱりな、俺は勇者になれねえのか？……知るか！俺はもう勇者になったんだ！こんな剣なんて関係ねえ——俺はもう勇者だ、足りない力なら自分で手に入れてやる！"
+                                                        }
+                                           }
+                                       ],
+                          "choices":  [
+                                          {
+                                              "id":  "choice_1",
+                                              "label":  "III ВОЛЯ — УЯЗВИМОСТЬ",
+                                              "axes":  "Слабая • Процессионная • Доминантная",
+                                              "is_correct":  true
+                                          },
+                                          {
+                                              "id":  "choice_2",
+                                              "label":  "I ВОЛЯ — ДИКТАТ",
+                                              "axes":  "Сильная • Результативная • Доминантная",
+                                              "is_correct":  false
+                                          },
+                                          {
+                                              "id":  "choice_3",
+                                              "label":  "IV ВОЛЯ — ШТИЛЬ",
+                                              "axes":  "Слабая • Результативная • Подстраивающаяся",
+                                              "is_correct":  false
+                                          },
+                                          {
+                                              "id":  "choice_4",
+                                              "label":  "I ФИЗИКА — ЗАХВАТ",
+                                              "axes":  "Сильная • Результативная • Доминантная",
+                                              "is_correct":  false
+                                          }
+                                      ],
+                          "explanation":  "Объект преодолевает парализующий страх собственной слабости и стыд за прошлое бегство. Финальное утверждение собственной субъектности вопреки внешней оценке и сомнениям фиксирует прорыв по III Воле (Уязвимость).",
+                          "timeout_verdict":  {
+                                                  "title":  {
+                                                                "ru":  "ВРЕМЯ ИСТЕКЛО: ОБЪЕКТ НЕ СУМЕЛ ПРЕОДОЛЕТЬ СТРАХ",
+                                                                "en":  "TIME EXPIRED: SUBJECT FAILED TO OVERCOME FEAR",
+                                                                "zh":  "时间耗尽：对象未能克服恐惧",
+                                                                "de":  "ZEIT ABGELAUFEN: SUBJEKT KONNTE DIE ANGST NICHT ÜBERWINDEN",
+                                                                "ja":  "時間切れ：対象は恐れを克服できなかった"
+                                                            },
+                                                  "axes":  {
+                                                               "ru":  "Слабая • Процессионная • Доминантная",
+                                                               "en":  "Weak • Processional • Dominant",
+                                                               "zh":  "弱势 • 过程型 • 主导型",
+                                                               "de":  "Schwach • Prozesshaft • Dominant",
+                                                               "ja":  "弱 • プロセス • ドミナント"
+                                                           },
+                                                  "breakdown":  {
+                                                                    "ru":  "Колебания и самоедство парализовали анализ: испытуемый остался наедине со своей уязвимостью. Истинная ключевая функция: III ВОЛЯ — УЯЗВИМОСТЬ.",
+                                                                    "en":  "Hesitation paralyzed the analysis: the subject remained trapped in self-doubt. True psychotype: III WILL — VULNERABILITY.",
+                                                                    "zh":  "迟疑与自责瘫痪了分析过程：受试者陷于自卑漩涡。真实心理机制：III 意志 — 脆弱。",
+                                                                    "de":  "Das Zögern lähmte die Analyse: Das Subjekt blieb in Selbstzweifeln gefangen. Wahrer Psychotyp: III WILLE — VERLETZLICHKEIT.",
+                                                                    "ja":  "躊躇と自責が分析を麻痺させた。対象は脆弱性に囚われたままとなった。真のサイコタイプ：III 意志 — 葛藤。"
+                                                                }
+                                              },
+                          "options":  [
+                                          {
+                                              "id":  "w_opt_3v",
+                                              "function_code":  "3В",
+                                              "is_correct":  true,
+                                              "text":  {
+                                                           "ru":  "III ВОЛЯ — УЯЗВИМОСТЬ",
+                                                           "en":  "III WILL — VULNERABILITY",
+                                                           "zh":  "III 意志 — 脆弱",
+                                                           "de":  "III WILLE — VERLETZLICHKEIT",
+                                                           "ja":  "III 意志 — 葛藤"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Слабая • Процессионная • Доминантная",
+                                                           "en":  "Weak • Processional • Dominant",
+                                                           "zh":  "弱势 • 过程型 • 主导型",
+                                                           "de":  "Schwach • Prozesshaft • Dominant",
+                                                           "ja":  "弱 • プロセス • ドミナント"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Обратите внимание на острую внутреннюю боль от признания собственной трусости и последующий мучительный прорыв к субъектности.",
+                                                           "en":  "Note the acute inner pain of admitting personal cowardice and the subsequent hard-fought breakthrough toward agency.",
+                                                           "zh":  "注意其承认自身懦弱时的剧烈内心痛楚，以及随后对自我存在意义的拼死夺回。",
+                                                           "de":  "Achten Sie auf den Schmerz über die eigene Feigheit und den folgenden harten Durchbruch zur Selbstbestimmung.",
+                                                           "ja":  "自らの臆病さを認めた時の鋭い内なる苦痛と、その後の主体性奪還への死闘に注目せよ。"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ТОЧНОЕ ПОПАДАНИЕ! Объект преодолевает парализующий страх собственной слабости и стыд за прошлое бегство. Финальное утверждение собственной субъектности вопреки внешней оценке и сомнениям («Плевать! Я уже им стал!») фиксирует эталонный прорыв по III Воле (Уязвимость).",
+                                                                "en":  "EXACT MATCH! The subject overcomes paralyzing fear of weakness and shame over past cowardice. The defiant claim of personal agency despite external validation (\u0027Screw that! I already am one!\u0027) confirms textbook III Will (Vulnerability).",
+                                                                "zh":  "精准击破！对象克服了对自身软弱的麻痹恐惧和对昔日逃跑的无尽羞耻。无视外界评价、悍然确认自身英雄主权（『去他的！老子早就是英雄了！』），完美印证了 III 意志（脆弱）的破茧重生。",
+                                                                "de":  "VOLLTREFFER! Das Subjekt überwindet die lähmende Angst vor der eigenen Schwäche und die Scham. Die trotzköpfige Selbstbehauptung (\u0027Ich bin es längst!\u0027) beweist den Durchbruch der III Wille (Verletzlichkeit).",
+                                                                "ja":  "完全一致！対象は自身の弱さへの恐怖と、過去の逃避への羞恥を乗り越えた。外部の評価を覆し、自らの主体性を勝ち取る姿勢（「知るか！俺はもう勇者になったんだ！」）は、模範的な III 意志（葛藤）の突破を証明している。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Объект преодолевает парализующий страх собственной слабости и стыд за прошлое бегство. Финальное утверждение собственной субъектности вопреки внешней оценке и сомнениям фиксирует прорыв по III Воле (Уязвимость).",
+                                                                  "en":  "The subject overcomes paralyzing fear of weakness and shame over past flight. The final assertion of personal agency confirms a breakthrough on III Will (Vulnerability).",
+                                                                  "zh":  "对象克服了自身软弱与逃避羞耻，最终确立自身主体性，确认判定为 III 意志（脆弱）。",
+                                                                  "de":  "Die Überwindung der Scham und die trotzige Selbstbehauptung belegen den Durchbruch der III Wille (Verletzlichkeit).",
+                                                                  "ja":  "弱さへの恐怖と羞恥の克服、自律的主体性の獲得は III 意志（葛藤）を確定づける。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "w_opt_1v",
+                                              "function_code":  "1В",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "I ВОЛЯ — ДИКТАТ",
+                                                           "en":  "I WILL — DICTATE",
+                                                           "zh":  "I 意志 — 独断",
+                                                           "de":  "I WILLE — DIKTAT",
+                                                           "ja":  "I 意志 — 独断"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Сильная • Результативная • Доминантная",
+                                                           "en":  "Strong • Resultative • Dominant",
+                                                           "zh":  "强势 • 结果型 • 主导型",
+                                                           "de":  "Stark • Resultativ • Dominant",
+                                                           "ja":  "強 • リザルト • ドミナント"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Обладал ли он изначально монолитной уверенностью, или его путь полон сомнений и мучительного преодоления стыда?",
+                                                           "en":  "Did he possess monolithic certainty from the start, or was his path forged through agonizing self-doubt?",
+                                                           "zh":  "他一开始就具备坚不可摧的自信吗，还是经历了漫长痛苦的自我怀疑与耻感？",
+                                                           "de":  "Besaß er von Anfang an felsenfeste Zuversicht oder rang er mühsam mit Selbstzweifeln?",
+                                                           "ja":  "最初から揺るぎない自信を持っていたか、それとも迷いと羞恥を乗り越えて自らを奮い立たせたのか？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. I Воля не знает мучительного стыда за слабость и не колеблется на грани самоуничижения. Монолитная I Воля диктует порядок сразу, тогда как Мива мучительно выгрызает право быть субъектом через преодоление комплекса III Воли.",
+                                                                "en":  "FALSE LEAD. I Will does not suffer from paralyzing shame or self-abasement. Monolithic I Will dictates naturally, whereas Miwa wrestles through excruciating doubt to reclaim agency.",
+                                                                "zh":  "判断错误。I 意志不会因自身的软弱而深陷羞耻与自轻自贱。单一坚固的 I 意志天然确立权威，而三轮宽是通过痛苦战胜自卑阴影才艰难夺回主权。",
+                                                                "de":  "FALSCH. Die I Wille kennt keine zermürbende Scham oder quälende Selbsterniedrigung; Miwa muss sich seinen Willen erst durch Schmerz erkämpfen.",
+                                                                "ja":  "不正解。I 意志は自らの弱さに葛藤して自己嫌悪に陥ることはない。ミワは III 意志の劣等感を克服することで初めて主体性を掴み取っている。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Острая внутренняя уязвимость и мучительный процесс самоопределения исключают монолитную I Волю.",
+                                                                  "en":  "Acute vulnerability and painful processional self-definition rule out monolithic I Will.",
+                                                                  "zh":  "强烈的内在脆弱感与曲折的觉醒过程排除了独断的 I 意志。",
+                                                                  "de":  "Akute Verletzlichkeit und der schmerzhafte Reifungsprozess schließen die I Wille aus.",
+                                                                  "ja":  "内面の激しい葛藤と覚醒のプロセスは自明な I 意志を否定する。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "w_opt_4v",
+                                              "function_code":  "4В",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "IV ВОЛЯ — ШТИЛЬ",
+                                                           "en":  "IV WILL — SERENITY",
+                                                           "zh":  "IV 意志 — 随顺",
+                                                           "de":  "IV WILLE — RUHE",
+                                                           "ja":  "IV 意志 — 静寂"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Слабая • Результативная • Подстраивающаяся",
+                                                           "en":  "Weak • Resultative • Adapting",
+                                                           "zh":  "弱势 • 结果型 • 适应型",
+                                                           "de":  "Schwach • Resultativ • Anpassend",
+                                                           "ja":  "弱 • リザルト • アジャスト"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Равнодушен ли он к своему статусу героя, или для него жизненно важно отстоять своё право решать?",
+                                                           "en":  "Is he truly indifferent to his heroic status, or is self-determination a matter of life and death for him?",
+                                                           "zh":  "他真的对自身是否是英雄漠不关心吗，还是说捍卫自我决定权对他而言生死攸关？",
+                                                           "de":  "Ist ihm der Heldenstatus gleichgültig oder kämpft er erbittert um seine Selbstbestimmung?",
+                                                           "ja":  "彼は勇者の座に無関心だろうか、それとも自らの決定権を守り抜くことが死活問題だろうか？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. IV Воля легко уступает главенство другим и не страдает от уязвленной гордости. Для Мивы признание своей роли — вопрос жизни и смерти («Я уже герой!»), что подтверждает доминантную и процессионную III Волю.",
+                                                                "en":  "FALSE LEAD. IV Will readily defers leadership without wounded pride. For Miwa, claiming his identity is an existential battle (\u0027I already am a hero!\u0027), characteristic of dominant III Will.",
+                                                                "zh":  "判断错误。IV 意志易于妥协顺从，对名分与自尊毫无执念。三轮宽视主宰命运为立身之本（『老子早就是英雄了！』），鲜明展现了 III 意志的主导性。",
+                                                                "de":  "FALSCH. Die IV Wille ordnet sich gelassen unter; für Miwa ist die Anerkennung seiner Souveränität eine Frage von Leben und Tod — III Wille.",
+                                                                "ja":  "不正解。IV 意志は他者に主導権を委ねて平然としており、プライドに固執しない。ミワにとって主権の獲得は存在理由そのものである。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Отказ смириться с поражением и яростное утверждение своего выбора отвергают пассивную IV Волю.",
+                                                                  "en":  "Refusal to yield and fierce declaration of personal choice rule out passive IV Will.",
+                                                                  "zh":  "拒绝妥协与捍卫自我选择的烈度排除了被动的 IV 意志。",
+                                                                  "de":  "Die Weigerung aufzugeben und die feurige Selbstbehauptung widerlegen die IV Wille.",
+                                                                  "ja":  "敗北への屈服を拒絶し、選択を勝ち取る姿勢は受動的な IV 意志を否定する。"
+                                                              }
+                                          },
+                                          {
+                                              "id":  "w_opt_1f",
+                                              "function_code":  "1Ф",
+                                              "is_correct":  false,
+                                              "text":  {
+                                                           "ru":  "I ФИЗИКА — ЗАХВАТ",
+                                                           "en":  "I PHYSICS — GRASP",
+                                                           "zh":  "I 物理 — 占有",
+                                                           "de":  "I PHYSIK — BESITZ",
+                                                           "ja":  "I 物理 — 独占"
+                                                       },
+                                              "axes":  {
+                                                           "ru":  "Сильная • Результативная • Доминантная",
+                                                           "en":  "Strong • Resultative • Dominant",
+                                                           "zh":  "强势 • 结果型 • 主导型",
+                                                           "de":  "Stark • Resultativ • Dominant",
+                                                           "ja":  "強 • リザルト • ドミナント"
+                                                       },
+                                              "hint":  {
+                                                           "ru":  "Фокусируется ли сцена на материальных ресурсах и телесной мощи, или на преодолении внутренней слабости?",
+                                                           "en":  "Does the scene center on material resources and physical might, or overcoming inner weakness of will?",
+                                                           "zh":  "场景的核心是争夺物质资源与肉体蛮力，还是战胜内在意志的软弱？",
+                                                           "de":  "Stehen materielle Güter und Körperkraft im Mittelpunkt oder die Überwindung innerer Willensschwäche?",
+                                                           "ja":  "この場面の焦点は物質的資源や肉体の剛力か、それとも内なる意志の弱さの克服か？"
+                                                       },
+                                              "breakdown":  {
+                                                                "ru":  "ЛОЖНЫЙ СЛЕД. Хотя в репликах упоминаются удары («стерпел все удары») и физическая слабость, суть кризиса лежит не в физическом теле, а в волевой субъектности и преодолении страха (III Воля).",
+                                                                "en":  "FALSE LEAD. Although physical blows are mentioned, the core conflict is strictly in the realm of volition, self-determination, and overcoming fear (III Will).",
+                                                                "zh":  "判断错误。虽然提及承受击打与肉身弱小，但冲突的核心完全在于意志主权与战胜自卑（III 意志）。",
+                                                                "de":  "FALSCH. Die Schläge und Schwäche sind nur der Rahmen; der wahre Kernkonflikt liegt in der Willensbehauptung (III Wille).",
+                                                                "ja":  "不正解。殴打や身体の弱さに言及されているが、対決の核心は肉体ではなく意志の主体性の奪還（III 意志）にある。"
+                                                            },
+                                              "explanation":  {
+                                                                  "ru":  "Тема физической слабости выступает лишь декорацией для волевого перелома личности.",
+                                                                  "en":  "Physical weakness serves merely as a backdrop for a profound breakthrough of will.",
+                                                                  "zh":  "肉体的软弱只是意志突破的铺垫背景，排除了 I 物理。",
+                                                                  "de":  "Körperliche Schwäche dient nur als Kulisse für den Willensdurchbruch.",
+                                                                  "ja":  "身体的弱さは意志の覚醒を引き立てる背景に過ぎず、I 物理を否定する。"
+                                                              }
+                                          }
+                                      ]
                       }
                   ]
 }
